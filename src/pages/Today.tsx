@@ -15,10 +15,10 @@ const Today = () => {
         {/* Vertical Progress Stepper */}
         <div className="relative">
           {/* Step 1 */}
-          <div className="relative flex gap-4 mb-4">
-            <div className="flex flex-col items-center">
-              <div className="w-6 h-6 rounded-full bg-primary border-4 border-background shadow-md z-10" />
-              <div className="w-0.5 flex-1 bg-primary/20 mt-1" />
+          <div className="relative flex gap-4 mb-4 items-center">
+            <div className="flex flex-col items-center flex-shrink-0">
+              <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
+              <div className="w-0.5 h-12 bg-primary/20 mt-1" />
             </div>
             <Card 
               className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
@@ -37,10 +37,10 @@ const Today = () => {
           </div>
           
           {/* Step 2 */}
-          <div className="relative flex gap-4 mb-4">
-            <div className="flex flex-col items-center">
-              <div className="w-6 h-6 rounded-full bg-primary/30 border-4 border-background shadow-md z-10" />
-              <div className="w-0.5 flex-1 bg-primary/20 mt-1" />
+          <div className="relative flex gap-4 mb-4 items-center">
+            <div className="flex flex-col items-center flex-shrink-0">
+              <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
+              <div className="w-0.5 h-12 bg-primary/20 mt-1" />
             </div>
             <Card 
               className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
@@ -59,9 +59,9 @@ const Today = () => {
           </div>
           
           {/* Step 3 */}
-          <div className="relative flex gap-4">
-            <div className="flex flex-col items-center">
-              <div className="w-6 h-6 rounded-full bg-primary/30 border-4 border-background shadow-md z-10" />
+          <div className="relative flex gap-4 items-center">
+            <div className="flex flex-col items-center flex-shrink-0">
+              <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
             </div>
             <Card 
               className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
