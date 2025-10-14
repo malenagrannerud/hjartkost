@@ -120,12 +120,7 @@ const Tips = () => {
             onClick={() => setSelectedTip(tip)}
           >
             <div className="space-y-3">
-              <div className="flex items-start justify-between gap-3">
-                <h3 className={`font-semibold flex-1 ${tip.textColor}`}>{tip.title}</h3>
-                <Badge className="bg-white/60 text-blue-900 text-xs border-0">
-                  {tip.category}
-                </Badge>
-              </div>
+              <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
               <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
             </div>
           </Card>
