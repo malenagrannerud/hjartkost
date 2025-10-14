@@ -39,13 +39,12 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
                 <p className="text-primary font-bold text-lg leading-relaxed">
                   Ditt individanpassade program för en hjärt-vänlig kosthållning
                 </p>
-                <div className="w-full rounded-2xl overflow-hidden mt-4 relative">
+                <div className="w-full mt-4">
                   <img 
                     src={welcomeIllustration} 
                     alt="Welcome illustration" 
                     className="w-full h-64 object-cover"
                   />
-                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
                 </div>
               </div>
             </>
