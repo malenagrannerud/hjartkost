@@ -6,7 +6,7 @@ const Today = () => {
     <div className="p-6 pb-24 space-y-6">
       <header>
         <h1 className="text-3xl font-bold text-primary mb-2">Idag</h1>
-        <p className="text-primary/70">Dina dagliga tips och mål</p>
+        <p className="text-primary/70">Uppdateras i din egen takt</p>
       </header>
 
       <Card className="p-6 bg-gradient-to-br from-secondary/20 to-secondary/5 border-secondary/20">
