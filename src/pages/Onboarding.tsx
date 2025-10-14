@@ -123,27 +123,39 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
           </div>
 
           {/* Navigation buttons */}
-          <div className="w-full flex gap-3">
-            <Button
-              variant="outline"
-              onClick={handleBack}
-              disabled={step === 1}
-              className="flex-1 h-12"
-              size="lg"
-            >
-              <ChevronLeft className="mr-2 h-5 w-5" />
-              Tillbaka
-            </Button>
-            
-            <Button 
-              onClick={handleNext}
-              className="flex-1 h-12 text-base bg-primary hover:bg-primary/90"
-              size="lg"
-            >
-              {step === 3 ? "Börja nu" : "Nästa"}
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </Button>
-          </div>
+          {step === 1 ? (
+            <div className="w-full flex justify-center">
+              <Button 
+                onClick={handleNext}
+                className="w-2/3 h-12 text-base bg-primary hover:bg-primary/90"
+                size="lg"
+              >
+                Nästa
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          ) : (
+            <div className="w-full flex gap-3">
+              <Button
+                variant="outline"
+                onClick={handleBack}
+                className="flex-1 h-12"
+                size="lg"
+              >
+                <ChevronLeft className="mr-2 h-5 w-5" />
+                Tillbaka
+              </Button>
+              
+              <Button 
+                onClick={handleNext}
+                className="flex-1 h-12 text-base bg-primary hover:bg-primary/90"
+                size="lg"
+              >
+                {step === 3 ? "Börja nu" : "Nästa"}
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
