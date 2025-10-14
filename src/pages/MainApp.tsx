@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { BottomNav } from "@/components/BottomNav";
-import { MobileFrame } from "@/components/MobileFrame";
 import Today from "./Today";
 import Tips from "./Tips";
 import Progress from "./Progress";
@@ -8,7 +7,7 @@ import Help from "./Help";
 
 const MainApp = () => {
   return (
-    <MobileFrame>
+    <>
       <div className="flex-1 bg-background overflow-y-auto">
         <Routes>
           <Route path="/" element={<Navigate to="/app/today" replace />} />
@@ -19,7 +18,7 @@ const MainApp = () => {
         </Routes>
       </div>
       <BottomNav />
-    </MobileFrame>
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { MobileFrame } from "@/components/MobileFrame";
 import Onboarding from "./pages/Onboarding";
 import MainApp from "./pages/MainApp";
 import NotFound from "./pages/NotFound";
@@ -32,20 +33,22 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route 
-              path="/" 
-              element={
-                hasSeenOnboarding ? <Navigate to="/app" replace /> : <Navigate to="/welcome" replace />
-              } 
-            />
-            <Route 
-              path="/welcome" 
-              element={<Onboarding onComplete={completeOnboarding} />} 
-            />
-            <Route path="/app/*" element={<MainApp />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <MobileFrame>
+            <Routes>
+              <Route 
+                path="/" 
+                element={
+                  hasSeenOnboarding ? <Navigate to="/app" replace /> : <Navigate to="/welcome" replace />
+                } 
+              />
+              <Route 
+                path="/welcome" 
+                element={<Onboarding onComplete={completeOnboarding} />} 
+              />
+              <Route path="/app/*" element={<MainApp />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </MobileFrame>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
