@@ -145,8 +145,8 @@ const TipDetail = () => {
 
   return (
     <div className="min-h-screen pb-24 bg-white">
-      {/* Image Header */}
-      <div className="w-full h-[200px] overflow-hidden">
+      {/* Image Header with Color Background */}
+      <div className={`w-full h-[200px] overflow-hidden ${tip.color} flex items-center justify-center`}>
         <img 
           src="/src/assets/fruits-illustration.jpg" 
           alt={tip.title}
