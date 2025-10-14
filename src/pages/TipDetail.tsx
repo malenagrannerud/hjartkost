@@ -173,7 +173,7 @@ const TipDetail = () => {
           {tip.steps.map((step, index) => (
             <div key={index} className="space-y-2">
               <h3 className="font-bold text-blue-900">
-                Steg {index + 1}: {step.split(':')[0] || `Steg ${index + 1}`}
+                Steg {index + 1}: {index === 0 ? 'Förberedelser' : step.split(':')[0] || `Steg ${index + 1}`}
               </h3>
               <p className="text-blue-900 text-sm leading-relaxed">
                 {step}
