@@ -6,7 +6,7 @@ import { Check } from "lucide-react";
 const tips = [
   {
     id: 1,
-    title: "Ät mer grönsaker, frukt och bär",
+    title: "Fem nävar frukt och grönt",
     description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
     detailedInfo: "Grönsaker, frukt och bär innehåller fibrer, vitaminer och mineraler som kroppen behöver. De mättar bra och ger skydd mot flera sjukdomar. Försök äta minst 500 gram per dag. Variationen är viktig - olika färger innehåller olika nyttigheter. Frysta och konserverade grönsaker räknas också.",
     category: "Livsmedelsverket",
