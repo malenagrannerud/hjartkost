@@ -155,7 +155,7 @@ const TipDetail = () => {
       </div>
 
       {/* Content */}
-      <div className="p-6 space-y-6">
+      <div className={`${tip.color} p-6 space-y-6`}>
         {/* Back Button */}
         <button
           onClick={() => navigate('/app/tips')}
