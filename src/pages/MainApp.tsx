@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { BottomNav } from "@/components/BottomNav";
 import Today from "./Today";
 import Tips from "./Tips";
+import TipDetail from "./TipDetail";
 import Progress from "./Progress";
 import Help from "./Help";
 
@@ -13,6 +14,7 @@ const MainApp = () => {
           <Route path="/" element={<Navigate to="/app/today" replace />} />
           <Route path="/today" element={<Today />} />
           <Route path="/tips" element={<Tips />} />
+          <Route path="/tips/:id" element={<TipDetail />} />
           <Route path="/progress" element={<Progress />} />
           <Route path="/help" element={<Help />} />
         </Routes>

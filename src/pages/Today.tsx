@@ -167,7 +167,7 @@ const Today = () => {
           <h3 className="text-lg font-bold text-primary">Mina valda tips</h3>
           <div className="space-y-3">
             {markedTipsList.map((tip) => (
-              <Card key={tip.id} className={`p-4 ${tip.color}`}>
+              <Card key={tip.id} className={`p-4 ${tip.color} border-0 shadow-none`}>
                 <h4 className={`font-semibold text-sm ${tip.textColor} mb-1`}>{tip.title}</h4>
                 <p className={`text-xs ${tip.textColor} opacity-80`}>{tip.description}</p>
               </Card>
