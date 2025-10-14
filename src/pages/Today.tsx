@@ -13,15 +13,15 @@ const Today = () => {
         <h3 className="text-lg font-bold text-primary">Starta här</h3>
         
         {/* Vertical Progress Stepper */}
-        <div className="relative pl-8">
-          {/* Vertical Line */}
-          <div className="absolute left-[11px] top-0 bottom-0 w-0.5 bg-primary/20" />
-          
+        <div className="relative">
           {/* Step 1 */}
-          <div className="relative mb-4">
-            <div className="absolute left-[-32px] top-2 w-6 h-6 rounded-full bg-primary border-4 border-background shadow-md" />
-            <Card
-              className="p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+          <div className="relative flex gap-4 mb-4">
+            <div className="flex flex-col items-center">
+              <div className="w-6 h-6 rounded-full bg-primary border-4 border-background shadow-md z-10" />
+              <div className="w-0.5 flex-1 bg-primary/20 mt-1" />
+            </div>
+            <Card 
+              className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
               onClick={() => {/* Navigate to tutorial */}}
             >
               <div className="flex items-start justify-between">
@@ -37,10 +37,13 @@ const Today = () => {
           </div>
           
           {/* Step 2 */}
-          <div className="relative mb-4">
-            <div className="absolute left-[-32px] top-2 w-6 h-6 rounded-full bg-primary/30 border-4 border-background shadow-md" />
-            <Card
-              className="p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+          <div className="relative flex gap-4 mb-4">
+            <div className="flex flex-col items-center">
+              <div className="w-6 h-6 rounded-full bg-primary/30 border-4 border-background shadow-md z-10" />
+              <div className="w-0.5 flex-1 bg-primary/20 mt-1" />
+            </div>
+            <Card 
+              className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
               onClick={() => {/* Navigate to questionnaire */}}
             >
               <div className="flex items-start justify-between">
@@ -56,10 +59,12 @@ const Today = () => {
           </div>
           
           {/* Step 3 */}
-          <div className="relative">
-            <div className="absolute left-[-32px] top-2 w-6 h-6 rounded-full bg-primary/30 border-4 border-background shadow-md" />
-            <Card
-              className="p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+          <div className="relative flex gap-4">
+            <div className="flex flex-col items-center">
+              <div className="w-6 h-6 rounded-full bg-primary/30 border-4 border-background shadow-md z-10" />
+            </div>
+            <Card 
+              className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
               onClick={() => {/* Navigate to health metrics */}}
             >
               <div className="flex items-start justify-between">
