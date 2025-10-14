@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
 
 const tips = [
   {
@@ -139,10 +138,6 @@ const TipDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const tip = tips.find(t => t.id === Number(id));
-  
-  const [preparationMethod, setPreparationMethod] = useState("Förbereda");
-
-  const preparationMethods = ["Förbereda", "Planera", "Organisera"];
 
   if (!tip) {
     return <div>Tip not found</div>;
@@ -177,36 +172,12 @@ const TipDetail = () => {
         <div className="space-y-4 pt-4">
           {tip.steps.map((step, index) => (
             <div key={index} className="space-y-2">
-              {index === 0 ? (
-                <>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-blue-900">Steg 1:</h3>
-                    <select
-                      value={preparationMethod}
-                      onChange={(e) => setPreparationMethod(e.target.value)}
-                      className="font-bold text-blue-900 bg-transparent border-b-2 border-blue-900 focus:outline-none"
-                    >
-                      {preparationMethods.map((method) => (
-                        <option key={method} value={method}>
-                          {method}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <p className="text-blue-900 text-sm leading-relaxed">
-                    {step}
-                  </p>
-                </>
-              ) : (
-                <>
-                  <h3 className="font-bold text-blue-900">
-                    Steg {index + 1}: {step.split(':')[0] || `Steg ${index + 1}`}
-                  </h3>
-                  <p className="text-blue-900 text-sm leading-relaxed">
-                    {step}
-                  </p>
-                </>
-              )}
+              <h3 className="font-bold text-blue-900">
+                Steg {index + 1}: {step.split(':')[0] || `Steg ${index + 1}`}
+              </h3>
+              <p className="text-blue-900 text-sm leading-relaxed">
+                {step}
+              </p>
             </div>
           ))}
         </div>
