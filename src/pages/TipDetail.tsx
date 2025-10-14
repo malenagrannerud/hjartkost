@@ -148,7 +148,7 @@ const TipDetail = () => {
       {/* Header - 25% of viewport */}
       <div className={`${tip.color} p-6 h-[25vh] flex flex-col justify-between`}>
         <button
-          onClick={() => navigate(-1)}
+          onClick={() => navigate('/app/tips')}
           className="flex items-center gap-2 text-blue-900 hover:opacity-70 transition-opacity"
         >
           <ArrowLeft size={24} />
