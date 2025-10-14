@@ -52,25 +52,25 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
 
           {step === 2 && (
             <>
-              <div className="flex-1 flex flex-col justify-center space-y-8 w-full bg-blue-50/50 rounded-3xl p-8 -m-8">
-                <h1 className="text-5xl font-bold text-primary">Hjärtkost</h1>
+              <div className="flex-1 flex flex-col justify-center space-y-6 w-full bg-blue-100/80 rounded-3xl p-8 -m-8">
+                <h1 className="text-5xl font-bold text-primary text-left">Hjärtkost</h1>
                 
                 <ul className="space-y-4 text-left">
-                  <li className="flex gap-3 text-foreground">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Tio evidensbaserade tips för ett starkare hjärta</span>
+                  <li className="flex gap-3">
+                    <span className="text-primary mt-1 font-bold">•</span>
+                    <span className="font-semibold text-foreground">Tio evidensbaserade tips för ett starkare hjärta</span>
                   </li>
-                  <li className="flex gap-3 text-foreground">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Välj vilka tips du vill implementera varje vecka</span>
+                  <li className="flex gap-3">
+                    <span className="text-primary mt-1 font-bold">•</span>
+                    <span className="font-semibold text-foreground">Välj vilka tips du vill implementera varje vecka</span>
                   </li>
-                  <li className="flex gap-3 text-foreground">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Upplev effekterna av en näringsriktig diet utan orimliga tvång</span>
+                  <li className="flex gap-3">
+                    <span className="text-primary mt-1 font-bold">•</span>
+                    <span className="font-semibold text-foreground">Upplev effekterna av en näringsriktig diet utan orimliga tvång</span>
                   </li>
-                  <li className="flex gap-3 text-foreground">
-                    <span className="text-primary mt-1">•</span>
-                    <span>Få stöd under resan. Om något tips är svårt att implementera hjälper vi dej att anpassa stegen</span>
+                  <li className="flex gap-3">
+                    <span className="text-primary mt-1 font-bold">•</span>
+                    <span className="font-semibold text-foreground">Få stöd under resan. Om något tips är svårt att implementera hjälper vi dej att anpassa stegen</span>
                   </li>
                 </ul>
               </div>
