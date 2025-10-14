@@ -13,11 +13,11 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-    if (step < 3) {
+    if (step < 2) {
       setStep(step + 1);
     } else {
       onComplete();
-      navigate("/app");
+      navigate("/app/today");
     }
   };
 
@@ -77,36 +77,10 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
             </>
           )}
 
-          {step === 3 && (
-            <>
-              <div className="flex-1 flex flex-col justify-center space-y-8 w-full">
-                <h2 className="text-2xl font-bold text-foreground">Redo att börja?</h2>
-                
-                <div className="space-y-6">
-                  <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-8 text-center">
-                    <div className="text-6xl mb-4">❤️</div>
-                    <h3 className="font-semibold text-xl mb-3 text-foreground">
-                      Ta hand om ditt hjärta
-                    </h3>
-                    <p className="text-muted-foreground">
-                      Små förändringar i vardagen kan göra stor skillnad för din hälsa
-                    </p>
-                  </div>
-
-                  <div className="bg-card rounded-2xl p-6">
-                    <p className="text-sm text-muted-foreground">
-                      Kom ihåg att alltid rådfråga din läkare vid medicinska frågor. 
-                      Denna app är ett komplement till professionell vård.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
 
           {/* Navigation dots */}
           <div className="flex gap-2 mb-6 justify-center w-full">
-            {[1, 2, 3].map((dot) => (
+            {[1, 2].map((dot) => (
               <button
                 key={dot}
                 onClick={() => setStep(dot)}
@@ -147,7 +121,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
                 className="flex-1 max-w-[45%] h-12 text-base bg-primary hover:bg-primary/90"
                 size="lg"
               >
-                {step === 3 ? "Börja nu" : "Nästa"}
+                Börja nu
                 <ChevronRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
