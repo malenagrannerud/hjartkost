@@ -144,37 +144,47 @@ const TipDetail = () => {
   }
 
   return (
-    <div className="min-h-screen pb-24 flex flex-col">
-      {/* Header - 25% of viewport */}
-      <div className={`${tip.color} p-6 h-[25vh] flex flex-col justify-between`}>
+    <div className="min-h-screen pb-24 bg-white">
+      {/* Image Header */}
+      <div className="w-full h-[200px] overflow-hidden">
+        <img 
+          src="/src/assets/fruits-illustration.jpg" 
+          alt={tip.title}
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-6 space-y-6">
+        {/* Back Button */}
         <button
           onClick={() => navigate('/app/tips')}
           className="flex items-center gap-2 text-blue-900 hover:opacity-70 transition-opacity"
         >
-          <ArrowLeft size={24} />
-          <span className="font-semibold">Tillbaka</span>
+          <ArrowLeft size={20} />
+          <span className="text-sm font-semibold">Tillbaka</span>
         </button>
-        <h1 className="text-3xl font-bold text-blue-900">{tip.title}</h1>
-      </div>
 
-      {/* Content Section */}
-      <div className={`${tip.color} p-6 space-y-8`}>
-        <p className={`text-lg ${tip.textColor} opacity-90 leading-relaxed`}>
+        {/* Title */}
+        <h1 className="text-2xl font-bold text-blue-900 leading-tight">{tip.title}</h1>
+
+        {/* Description */}
+        <p className="text-blue-900 leading-relaxed">
           {tip.detailedInfo}
         </p>
 
-        <div className="space-y-4">
-          <h2 className={`text-xl font-bold ${tip.textColor}`}>Så här skapar du vanan</h2>
-          <div className="space-y-3">
-            {tip.steps.map((step, index) => (
-              <div key={index} className="flex gap-3">
-                <div className={`flex-shrink-0 w-7 h-7 rounded-full bg-green-100 flex items-center justify-center font-bold ${tip.textColor}`}>
-                  {index + 1}
-                </div>
-                <p className={`${tip.textColor} opacity-90 pt-0.5`}>{step}</p>
-              </div>
-            ))}
-          </div>
+        {/* Steps */}
+        <div className="space-y-4 pt-4">
+          {tip.steps.map((step, index) => (
+            <div key={index} className="space-y-2">
+              <h3 className="font-bold text-blue-900">
+                Steg {index + 1}: {step.split(':')[0] || `Steg ${index + 1}`}
+              </h3>
+              <p className="text-blue-900 text-sm leading-relaxed">
+                {step}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>
