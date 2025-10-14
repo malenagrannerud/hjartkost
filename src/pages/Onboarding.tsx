@@ -31,7 +31,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
     <div className="min-h-screen bg-gradient-to-b from-muted/30 to-background flex items-center justify-center p-4">
       {/* Phone frame */}
       <div className="w-full max-w-md min-h-[90vh] bg-white rounded-[3rem] shadow-2xl border-8 border-foreground/10 overflow-hidden flex flex-col">
-        <div className="flex-1 flex flex-col items-start justify-between p-8">
+        <div className={`flex-1 flex flex-col items-start justify-between ${step === 2 ? 'bg-blue-100/80 p-8' : 'p-8'}`}>
           {step === 1 && (
             <>
               <div className="flex-1 flex flex-col justify-center space-y-6 w-full">
@@ -52,7 +52,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
 
           {step === 2 && (
             <>
-              <div className="flex-1 flex flex-col justify-center space-y-6 w-full bg-blue-100/80 rounded-3xl p-8 -m-8">
+              <div className="flex-1 flex flex-col justify-center space-y-6 w-full">
                 <h1 className="text-5xl font-bold text-primary text-left">Hjärtkost</h1>
                 
                 <ul className="space-y-4 text-left">
@@ -105,7 +105,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
           )}
 
           {/* Navigation dots */}
-          <div className="flex gap-2 mb-6">
+          <div className="flex gap-2 mb-6 justify-center w-full">
             {[1, 2, 3].map((dot) => (
               <button
                 key={dot}
@@ -131,11 +131,11 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
               </Button>
             </div>
           ) : (
-            <div className="w-full flex gap-3">
+            <div className="w-full flex gap-3 justify-center">
               <Button
                 variant="outline"
                 onClick={handleBack}
-                className="flex-1 h-12"
+                className="flex-1 max-w-[45%] h-12"
                 size="lg"
               >
                 <ChevronLeft className="mr-2 h-5 w-5" />
@@ -144,7 +144,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
               
               <Button 
                 onClick={handleNext}
-                className="flex-1 h-12 text-base bg-primary hover:bg-primary/90"
+                className="flex-1 max-w-[45%] h-12 text-base bg-primary hover:bg-primary/90"
                 size="lg"
               >
                 {step === 3 ? "Börja nu" : "Nästa"}
