@@ -144,9 +144,9 @@ const TipDetail = () => {
   }
 
   return (
-    <div className="min-h-screen pb-24">
-      {/* Header */}
-      <div className={`${tip.color} p-6 h-1/4 flex flex-col justify-between`}>
+    <div className="min-h-screen pb-24 flex flex-col">
+      {/* Header - 25% of viewport */}
+      <div className={`${tip.color} p-6 h-[25vh] flex flex-col justify-between`}>
         <button
           onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-blue-900 hover:opacity-70 transition-opacity"
