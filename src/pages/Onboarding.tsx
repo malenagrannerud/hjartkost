@@ -34,9 +34,10 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
           <div className="flex-1 flex flex-col justify-center space-y-6 w-full">
             <h1 className="text-5xl font-bold text-primary">Hjärtkost</h1>
             <p className="text-primary font-bold text-lg leading-relaxed">
-              Ditt individanpassade program för en hjärt-vänlig kosthållning
+              Ditt individanpassade program för<br />
+              en hjärt-vänlig kosthållning
             </p>
-            <div className="w-full mt-4">
+            <div className="w-full mt-16">
               <img 
                 src={welcomeIllustration} 
                 alt="Welcome illustration" 
@@ -90,7 +91,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
 
       {/* Navigation buttons */}
       {step === 1 ? (
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mt-8">
           <Button 
             onClick={handleNext}
             className="w-2/3 h-12 text-base bg-primary hover:bg-primary/90"
