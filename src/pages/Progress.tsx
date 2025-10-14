@@ -3,7 +3,7 @@ import { Progress as ProgressBar } from "@/components/ui/progress";
 
 const Progress = () => {
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 pb-24 space-y-6">
       <header>
         <h1 className="text-3xl font-bold text-foreground mb-2">Framsteg</h1>
         <p className="text-muted-foreground">Se hur dina hälsovanor utvecklas</p>
