@@ -52,7 +52,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
 
           {step === 2 && (
             <>
-              <div className="flex-1 flex flex-col justify-center space-y-6 w-full bg-blue-100/80 rounded-3xl p-8 -m-8">
+              <div className="flex-1 flex flex-col justify-center space-y-6 w-full bg-blue-100/80 rounded-3xl p-8">
                 <h1 className="text-5xl font-bold text-primary text-left">Hjärtkost</h1>
                 
                 <ul className="space-y-4 text-left">
