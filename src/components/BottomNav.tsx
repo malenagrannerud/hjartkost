@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { Home, Lightbulb, TrendingUp } from "lucide-react";
+import { Home, Lightbulb, TrendingUp, HelpCircle } from "lucide-react";
 
 export const BottomNav = () => {
   const navItems = [
     { path: "/app/today", label: "Idag", icon: Home },
     { path: "/app/tips", label: "Tips", icon: Lightbulb },
     { path: "/app/progress", label: "Framsteg", icon: TrendingUp },
+    { path: "/app/help", label: "Hjälp", icon: HelpCircle },
   ];
 
   return (
