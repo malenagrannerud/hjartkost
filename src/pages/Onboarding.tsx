@@ -45,7 +45,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
                     alt="Welcome illustration" 
                     className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background pointer-events-none"></div>
+                  <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent pointer-events-none"></div>
                 </div>
               </div>
             </>
