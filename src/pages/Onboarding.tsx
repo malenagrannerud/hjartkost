@@ -30,7 +30,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-muted/30 to-background flex items-center justify-center p-4">
       {/* Phone frame */}
-      <div className="w-full max-w-md min-h-[90vh] bg-background rounded-[3rem] shadow-2xl border-8 border-foreground/10 overflow-hidden flex flex-col">
+      <div className="w-full max-w-md min-h-[90vh] bg-white rounded-[3rem] shadow-2xl border-8 border-foreground/10 overflow-hidden flex flex-col">
         <div className="flex-1 flex flex-col items-start justify-between p-8">
           {step === 1 && (
             <>
