@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Check } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -104,6 +105,23 @@ const tips = [
 
 const Tips = () => {
   const [selectedTip, setSelectedTip] = useState<typeof tips[0] | null>(null);
+  const [markedTips, setMarkedTips] = useState<number[]>(() => {
+    const saved = localStorage.getItem('markedTips');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('markedTips', JSON.stringify(markedTips));
+  }, [markedTips]);
+
+  const toggleMark = (e: React.MouseEvent, tipId: number) => {
+    e.stopPropagation();
+    setMarkedTips(prev => 
+      prev.includes(tipId) 
+        ? prev.filter(id => id !== tipId)
+        : [...prev, tipId]
+    );
+  };
 
   return (
     <div className="p-6 pb-24 space-y-6">
@@ -116,10 +134,20 @@ const Tips = () => {
         {tips.map((tip) => (
           <Card 
             key={tip.id} 
-            className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color}`}
+            className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative`}
             onClick={() => setSelectedTip(tip)}
           >
-            <div className="space-y-3">
+            <div 
+              className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                markedTips.includes(tip.id) 
+                  ? 'bg-blue-900 border-blue-900' 
+                  : 'bg-white/50 border-blue-900/30'
+              }`}
+              onClick={(e) => toggleMark(e, tip.id)}
+            >
+              {markedTips.includes(tip.id) && <Check size={16} className="text-white" strokeWidth={3} />}
+            </div>
+            <div className="space-y-3 pr-8">
               <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
               <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
             </div>
