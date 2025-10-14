@@ -1,4 +1,5 @@
 import { Card } from "@/components/ui/card";
+import { Clock } from "lucide-react";
 import fruitsIllustration from "@/assets/fruits-illustration.jpg";
 
 const Today = () => {
@@ -24,40 +25,43 @@ const Today = () => {
       </Card>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-primary">Dagens tips</h3>
-        
-        <Card className="p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">💧</span>
+        <Card 
+          className="p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+          onClick={() => {/* Navigate to tutorial */}}
+        >
+          <div className="flex items-start justify-between">
             <div>
-              <h4 className="font-semibold text-primary mb-1">Drick mer vatten</h4>
-              <p className="text-sm text-primary/70">
-                Sikta på minst 2 liter vatten under dagen
-              </p>
+              <h4 className="font-semibold text-primary mb-1">Lär dej om hur appen fungerar</h4>
+              <div className="flex items-center gap-1 text-xs text-primary/70">
+                <Clock size={14} />
+                <span>5 min</span>
+              </div>
             </div>
           </div>
         </Card>
 
-        <Card className="p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">🚶‍♀️</span>
+        <Card 
+          className="p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+          onClick={() => {/* Navigate to questionnaire */}}
+        >
+          <div className="flex items-start justify-between">
             <div>
-              <h4 className="font-semibold text-primary mb-1">30 minuters promenad</h4>
-              <p className="text-sm text-primary/70">
-                En lugn promenad gör underverk för ditt hjärta
-              </p>
+              <h4 className="font-semibold text-primary mb-1">Frågeformulär</h4>
+              <div className="flex items-center gap-1 text-xs text-primary/70">
+                <Clock size={14} />
+                <span>8 min</span>
+              </div>
             </div>
           </div>
         </Card>
 
-        <Card className="p-5 hover:shadow-md transition-shadow">
-          <div className="flex items-start gap-3">
-            <span className="text-2xl">🧘</span>
+        <Card 
+          className="p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+          onClick={() => {/* Navigate to health metrics */}}
+        >
+          <div className="flex items-start justify-between">
             <div>
-              <h4 className="font-semibold text-primary mb-1">Andningsövning</h4>
-              <p className="text-sm text-primary/70">
-                Ta 5 minuter för medveten andning och avslappning
-              </p>
+              <h4 className="font-semibold text-primary">BMI, blodfetter och blodtryck</h4>
             </div>
           </div>
         </Card>
