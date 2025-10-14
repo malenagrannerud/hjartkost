@@ -1,10 +1,9 @@
-import { Card } from "@/components/ui/card";
 import { Clock } from "lucide-react";
 
 const Today = () => {
   return (
-    <div className="p-6 pb-24 space-y-6">
-      <header className="mb-6">
+    <div className="p-6 pb-24 space-y-6 pt-12">
+      <header className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Idag</h1>
         <p className="text-primary/90 text-base font-semibold">Uppdateras i din egen takt</p>
       </header>
@@ -20,8 +19,8 @@ const Today = () => {
               <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
               <div className="w-0.5 h-12 bg-primary/20 mt-1" />
             </div>
-            <Card 
-              className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+            <div 
+              className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98]"
               onClick={() => {/* Navigate to tutorial */}}
             >
               <div className="flex items-start justify-between">
@@ -33,7 +32,7 @@ const Today = () => {
                   </div>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
           
           {/* Step 2 */}
@@ -42,8 +41,8 @@ const Today = () => {
               <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
               <div className="w-0.5 h-12 bg-primary/20 mt-1" />
             </div>
-            <Card 
-              className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+            <div 
+              className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98]"
               onClick={() => {/* Navigate to questionnaire */}}
             >
               <div className="flex items-start justify-between">
@@ -55,7 +54,7 @@ const Today = () => {
                   </div>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
           
           {/* Step 3 */}
@@ -63,8 +62,8 @@ const Today = () => {
             <div className="flex flex-col items-center flex-shrink-0">
               <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
             </div>
-            <Card 
-              className="flex-1 p-5 hover:shadow-md transition-shadow cursor-pointer active:scale-[0.98] transition-transform"
+            <div 
+              className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98]"
               onClick={() => {/* Navigate to health metrics */}}
             >
               <div className="flex items-start justify-between">
@@ -72,7 +71,7 @@ const Today = () => {
                   <h4 className="font-bold text-primary">BMI, blodfetter och blodtryck</h4>
                 </div>
               </div>
-            </Card>
+            </div>
           </div>
         </div>
       </div>
