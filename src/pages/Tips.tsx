@@ -4,67 +4,83 @@ import { Badge } from "@/components/ui/badge";
 const tips = [
   {
     id: 1,
-    title: "Börja dagen rätt",
-    description: "Ät en näringsrik frukost inom en timme efter att du vaknat",
-    category: "Mat",
+    title: "Ät mer grönsaker, frukt och bär",
+    description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
+    category: "Livsmedelsverket",
     color: "bg-secondary",
     textColor: "text-secondary-foreground"
   },
   {
     id: 2,
-    title: "Planera dina måltider",
-    description: "Förbered din veckomeny på söndagar för att undvika impulsköp",
-    category: "Mat",
+    title: "Välj fullkorn",
+    description: "När du äter spannmålsprodukter som bröd, pasta och gryn - välj helst fullkorn",
+    category: "Livsmedelsverket",
     color: "bg-secondary",
     textColor: "text-secondary-foreground"
   },
   {
     id: 3,
-    title: "Variera träningen",
-    description: "Blanda styrketräning, kondition och stretching",
-    category: "Träning",
+    title: "Ät fisk och skaldjur",
+    description: "2-3 gånger i veckan. Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
+    category: "Livsmedelsverket",
     color: "bg-info",
     textColor: "text-info-foreground"
   },
   {
     id: 4,
-    title: "Sov tillräckligt",
-    description: "Sikta på 7-9 timmar sömn per natt för optimal återhämtning",
-    category: "Sömn",
+    title: "Välj nyttiga fetter",
+    description: "Använd flytande margarin och oljor i matlagning. Begränsa smör, hårdmargarin och andra mättade fetter",
+    category: "Livsmedelsverket",
     color: "bg-primary",
     textColor: "text-primary-foreground"
   },
   {
     id: 5,
-    title: "Minska stressen",
-    description: "Prova meditation eller yoga för att hantera vardagsstress",
-    category: "Mental hälsa",
+    title: "Välj magra mejeriprodukter",
+    description: "Mjölk, filmjölk och yoghurt med max 1,5% fett. Ost med max 17% fett",
+    category: "Livsmedelsverket",
     color: "bg-success",
     textColor: "text-success-foreground"
   },
   {
     id: 6,
-    title: "Välj fullkorn",
-    description: "Byt ut vitt bröd och pasta mot fullkornsalternativ",
-    category: "Mat",
-    color: "bg-secondary",
-    textColor: "text-secondary-foreground"
+    title: "Minska på rött och bearbetat kött",
+    description: "Max 500 gram tillagat kött per vecka. Begränsa chark, korv och andra bearbetade köttprodukter",
+    category: "Livsmedelsverket",
+    color: "bg-warning",
+    textColor: "text-warning-foreground"
   },
   {
     id: 7,
-    title: "Sociala kontakter",
-    description: "Träffa vänner och familj regelbundet - det är bra för hjärtat!",
-    category: "Mental hälsa",
+    title: "Begränsa socker och salt",
+    description: "Undvik läsk, godis och bakverk. Max 6 gram salt per dag. Använd joderat salt",
+    category: "Livsmedelsverket",
+    color: "bg-warning",
+    textColor: "text-warning-foreground"
+  },
+  {
+    id: 8,
+    title: "Ät lagom mycket",
+    description: "Anpassa mängden mat efter ditt energibehov. Lyssna på din kropp och ät när du är hungrig",
+    category: "Livsmedelsverket",
+    color: "bg-primary",
+    textColor: "text-primary-foreground"
+  },
+  {
+    id: 9,
+    title: "Rör på dig",
+    description: "Minst 30 minuter om dagen. Fysisk aktivitet är viktig för hälsan tillsammans med bra matvanor",
+    category: "Livsmedelsverket",
     color: "bg-success",
     textColor: "text-success-foreground"
   },
   {
-    id: 8,
-    title: "Mät blodtrycket",
-    description: "Kontrollera ditt blodtryck regelbundet, särskilt efter 40 års ålder",
-    category: "Hälsa",
-    color: "bg-warning",
-    textColor: "text-warning-foreground"
+    id: 10,
+    title: "Ät mer baljväxter",
+    description: "Bönor, linser och ärtor är bra proteinkällor och innehåller fibrer. Klimatsmart alternativ till kött",
+    category: "Livsmedelsverket",
+    color: "bg-secondary",
+    textColor: "text-secondary-foreground"
   }
 ];
 
