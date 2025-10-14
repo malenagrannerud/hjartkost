@@ -31,7 +31,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
     <div className="min-h-screen bg-gradient-to-b from-muted/30 to-background flex items-center justify-center p-4">
       {/* Phone frame */}
       <div className="w-full max-w-md min-h-[90vh] bg-white rounded-[3rem] shadow-2xl border-8 border-foreground/10 overflow-hidden flex flex-col">
-        <div className={`flex-1 flex flex-col items-start justify-between ${step === 2 ? 'bg-cyan-100/80 p-8' : 'p-8'}`}>
+        <div className={`flex-1 flex flex-col items-start justify-between ${step === 2 ? 'bg-blue-100/80 p-8' : 'p-8'}`}>
           {step === 1 && (
             <>
               <div className="flex-1 flex flex-col justify-center space-y-6 w-full">
