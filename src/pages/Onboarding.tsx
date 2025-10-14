@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, ChevronLeft } from "lucide-react";
-import welcomeIllustration from "@/assets/welcome-illustration.jpg";
+import welcomeIllustration from "@/assets/welcome-illustration.png";
 
 interface OnboardingProps {
   onComplete: () => void;
