@@ -11,7 +11,10 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [hasSeenOnboarding, setHasSeenOnboarding] = useState<boolean>(false);
+  const [hasSeenOnboarding, setHasSeenOnboarding] = useState<boolean>(() => {
+    const seen = localStorage.getItem("hasSeenOnboarding");
+    return seen === "true";
+  });
 
   useEffect(() => {
     const seen = localStorage.getItem("hasSeenOnboarding");
