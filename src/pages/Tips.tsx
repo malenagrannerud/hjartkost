@@ -11,7 +11,8 @@ const tips = [
     detailedInfo: "Grönsaker, frukt och bär innehåller fibrer, vitaminer och mineraler som kroppen behöver. De mättar bra och ger skydd mot flera sjukdomar. Försök äta minst 500 gram per dag. Variationen är viktig - olika färger innehåller olika nyttigheter. Frysta och konserverade grönsaker räknas också.",
     category: "Livsmedelsverket",
     color: "bg-green-100",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 9
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const tips = [
     detailedInfo: "Fullkornsprodukter innehåller mer fibrer, vitaminer och mineraler än produkter av raffinerat mjöl. Fibrer mättar bra och är viktiga för matsmältningen. Fullkorn kan också ge skydd mot hjärt-kärlsjukdom och typ 2-diabetes. Välj gärna rågbröd, havregryn, fullkornspasta och råris.",
     category: "Livsmedelsverket",
     color: "bg-amber-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 8
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ const tips = [
     detailedInfo: "Fisk och skaldjur innehåller protein, D-vitamin, jod och selen. Fet fisk innehåller dessutom omega-3-fettsyror som är viktiga för hjärtat och hjärnan. Ät fisk och skaldjur 2-3 gånger i veckan och blanda mellan fet och mager fisk. Exempel på fet fisk är lax, sill, makrill och strömming.",
     category: "Livsmedelsverket",
     color: "bg-cyan-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 7
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ const tips = [
     detailedInfo: "Fettkvaliteten påverkar hälsan. Omättade fetter från växtolior, flytande margarin, nötter och fet fisk är nyttigare än mättade fetter från smör, hårdmargarin och fett kött. Byt gärna ut mättade fetter mot omättade. Använd rapsolja eller olivolja i matlagningen.",
     category: "Livsmedelsverket",
     color: "bg-yellow-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 8
   },
   {
     id: 5,
@@ -47,7 +51,8 @@ const tips = [
     detailedInfo: "Mejeriprodukter innehåller kalcium, protein, jod och flera vitaminer. För de flesta är det bra att välja magra varianter för att minska intaget av mättat fett. Välj mjölk, fil och yoghurt med max 1,5% fett. Vid ostköp, välj ost med högst 17% fett. Laktosfria alternativ finns om du inte tål laktos.",
     category: "Livsmedelsverket",
     color: "bg-blue-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 6
   },
   {
     id: 6,
@@ -56,7 +61,8 @@ const tips = [
     detailedInfo: "Kött innehåller protein, järn och B-vitaminer, men ett stort intag av rött kött och charkprodukter ökar risken för tjocktarmscancer. Begränsa till max 500 gram tillagat rött kött per vecka. Välj gärna fågel, fisk eller vegetabiliska proteinkällor som bönor och linser istället. Undvik chark och korv så ofta som möjligt.",
     category: "Livsmedelsverket",
     color: "bg-rose-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 8
   },
   {
     id: 7,
@@ -65,7 +71,8 @@ const tips = [
     detailedInfo: "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis. För mycket salt ökar risken för högt blodtryck. Ät max 6 gram salt per dag - det motsvarar en tesked. Använd joderat salt och undvik att salta för mycket. Färdiglagad mat innehåller ofta mycket salt.",
     category: "Livsmedelsverket",
     color: "bg-orange-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 9
   },
   {
     id: 8,
@@ -74,7 +81,8 @@ const tips = [
     detailedInfo: "Energibehovet varierar mellan personer beroende på ålder, kön och hur mycket du rör dig. Ät lagom mycket för att hålla en hälsosam vikt. Lyssna på kroppens signaler - ät när du är hungrig och sluta när du är mätt. Regelbundna måltider och mellanmål hjälper till att hålla blodsockret stabilt.",
     category: "Livsmedelsverket",
     color: "bg-purple-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 10
   },
   {
     id: 9,
@@ -83,7 +91,8 @@ const tips = [
     detailedInfo: "Fysisk aktivitet är en viktig del av en hälsosam livsstil. Rör på dig minst 30 minuter om dagen med måttlig intensitet. Det kan vara promenader, cykling, trädgårdsarbete eller annan vardagsmotion. Motion i kombination med bra matvanor minskar risken för övervikt, hjärt-kärlsjukdom, diabetes och cancer.",
     category: "Livsmedelsverket",
     color: "bg-teal-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 10
   },
   {
     id: 10,
@@ -92,7 +101,8 @@ const tips = [
     detailedInfo: "Baljväxter som bönor, linser, ärtor och kikärtor innehåller protein, fibrer, vitaminer och mineraler. De är klimatsmarta alternativ till kött och fungerar utmärkt i grytor, soppor, sallader och köttfärsblandningar. Baljväxter mättar bra och är dessutom prisvärda. Både torkade och konserverade varianter är bra.",
     category: "Livsmedelsverket",
     color: "bg-green-50",
-    textColor: "text-blue-900"
+    textColor: "text-blue-900",
+    healthScore: 7
   }
 ];
 
@@ -141,7 +151,12 @@ const Tips = () => {
               {markedTips.includes(tip.id) && <Check size={16} className="text-white" strokeWidth={3} />}
             </div>
             <div className="space-y-3 pr-8">
-              <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
+              <div className="flex items-start justify-between gap-2">
+                <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
+                <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
+                  {tip.healthScore}/10
+                </div>
+              </div>
               <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
             </div>
           </Card>
