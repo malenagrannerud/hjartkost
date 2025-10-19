@@ -12,7 +12,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-green-100",
     textColor: "text-blue-900",
-    healthScore: 9
+    healthScore: 2
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-amber-50",
     textColor: "text-blue-900",
-    healthScore: 8
+    healthScore: 1
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-cyan-50",
     textColor: "text-blue-900",
-    healthScore: 7
+    healthScore: 1
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-yellow-50",
     textColor: "text-blue-900",
-    healthScore: 8
+    healthScore: 1
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-blue-50",
     textColor: "text-blue-900",
-    healthScore: 6
+    healthScore: 1
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-rose-50",
     textColor: "text-blue-900",
-    healthScore: 8
+    healthScore: 1
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-orange-50",
     textColor: "text-blue-900",
-    healthScore: 9
+    healthScore: 2
   },
   {
     id: 8,
@@ -82,7 +82,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-purple-50",
     textColor: "text-blue-900",
-    healthScore: 10
+    healthScore: 2
   },
   {
     id: 9,
@@ -92,7 +92,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-teal-50",
     textColor: "text-blue-900",
-    healthScore: 10
+    healthScore: 3
   },
   {
     id: 10,
@@ -102,7 +102,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-green-50",
     textColor: "text-blue-900",
-    healthScore: 7
+    healthScore: 1
   }
 ];
 
@@ -130,7 +130,7 @@ const Tips = () => {
     <div className="p-6 pb-24 space-y-6">
       <header>
         <h1 className="text-3xl font-bold text-foreground mb-2">Mina tips</h1>
-        <p className="text-muted-foreground">Välj ett eller två tips åt gången</p>
+        <p className="text-muted-foreground">Välj aktiviteter som ger max 10 poäng per dag</p>
       </header>
 
       <div className="space-y-4">
@@ -154,7 +154,7 @@ const Tips = () => {
               <div className="flex items-start justify-between gap-2">
                 <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
                 <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
-                  {tip.healthScore}/10
+                  {tip.healthScore} {tip.healthScore === 1 ? 'poäng' : 'poäng'}
                 </div>
               </div>
               <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
