@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay } from "date-fns";
+import { sv } from "date-fns/locale";
 import { Trophy, Flame } from "lucide-react";
 
 const Progress = () => {
@@ -64,7 +65,7 @@ const Progress = () => {
   const currentStreak = getCurrentStreak();
 
   return (
-    <div className="p-6 pb-24 space-y-6">
+    <div className="p-6 pb-24 space-y-6 bg-card min-h-screen">
       <header>
         <h1 className="text-3xl font-bold text-foreground mb-2">Framsteg</h1>
         <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
@@ -75,7 +76,8 @@ const Progress = () => {
           mode="single"
           selected={date}
           onSelect={(newDate) => newDate && setDate(newDate)}
-          className="rounded-md border-0 w-full"
+          locale={sv}
+          className="rounded-md border-0 w-full [&_.rdp-caption_label]:font-bold"
           modifiers={{
             achievement: achievementDays
           }}
