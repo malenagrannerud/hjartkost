@@ -109,6 +109,7 @@ const tips = [
 interface MarkedTip {
   id: number;
   markedDate: string;
+  color: string;
 }
 
 const Tips = () => {
@@ -129,7 +130,12 @@ const Tips = () => {
       if (isMarked) {
         return prev.filter(tip => tip.id !== tipId);
       } else {
-        return [...prev, { id: tipId, markedDate: new Date().toISOString() }];
+        const tip = tips.find(t => t.id === tipId);
+        return [...prev, { 
+          id: tipId, 
+          markedDate: new Date().toISOString(),
+          color: tip?.color || 'bg-green-200'
+        }];
       }
     });
   };

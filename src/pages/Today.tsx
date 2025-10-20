@@ -88,6 +88,7 @@ const tips = [
 interface MarkedTip {
   id: number;
   markedDate: string;
+  color: string;
 }
 
 const Today = () => {
