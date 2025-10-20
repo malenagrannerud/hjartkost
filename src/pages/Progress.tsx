@@ -181,7 +181,6 @@ const Progress = () => {
           selected={date}
           onSelect={handleDayClick}
           locale={sv}
-          disabled={(date) => date > new Date()}
           className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
           modifiers={{
             achievement: achievementDays,
