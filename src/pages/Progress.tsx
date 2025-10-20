@@ -72,25 +72,23 @@ const Progress = () => {
       </header>
 
       <div className="py-6 flex justify-center">
-        <div className="w-full max-w-4xl">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={(newDate) => newDate && setDate(newDate)}
-            locale={sv}
-            className="rounded-md border-0 w-full [&_.rdp-caption_label]:font-bold [&_.rdp-months]:w-full [&_.rdp-month]:w-full [&_table]:w-full"
-            modifiers={{
-              achievement: achievementDays
-            }}
-            modifiersStyles={{
-              achievement: {
-                backgroundColor: 'hsl(var(--primary))',
-                color: 'white',
-                fontWeight: 'bold'
-              }
-            }}
-          />
-        </div>
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={(newDate) => newDate && setDate(newDate)}
+          locale={sv}
+          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold mx-auto"
+          modifiers={{
+            achievement: achievementDays
+          }}
+          modifiersStyles={{
+            achievement: {
+              backgroundColor: 'hsl(var(--primary))',
+              color: 'white',
+              fontWeight: 'bold'
+            }
+          }}
+        />
       </div>
 
       <Separator />
