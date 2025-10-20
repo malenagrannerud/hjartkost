@@ -12,7 +12,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-green-100",
     textColor: "text-blue-900",
-    healthScore: 2
+    healthScore: 3
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-amber-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-cyan-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-yellow-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-blue-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-rose-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 7,
@@ -72,7 +72,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-orange-50",
     textColor: "text-blue-900",
-    healthScore: 2
+    healthScore: 4
   },
   {
     id: 8,
@@ -82,7 +82,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-purple-50",
     textColor: "text-blue-900",
-    healthScore: 2
+    healthScore: 4
   },
   {
     id: 9,
@@ -92,7 +92,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-teal-50",
     textColor: "text-blue-900",
-    healthScore: 3
+    healthScore: 5
   },
   {
     id: 10,
@@ -102,7 +102,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-green-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   }
 ];
 
@@ -130,7 +130,7 @@ const Tips = () => {
     <div className="p-6 pb-24 space-y-6">
       <header>
         <h1 className="text-3xl font-bold text-foreground mb-2">Mina tips</h1>
-        <p className="text-muted-foreground">Välj aktiviteter som ger max 10 poäng per dag</p>
+        <p className="text-muted-foreground">Välj ett eller två tips per vecka</p>
       </header>
 
       <div className="space-y-4">

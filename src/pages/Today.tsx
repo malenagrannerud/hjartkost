@@ -9,7 +9,7 @@ const tips = [
     description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
     color: "bg-green-100",
     textColor: "text-blue-900",
-    healthScore: 2
+    healthScore: 3
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const tips = [
     description: "När du äter spannmålsprodukter som bröd, pasta och gryn - välj helst fullkorn",
     color: "bg-amber-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const tips = [
     description: "2-3 gånger i veckan. Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
     color: "bg-cyan-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const tips = [
     description: "Använd flytande margarin och oljor i matlagning. Begränsa smör, hårdmargarin och andra mättade fetter",
     color: "bg-yellow-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const tips = [
     description: "Mjölk, filmjölk och yoghurt med max 1,5% fett. Ost med max 17% fett",
     color: "bg-blue-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 6,
@@ -49,7 +49,7 @@ const tips = [
     description: "Max 500 gram tillagat kött per vecka. Begränsa chark, korv och andra bearbetade köttprodukter",
     color: "bg-rose-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   },
   {
     id: 7,
@@ -57,7 +57,7 @@ const tips = [
     description: "Undvik läsk, godis och bakverk. Max 6 gram salt per dag. Använd joderat salt",
     color: "bg-orange-50",
     textColor: "text-blue-900",
-    healthScore: 2
+    healthScore: 4
   },
   {
     id: 8,
@@ -65,7 +65,7 @@ const tips = [
     description: "Anpassa mängden mat efter ditt energibehov. Lyssna på din kropp och ät när du är hungrig",
     color: "bg-purple-50",
     textColor: "text-blue-900",
-    healthScore: 2
+    healthScore: 4
   },
   {
     id: 9,
@@ -73,7 +73,7 @@ const tips = [
     description: "Minst 30 minuter om dagen. Fysisk aktivitet är viktig för hälsan tillsammans med bra matvanor",
     color: "bg-teal-50",
     textColor: "text-blue-900",
-    healthScore: 3
+    healthScore: 5
   },
   {
     id: 10,
@@ -81,7 +81,7 @@ const tips = [
     description: "Bönor, linser och ärtor är bra proteinkällor och innehåller fibrer. Klimatsmart alternativ till kött",
     color: "bg-green-50",
     textColor: "text-blue-900",
-    healthScore: 1
+    healthScore: 3
   }
 ];
 
