@@ -61,19 +61,16 @@ const Progress = () => {
     return modifiers;
   };
 
-  const getWeekModifierStyles = () => {
-    const styles: { [key: string]: React.CSSProperties } = {};
+  const getWeekModifierClassNames = () => {
+    const classNames: { [key: string]: string } = {};
     markedTips.forEach((tip) => {
-      styles[`tip${tip.id}`] = {
-        position: 'relative',
-        boxShadow: `-3px 0 0 0 hsl(${colorToHsl(tip.color)})`,
-      };
+      classNames[`tip${tip.id}`] = `relative after:content-['🍏'] after:absolute after:top-0 after:right-0 after:text-[10px] after:leading-none`;
     });
-    return styles;
+    return classNames;
   };
 
   const weekModifiers = getWeekModifiers();
-  const weekModifierStyles = getWeekModifierStyles();
+  const weekModifierClassNames = getWeekModifierClassNames();
 
   // Calculate days in current month with 10+ points
   const getDaysWithGoalThisMonth = () => {
@@ -139,13 +136,15 @@ const Progress = () => {
             achievement: achievementDays,
             ...weekModifiers
           }}
+          modifiersClassNames={{
+            ...weekModifierClassNames
+          }}
           modifiersStyles={{
             achievement: {
               backgroundColor: 'hsl(var(--primary))',
               color: 'white',
               fontWeight: 'bold'
-            },
-            ...weekModifierStyles
+            }
           }}
         />
       </div>
