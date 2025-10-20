@@ -190,7 +190,7 @@ const Today = () => {
                 </div>
                 <div className="space-y-3 pr-8">
                   <div className="flex items-start justify-between gap-2">
-                    <h4 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h4>
+                    <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
                     <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
                       {tip.healthScore} poäng
                     </div>
