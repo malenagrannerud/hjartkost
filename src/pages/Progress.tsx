@@ -103,7 +103,7 @@ const Progress = () => {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <div className="w-16 h-16 rounded-lg bg-emerald-600 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-lg bg-emerald-500 flex items-center justify-center">
                 <span className="text-3xl font-bold text-white">{daysThisMonth}</span>
               </div>
             </div>
@@ -121,7 +121,7 @@ const Progress = () => {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <div className="w-16 h-16 rounded-lg bg-orange-500 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-lg bg-blue-900 flex items-center justify-center">
                 <span className="text-3xl font-bold text-white">{currentStreak}</span>
               </div>
             </div>
