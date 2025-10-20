@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 const tips = [
   {
     id: 1,
-    title: "Ät mer grönsaker, frukt och bär",
+    title: "Fem nävar frukt och grönt",
     description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
     color: "bg-green-200",
     textColor: "text-blue-900",
