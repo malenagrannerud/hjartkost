@@ -103,21 +103,27 @@ const Progress = () => {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <div className="w-16 h-16 rounded-lg bg-green-200 flex items-center justify-center">
-                <span className="text-3xl font-bold text-blue-900">{daysThisMonth}</span>
+              <div className="w-16 h-16 rounded-lg bg-emerald-600 flex items-center justify-center">
+                <span className="text-3xl font-bold text-white">{daysThisMonth}</span>
               </div>
             </div>
           </div>
         </Card>
 
-        <Card className="p-6 bg-gradient-to-br from-orange-100/50 to-orange-50/30 border-orange-200">
-          <div className="flex flex-col items-center text-center space-y-2">
-            <div className="w-12 h-12 rounded-full bg-orange-200/50 flex items-center justify-center">
-              <Flame className="w-6 h-6 text-orange-600" />
+        <Card className="p-6">
+          <div className="flex flex-col space-y-4">
+            <div>
+              <div className="text-base font-bold text-foreground">
+                Klarade dagar i rad
+              </div>
+              <div className="text-sm text-muted-foreground font-normal">
+                Antal dagar i rad du följt dina Tips
+              </div>
             </div>
-            <div className="text-3xl font-bold text-orange-600">{currentStreak}</div>
-            <div className="text-sm text-muted-foreground font-medium">
-              Dagar i rad
+            <div className="flex items-center justify-end">
+              <div className="w-16 h-16 rounded-lg bg-orange-500 flex items-center justify-center">
+                <span className="text-3xl font-bold text-white">{currentStreak}</span>
+              </div>
             </div>
           </div>
         </Card>
