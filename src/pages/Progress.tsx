@@ -138,38 +138,16 @@ const Progress = () => {
   const daysThisMonth = getDaysWithGoalThisMonth();
   const currentStreak = getCurrentStreak();
 
-  const [pressTimer, setPressTimer] = useState<NodeJS.Timeout | null>(null);
-  const [pressedDay, setPressedDay] = useState<Date | null>(null);
-
-  const handleDayPress = (clickedDate: Date) => {
-    const today = new Date();
-    today.setHours(23, 59, 59, 999);
+  const handleDayClick = (clickedDate: Date | undefined) => {
+    if (!clickedDate) return;
+    setSelectedDate(clickedDate);
     
-    // Only allow editing for today and past days
-    if (clickedDate > today) return;
-
-    setPressedDay(clickedDate);
-    const timer = setTimeout(() => {
-      setSelectedDate(clickedDate);
-      
-      // Find existing log for this date
-      const dateStr = format(clickedDate, 'yyyy-MM-dd');
-      const existingLog = dayLogs.find(log => log.date === dateStr);
-      setFruitInput(existingLog?.fruitGrams.toString() || "");
-      
-      setDialogOpen(true);
-      setPressedDay(null);
-    }, 500); // 500ms long press
+    // Find existing log for this date
+    const dateStr = format(clickedDate, 'yyyy-MM-dd');
+    const existingLog = dayLogs.find(log => log.date === dateStr);
+    setFruitInput(existingLog?.fruitGrams.toString() || "");
     
-    setPressTimer(timer);
-  };
-
-  const handleDayRelease = () => {
-    if (pressTimer) {
-      clearTimeout(pressTimer);
-      setPressTimer(null);
-    }
-    setPressedDay(null);
+    setDialogOpen(true);
   };
 
   const handleSaveFruitLog = () => {
@@ -201,28 +179,10 @@ const Progress = () => {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={(newDate) => newDate && setDate(newDate)}
+          onSelect={handleDayClick}
           locale={sv}
-          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:select-none"
-          components={{
-            Day: ({ date: dayDate, ...props }) => {
-              const today = new Date();
-              today.setHours(23, 59, 59, 999);
-              const isPastOrToday = dayDate <= today;
-              
-              return (
-                <button
-                  {...props}
-                  onMouseDown={() => isPastOrToday && handleDayPress(dayDate)}
-                  onMouseUp={handleDayRelease}
-                  onMouseLeave={handleDayRelease}
-                  onTouchStart={() => isPastOrToday && handleDayPress(dayDate)}
-                  onTouchEnd={handleDayRelease}
-                  onTouchCancel={handleDayRelease}
-                />
-              );
-            }
-          }}
+          disabled={(date) => date > new Date()}
+          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
           modifiers={{
             achievement: achievementDays,
             ...weekModifiers
