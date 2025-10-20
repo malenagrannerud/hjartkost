@@ -186,7 +186,7 @@ const Today = () => {
               <Card key={tip.id} className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}>
                 <div>
                   <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
-                  <div className={`${tip.textColor} opacity-70 text-xs font-bold mt-1`}>
+                  <div className="text-blue-900 text-xs font-bold mt-1">
                     {tip.healthScore} poäng
                   </div>
                 </div>
