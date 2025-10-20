@@ -4,6 +4,10 @@ import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
 import { Trophy, Flame } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 
 interface MarkedTip {
   id: number;
@@ -11,17 +15,25 @@ interface MarkedTip {
   color: string;
 }
 
+interface DayLog {
+  date: string;
+  fruitGrams: number;
+}
+
 const Progress = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [achievementDays, setAchievementDays] = useState<Date[]>([]);
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
+  const [dayLogs, setDayLogs] = useState<DayLog[]>([]);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [fruitInput, setFruitInput] = useState("");
   
-  // Load achievement days and marked tips from localStorage
+  // Load day logs and marked tips from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('achievementDays');
-    if (saved) {
-      const parsedDays = JSON.parse(saved).map((d: string) => new Date(d));
-      setAchievementDays(parsedDays);
+    const savedLogs = localStorage.getItem('dayLogs');
+    if (savedLogs) {
+      setDayLogs(JSON.parse(savedLogs));
     }
 
     const savedTips = localStorage.getItem('markedTips');
@@ -29,6 +41,14 @@ const Progress = () => {
       setMarkedTips(JSON.parse(savedTips));
     }
   }, []);
+
+  // Update achievement days based on day logs (500g+ threshold)
+  useEffect(() => {
+    const achievedDays = dayLogs
+      .filter(log => log.fruitGrams >= 500)
+      .map(log => new Date(log.date));
+    setAchievementDays(achievedDays);
+  }, [dayLogs]);
 
   // Convert Tailwind color classes to HSL values
   const colorToHsl = (colorClass: string): string => {
@@ -118,6 +138,36 @@ const Progress = () => {
   const daysThisMonth = getDaysWithGoalThisMonth();
   const currentStreak = getCurrentStreak();
 
+  const handleDayClick = (clickedDate: Date | undefined) => {
+    if (!clickedDate) return;
+    setSelectedDate(clickedDate);
+    
+    // Find existing log for this date
+    const dateStr = format(clickedDate, 'yyyy-MM-dd');
+    const existingLog = dayLogs.find(log => log.date === dateStr);
+    setFruitInput(existingLog?.fruitGrams.toString() || "");
+    
+    setDialogOpen(true);
+  };
+
+  const handleSaveFruitLog = () => {
+    if (!selectedDate) return;
+    
+    const grams = parseInt(fruitInput) || 0;
+    const dateStr = format(selectedDate, 'yyyy-MM-dd');
+    
+    const updatedLogs = dayLogs.filter(log => log.date !== dateStr);
+    if (grams > 0) {
+      updatedLogs.push({ date: dateStr, fruitGrams: grams });
+    }
+    
+    setDayLogs(updatedLogs);
+    localStorage.setItem('dayLogs', JSON.stringify(updatedLogs));
+    
+    setDialogOpen(false);
+    setFruitInput("");
+  };
+
   return (
     <div className="p-6 pb-24 space-y-6 min-h-screen">
       <header>
@@ -129,25 +179,58 @@ const Progress = () => {
         <Calendar
           mode="single"
           selected={date}
-          onSelect={(newDate) => newDate && setDate(newDate)}
+          onSelect={handleDayClick}
           locale={sv}
-          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm"
+          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
           modifiers={{
             achievement: achievementDays,
             ...weekModifiers
           }}
           modifiersClassNames={{
-            ...weekModifierClassNames
+            ...weekModifierClassNames,
+            achievement: "ring-2 ring-emerald-500 ring-offset-2"
           }}
           modifiersStyles={{
             achievement: {
-              backgroundColor: 'hsl(var(--primary))',
-              color: 'white',
               fontWeight: 'bold'
             }
           }}
         />
       </div>
+
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>
+              {selectedDate && format(selectedDate, 'd MMMM yyyy', { locale: sv })}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <Label htmlFor="fruit-grams" className="text-base mb-2 block">
+              Hur många gram frukt och grönt?
+            </Label>
+            <Input
+              id="fruit-grams"
+              type="number"
+              value={fruitInput}
+              onChange={(e) => setFruitInput(e.target.value)}
+              placeholder="Ange gram"
+              className="w-full"
+            />
+            <p className="text-sm text-muted-foreground mt-2">
+              Minst 500g för att markera dagen som klarad
+            </p>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDialogOpen(false)}>
+              Avbryt
+            </Button>
+            <Button onClick={handleSaveFruitLog}>
+              Spara
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       <div className="grid grid-cols-2 gap-0 -mt-8 pt-0">
         <div className="py-6 pr-6 pl-0 border-r border-t">
