@@ -72,34 +72,41 @@ const Progress = () => {
 
       <div className="flex justify-center">
         <Card className="p-6 w-full max-w-md">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={(newDate) => newDate && setDate(newDate)}
-            className="rounded-md border-0 w-full"
-            modifiers={{
-              achievement: achievementDays
-            }}
-            modifiersStyles={{
-              achievement: {
-                backgroundColor: 'hsl(var(--primary))',
-                color: 'white',
-                fontWeight: 'bold'
-              }
-            }}
-          />
+          <div className="flex justify-center">
+            <Calendar
+              mode="single"
+              selected={date}
+              onSelect={(newDate) => newDate && setDate(newDate)}
+              className="rounded-md border-0"
+              modifiers={{
+                achievement: achievementDays
+              }}
+              modifiersStyles={{
+                achievement: {
+                  backgroundColor: 'hsl(var(--primary))',
+                  color: 'white',
+                  fontWeight: 'bold'
+                }
+              }}
+            />
+          </div>
         </Card>
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
           <div className="flex flex-col space-y-4">
-            <div className="text-sm text-muted-foreground font-medium">
-              Klarade dagar
+            <div>
+              <div className="text-base font-bold text-foreground">
+                Klarade dagar
+              </div>
+              <div className="text-sm text-muted-foreground font-normal">
+                Antal dagar du följt dina Tips
+              </div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="w-16 h-16 rounded-lg border-4 border-primary bg-primary/10 flex items-center justify-center">
-                <span className="text-3xl font-bold text-primary">{daysThisMonth}</span>
+              <div className="w-16 h-16 rounded-lg bg-primary flex items-center justify-center">
+                <span className="text-3xl font-bold text-primary-foreground">{daysThisMonth}</span>
               </div>
             </div>
           </div>
