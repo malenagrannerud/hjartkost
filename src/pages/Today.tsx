@@ -9,7 +9,7 @@ const tips = [
     description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
     color: "bg-green-100",
     textColor: "text-blue-900",
-    healthScore: 3
+    healthScore: 4
   },
   {
     id: 2,

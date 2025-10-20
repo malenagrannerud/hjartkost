@@ -12,7 +12,7 @@ const tips = [
     category: "Livsmedelsverket",
     color: "bg-green-100",
     textColor: "text-blue-900",
-    healthScore: 3
+    healthScore: 4
   },
   {
     id: 2,
