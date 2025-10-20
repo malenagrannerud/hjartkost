@@ -184,9 +184,9 @@ const Today = () => {
           <div className="space-y-3">
             {markedTipsList.map((tip) => (
               <Card key={tip.id} className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}>
-                <div className="flex items-start justify-between gap-2">
-                  <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
-                  <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
+                <div>
+                  <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
+                  <div className={`${tip.textColor} opacity-70 text-xs font-medium mt-1`}>
                     {tip.healthScore} poäng
                   </div>
                 </div>

@@ -167,9 +167,9 @@ const Tips = () => {
               {isMarked(tip.id) && <Check size={16} className="text-white" strokeWidth={3} />}
             </div>
             <div className="space-y-3 pr-8">
-              <div className="flex items-start justify-between gap-2">
-                <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
-                <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
+              <div>
+                <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
+                <div className={`${tip.textColor} opacity-70 text-xs font-medium mt-1`}>
                   {tip.healthScore} {tip.healthScore === 1 ? 'poäng' : 'poäng'}
                 </div>
               </div>
