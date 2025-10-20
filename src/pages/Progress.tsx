@@ -138,16 +138,34 @@ const Progress = () => {
   const daysThisMonth = getDaysWithGoalThisMonth();
   const currentStreak = getCurrentStreak();
 
-  const handleDayClick = (clickedDate: Date | undefined) => {
-    if (!clickedDate) return;
-    setSelectedDate(clickedDate);
+  const [pressTimer, setPressTimer] = useState<NodeJS.Timeout | null>(null);
+
+  const handleDayMouseDown = (clickedDate: Date) => {
+    const today = new Date();
+    today.setHours(23, 59, 59, 999);
     
-    // Find existing log for this date
-    const dateStr = format(clickedDate, 'yyyy-MM-dd');
-    const existingLog = dayLogs.find(log => log.date === dateStr);
-    setFruitInput(existingLog?.fruitGrams.toString() || "");
+    // Only allow editing for today and past days
+    if (clickedDate > today) return;
+
+    const timer = setTimeout(() => {
+      setSelectedDate(clickedDate);
+      
+      // Find existing log for this date
+      const dateStr = format(clickedDate, 'yyyy-MM-dd');
+      const existingLog = dayLogs.find(log => log.date === dateStr);
+      setFruitInput(existingLog?.fruitGrams.toString() || "");
+      
+      setDialogOpen(true);
+    }, 500); // 500ms long press
     
-    setDialogOpen(true);
+    setPressTimer(timer);
+  };
+
+  const handleDayMouseUp = () => {
+    if (pressTimer) {
+      clearTimeout(pressTimer);
+      setPressTimer(null);
+    }
   };
 
   const handleSaveFruitLog = () => {
@@ -176,27 +194,52 @@ const Progress = () => {
       </header>
 
       <div className="pt-6 pb-0 flex justify-center">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={handleDayClick}
-          locale={sv}
-          disabled={(date) => date > new Date()}
-          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
-          modifiers={{
-            achievement: achievementDays,
-            ...weekModifiers
-          }}
-          modifiersClassNames={{
-            ...weekModifierClassNames,
-            achievement: "ring-2 ring-emerald-500 ring-offset-2"
-          }}
-          modifiersStyles={{
-            achievement: {
-              fontWeight: 'bold'
+        <div 
+          onMouseDown={(e) => {
+            const target = e.target as HTMLElement;
+            const button = target.closest('button[name="day"]');
+            if (button) {
+              const dateAttr = button.getAttribute('data-day');
+              if (dateAttr) {
+                handleDayMouseDown(new Date(dateAttr));
+              }
             }
           }}
-        />
+          onMouseUp={handleDayMouseUp}
+          onMouseLeave={handleDayMouseUp}
+          onTouchStart={(e) => {
+            const target = e.target as HTMLElement;
+            const button = target.closest('button[name="day"]');
+            if (button) {
+              const dateAttr = button.getAttribute('data-day');
+              if (dateAttr) {
+                handleDayMouseDown(new Date(dateAttr));
+              }
+            }
+          }}
+          onTouchEnd={handleDayMouseUp}
+        >
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={(newDate) => newDate && setDate(newDate)}
+            locale={sv}
+            className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
+            modifiers={{
+              achievement: achievementDays,
+              ...weekModifiers
+            }}
+            modifiersClassNames={{
+              ...weekModifierClassNames,
+              achievement: "ring-2 ring-emerald-500 ring-offset-2"
+            }}
+            modifiersStyles={{
+              achievement: {
+                fontWeight: 'bold'
+              }
+            }}
+          />
+        </div>
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
