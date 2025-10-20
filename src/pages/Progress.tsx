@@ -61,19 +61,26 @@ const Progress = () => {
     return modifiers;
   };
 
+  const getWeekModifierClassNames = () => {
+    const classNames: { [key: string]: string } = {};
+    markedTips.forEach((tip) => {
+      classNames[`tip${tip.id}`] = `relative before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:rounded-full before:z-10`;
+    });
+    return classNames;
+  };
+
   const getWeekModifierStyles = () => {
     const styles: { [key: string]: React.CSSProperties } = {};
     markedTips.forEach((tip) => {
       styles[`tip${tip.id}`] = {
-        backgroundColor: `hsl(${colorToHsl(tip.color)})`,
-        color: 'hsl(221 83% 22%)',
-        fontWeight: 'bold'
-      };
+        '--dot-color': `hsl(${colorToHsl(tip.color)})`,
+      } as React.CSSProperties;
     });
     return styles;
   };
 
   const weekModifiers = getWeekModifiers();
+  const weekModifierClassNames = getWeekModifierClassNames();
   const weekModifierStyles = getWeekModifierStyles();
 
   // Calculate days in current month with 10+ points
@@ -135,10 +142,13 @@ const Progress = () => {
           selected={date}
           onSelect={(newDate) => newDate && setDate(newDate)}
           locale={sv}
-          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm"
+          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button[class*='tip']]:before:bg-[var(--dot-color)]"
           modifiers={{
             achievement: achievementDays,
             ...weekModifiers
+          }}
+          modifiersClassNames={{
+            ...weekModifierClassNames
           }}
           modifiersStyles={{
             achievement: {
