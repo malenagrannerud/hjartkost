@@ -85,8 +85,13 @@ const tips = [
   }
 ];
 
+interface MarkedTip {
+  id: number;
+  markedDate: string;
+}
+
 const Today = () => {
-  const [markedTips, setMarkedTips] = useState<number[]>([]);
+  const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
 
   useEffect(() => {
     const saved = localStorage.getItem('markedTips');
@@ -95,7 +100,7 @@ const Today = () => {
     }
   }, []);
 
-  const markedTipsList = tips.filter(tip => markedTips.includes(tip.id));
+  const markedTipsList = tips.filter(tip => markedTips.some(mt => mt.id === tip.id));
 
   return (
     <div className="p-6 pb-24 space-y-6">

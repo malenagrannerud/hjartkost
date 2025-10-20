@@ -1,22 +1,47 @@
 import { useState, useEffect } from "react";
 import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
-import { format, startOfMonth, endOfMonth, isSameDay } from "date-fns";
+import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
 import { Trophy, Flame } from "lucide-react";
+
+interface MarkedTip {
+  id: number;
+  markedDate: string;
+}
 
 const Progress = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [achievementDays, setAchievementDays] = useState<Date[]>([]);
+  const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
   
-  // Load achievement days from localStorage
+  // Load achievement days and marked tips from localStorage
   useEffect(() => {
     const saved = localStorage.getItem('achievementDays');
     if (saved) {
       const parsedDays = JSON.parse(saved).map((d: string) => new Date(d));
       setAchievementDays(parsedDays);
     }
+
+    const savedTips = localStorage.getItem('markedTips');
+    if (savedTips) {
+      setMarkedTips(JSON.parse(savedTips));
+    }
   }, []);
+
+  // Get all dates that should be highlighted (week-long bars from marked tips)
+  const getWeekBarDates = () => {
+    const dates: Date[] = [];
+    markedTips.forEach(tip => {
+      const startDate = new Date(tip.markedDate);
+      for (let i = 0; i < 7; i++) {
+        dates.push(addDays(startDate, i));
+      }
+    });
+    return dates;
+  };
+
+  const weekBarDates = getWeekBarDates();
 
   // Calculate days in current month with 10+ points
   const getDaysWithGoalThisMonth = () => {
@@ -79,11 +104,17 @@ const Progress = () => {
           locale={sv}
           className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm"
           modifiers={{
-            achievement: achievementDays
+            achievement: achievementDays,
+            weekBar: weekBarDates
           }}
           modifiersStyles={{
             achievement: {
               backgroundColor: 'hsl(var(--primary))',
+              color: 'white',
+              fontWeight: 'bold'
+            },
+            weekBar: {
+              backgroundColor: 'hsl(142 76% 36%)',
               color: 'white',
               fontWeight: 'bold'
             }

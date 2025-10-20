@@ -106,9 +106,14 @@ const tips = [
   }
 ];
 
+interface MarkedTip {
+  id: number;
+  markedDate: string;
+}
+
 const Tips = () => {
   const navigate = useNavigate();
-  const [markedTips, setMarkedTips] = useState<number[]>(() => {
+  const [markedTips, setMarkedTips] = useState<MarkedTip[]>(() => {
     const saved = localStorage.getItem('markedTips');
     return saved ? JSON.parse(saved) : [];
   });
@@ -119,12 +124,17 @@ const Tips = () => {
 
   const toggleMark = (e: React.MouseEvent, tipId: number) => {
     e.stopPropagation();
-    setMarkedTips(prev => 
-      prev.includes(tipId) 
-        ? prev.filter(id => id !== tipId)
-        : [...prev, tipId]
-    );
+    setMarkedTips(prev => {
+      const isMarked = prev.some(tip => tip.id === tipId);
+      if (isMarked) {
+        return prev.filter(tip => tip.id !== tipId);
+      } else {
+        return [...prev, { id: tipId, markedDate: new Date().toISOString() }];
+      }
+    });
   };
+
+  const isMarked = (tipId: number) => markedTips.some(tip => tip.id === tipId);
 
   return (
     <div className="p-6 pb-24 space-y-6">
@@ -142,13 +152,13 @@ const Tips = () => {
           >
             <div 
               className={`absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
-                markedTips.includes(tip.id) 
+                isMarked(tip.id) 
                   ? 'bg-blue-900 border-blue-900' 
                   : 'bg-white/50 border-blue-900/30'
               }`}
               onClick={(e) => toggleMark(e, tip.id)}
             >
-              {markedTips.includes(tip.id) && <Check size={16} className="text-white" strokeWidth={3} />}
+              {isMarked(tip.id) && <Check size={16} className="text-white" strokeWidth={3} />}
             </div>
             <div className="space-y-3 pr-8">
               <div className="flex items-start justify-between gap-2">
