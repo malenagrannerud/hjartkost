@@ -71,24 +71,26 @@ const Progress = () => {
         <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
       </header>
 
-      <div className="py-6">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={(newDate) => newDate && setDate(newDate)}
-          locale={sv}
-          className="rounded-md border-0 w-full [&_.rdp-caption_label]:font-bold"
-          modifiers={{
-            achievement: achievementDays
-          }}
-          modifiersStyles={{
-            achievement: {
-              backgroundColor: 'hsl(var(--primary))',
-              color: 'white',
-              fontWeight: 'bold'
-            }
-          }}
-        />
+      <div className="py-6 flex justify-center">
+        <div className="w-full max-w-4xl">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={(newDate) => newDate && setDate(newDate)}
+            locale={sv}
+            className="rounded-md border-0 w-full [&_.rdp-caption_label]:font-bold [&_.rdp-months]:w-full [&_.rdp-month]:w-full [&_table]:w-full"
+            modifiers={{
+              achievement: achievementDays
+            }}
+            modifiersStyles={{
+              achievement: {
+                backgroundColor: 'hsl(var(--primary))',
+                color: 'white',
+                fontWeight: 'bold'
+              }
+            }}
+          />
+        </div>
       </div>
 
       <Separator />
