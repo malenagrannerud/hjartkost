@@ -188,7 +188,7 @@ const Progress = () => {
           }}
           modifiersClassNames={{
             ...weekModifierClassNames,
-            achievement: "bg-emerald-500 text-white font-bold rounded-full"
+            achievement: "relative before:absolute before:inset-1 before:bg-emerald-500 before:rounded-full before:-z-10 text-white font-bold"
           }}
           modifiersStyles={{
             achievement: {
