@@ -93,8 +93,8 @@ const Progress = () => {
 
       <Separator />
 
-      <div className="grid grid-cols-2 gap-0">
-        <div className="py-6 pr-6 pl-0 border-r">
+      <div className="grid grid-cols-2 gap-0 -mt-px">
+        <div className="py-6 pr-6 pl-0 border-r border-t">
           <div className="flex flex-col h-full">
             <div className="flex-1">
               <div className="text-base font-bold text-foreground">
@@ -112,7 +112,7 @@ const Progress = () => {
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="py-6 pr-0 pl-6 border-t">
           <div className="flex flex-col h-full">
             <div className="flex-1">
               <div className="text-base font-bold text-foreground">
