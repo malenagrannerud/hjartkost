@@ -67,8 +67,8 @@ const Progress = () => {
   return (
     <div className="p-6 pb-24 space-y-6 bg-card min-h-screen">
       <header>
-        <h1 className="text-3xl font-bold text-foreground mb-2">Framsteg</h1>
-        <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
+        <h1 className="text-3xl font-bold text-primary mb-2">Framsteg</h1>
+        <p className="text-primary/90 text-base font-semibold">Följ dina framsteg i kalendern</p>
       </header>
 
       <div className="py-6 flex justify-center">
