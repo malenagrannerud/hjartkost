@@ -1,75 +1,115 @@
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
-import { Progress as ProgressBar } from "@/components/ui/progress";
+import { Calendar } from "@/components/ui/calendar";
+import { format, startOfMonth, endOfMonth, isSameDay } from "date-fns";
+import { Trophy, Flame } from "lucide-react";
 
 const Progress = () => {
+  const [date, setDate] = useState<Date>(new Date());
+  const [achievementDays, setAchievementDays] = useState<Date[]>([]);
+  
+  // Load achievement days from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('achievementDays');
+    if (saved) {
+      const parsedDays = JSON.parse(saved).map((d: string) => new Date(d));
+      setAchievementDays(parsedDays);
+    }
+  }, []);
+
+  // Calculate days in current month with 10+ points
+  const getDaysWithGoalThisMonth = () => {
+    const monthStart = startOfMonth(date);
+    const monthEnd = endOfMonth(date);
+    
+    return achievementDays.filter(day => {
+      const dayDate = new Date(day);
+      return dayDate >= monthStart && dayDate <= monthEnd;
+    }).length;
+  };
+
+  // Calculate current streak
+  const getCurrentStreak = () => {
+    if (achievementDays.length === 0) return 0;
+    
+    const sortedDays = [...achievementDays].sort((a, b) => 
+      new Date(b).getTime() - new Date(a).getTime()
+    );
+    
+    let streak = 0;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    
+    for (let i = 0; i < sortedDays.length; i++) {
+      const checkDate = new Date(today);
+      checkDate.setDate(checkDate.getDate() - i);
+      
+      const hasDay = sortedDays.some(day => {
+        const d = new Date(day);
+        d.setHours(0, 0, 0, 0);
+        return d.getTime() === checkDate.getTime();
+      });
+      
+      if (hasDay) {
+        streak++;
+      } else {
+        break;
+      }
+    }
+    
+    return streak;
+  };
+
+  const daysThisMonth = getDaysWithGoalThisMonth();
+  const currentStreak = getCurrentStreak();
+
   return (
     <div className="p-6 pb-24 space-y-6">
       <header>
         <h1 className="text-3xl font-bold text-foreground mb-2">Framsteg</h1>
-        <p className="text-muted-foreground">Se hur dina hälsovanor utvecklas</p>
+        <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
       </header>
 
-      <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-        <h2 className="text-xl font-semibold mb-4 text-foreground">Veckans sammanfattning</h2>
-        <div className="space-y-4">
-          <div>
-            <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium text-foreground">Dagliga steg</span>
-              <span className="text-sm text-muted-foreground">8,500 / 10,000</span>
-            </div>
-            <ProgressBar value={85} className="h-2" />
-          </div>
-          
-          <div>
-            <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium text-foreground">Vattenintag</span>
-              <span className="text-sm text-muted-foreground">1.8 / 2.0 L</span>
-            </div>
-            <ProgressBar value={90} className="h-2" />
-          </div>
-
-          <div>
-            <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium text-foreground">Träningspass</span>
-              <span className="text-sm text-muted-foreground">4 / 5 dagar</span>
-            </div>
-            <ProgressBar value={80} className="h-2" />
-          </div>
-        </div>
+      <Card className="p-6">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={(newDate) => newDate && setDate(newDate)}
+          className="rounded-md border-0 w-full"
+          modifiers={{
+            achievement: achievementDays
+          }}
+          modifiersStyles={{
+            achievement: {
+              backgroundColor: 'hsl(var(--primary))',
+              color: 'white',
+              fontWeight: 'bold'
+            }
+          }}
+        />
       </Card>
 
-      <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-foreground">Senaste prestationer</h3>
-        
-        <Card className="p-5">
-          <div className="flex items-start gap-3">
-            <span className="text-3xl">🎉</span>
-            <div className="flex-1">
-              <h4 className="font-semibold text-foreground mb-1">7 dagar i rad!</h4>
-              <p className="text-sm text-muted-foreground">Du har uppnått ditt dagliga mål alla dagar denna vecka</p>
-              <p className="text-xs text-muted-foreground mt-2">För 2 dagar sedan</p>
+      <div className="grid grid-cols-2 gap-4">
+        <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+          <div className="flex flex-col items-center text-center space-y-2">
+            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+              <Trophy className="w-6 h-6 text-primary" />
+            </div>
+            <div className="text-3xl font-bold text-primary">{daysThisMonth}</div>
+            <div className="text-sm text-muted-foreground font-medium">
+              Dagar med 10+ poäng denna månad
             </div>
           </div>
         </Card>
 
-        <Card className="p-5">
-          <div className="flex items-start gap-3">
-            <span className="text-3xl">💪</span>
-            <div className="flex-1">
-              <h4 className="font-semibold text-foreground mb-1">Ny rekord!</h4>
-              <p className="text-sm text-muted-foreground">12,000 steg på en dag - ditt högsta än så länge!</p>
-              <p className="text-xs text-muted-foreground mt-2">För 5 dagar sedan</p>
+        <Card className="p-6 bg-gradient-to-br from-orange-100/50 to-orange-50/30 border-orange-200">
+          <div className="flex flex-col items-center text-center space-y-2">
+            <div className="w-12 h-12 rounded-full bg-orange-200/50 flex items-center justify-center">
+              <Flame className="w-6 h-6 text-orange-600" />
             </div>
-          </div>
-        </Card>
-
-        <Card className="p-5">
-          <div className="flex items-start gap-3">
-            <span className="text-3xl">🥗</span>
-            <div className="flex-1">
-              <h4 className="font-semibold text-foreground mb-1">Hälsosam månad</h4>
-              <p className="text-sm text-muted-foreground">30 dagar med minst 5 portioner grönsaker per dag</p>
-              <p className="text-xs text-muted-foreground mt-2">För 1 vecka sedan</p>
+            <div className="text-3xl font-bold text-orange-600">{currentStreak}</div>
+            <div className="text-sm text-muted-foreground font-medium">
+              Dagar i rad
             </div>
           </div>
         </Card>
