@@ -71,24 +71,22 @@ const Progress = () => {
       </header>
 
       <Card className="p-6">
-        <div className="flex justify-center">
-          <Calendar
-            mode="single"
-            selected={date}
-            onSelect={(newDate) => newDate && setDate(newDate)}
-            className="rounded-md border-0"
-            modifiers={{
-              achievement: achievementDays
-            }}
-            modifiersStyles={{
-              achievement: {
-                backgroundColor: 'hsl(var(--primary))',
-                color: 'white',
-                fontWeight: 'bold'
-              }
-            }}
-          />
-        </div>
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={(newDate) => newDate && setDate(newDate)}
+          className="rounded-md border-0 w-full"
+          modifiers={{
+            achievement: achievementDays
+          }}
+          modifiersStyles={{
+            achievement: {
+              backgroundColor: 'hsl(var(--primary))',
+              color: 'white',
+              fontWeight: 'bold'
+            }
+          }}
+        />
       </Card>
 
       <div className="grid grid-cols-2 gap-4">
@@ -104,7 +102,7 @@ const Progress = () => {
             </div>
             <div className="flex items-center justify-end">
               <div className="w-16 h-16 rounded-lg bg-emerald-500 flex items-center justify-center">
-                <span className="text-3xl font-bold text-white">{daysThisMonth}</span>
+                <span className="text-3xl font-bold text-blue-900">{daysThisMonth}</span>
               </div>
             </div>
           </div>
@@ -121,8 +119,8 @@ const Progress = () => {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <div className="w-16 h-16 rounded-lg bg-blue-900 flex items-center justify-center">
-                <span className="text-3xl font-bold text-white">{currentStreak}</span>
+              <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center">
+                <span className="text-3xl font-bold text-blue-900">{currentStreak}</span>
               </div>
             </div>
           </div>
