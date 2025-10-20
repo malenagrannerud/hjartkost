@@ -178,9 +178,9 @@ const Today = () => {
         </div>
       </div>
 
-      {markedTipsList.length > 0 && (
-        <div className="space-y-4 mt-8">
-          <h3 className="text-lg font-bold text-primary">Mina valda tips</h3>
+      <div className="space-y-4 mt-8">
+        <h3 className="text-lg font-bold text-primary">Mina valda tips</h3>
+        {markedTipsList.length > 0 ? (
           <div className="space-y-3">
             {markedTipsList.map((tip) => (
               <Card key={tip.id} className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}>
@@ -193,8 +193,10 @@ const Today = () => {
               </Card>
             ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <p className="text-primary/70 text-sm">Välj ett eller två tips för veckan under "Tips"</p>
+        )}
+      </div>
     </div>
   );
 };
