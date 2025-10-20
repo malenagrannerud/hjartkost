@@ -77,7 +77,7 @@ const Progress = () => {
           selected={date}
           onSelect={(newDate) => newDate && setDate(newDate)}
           locale={sv}
-          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold mx-auto text-sm"
+          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm"
           modifiers={{
             achievement: achievementDays
           }}
