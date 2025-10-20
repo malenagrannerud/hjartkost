@@ -101,7 +101,7 @@ const Today = () => {
     <div className="p-6 pb-24 space-y-6 pt-12">
       <header className="mb-8">
         <h1 className="text-3xl font-bold text-primary mb-2">Idag</h1>
-        <p className="text-primary/90 text-base font-semibold">Uppdateras i din egen takt</p>
+        <p className="text-primary/90 text-base font-normal">Uppdateras i din egen takt</p>
       </header>
 
       <div className="space-y-4">

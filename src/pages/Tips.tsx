@@ -129,8 +129,8 @@ const Tips = () => {
   return (
     <div className="p-6 pb-24 space-y-6">
       <header>
-        <h1 className="text-3xl font-bold text-foreground mb-2">Mina tips</h1>
-        <p className="text-muted-foreground">Välj ett eller två tips per vecka</p>
+        <h1 className="text-3xl font-bold text-primary mb-2">Mina tips</h1>
+        <p className="text-primary/90 text-base font-normal">Välj ett eller två tips per vecka</p>
       </header>
 
       <div className="space-y-4">
