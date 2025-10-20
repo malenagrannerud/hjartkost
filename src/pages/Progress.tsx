@@ -91,8 +91,8 @@ const Progress = () => {
 
       <div className="grid grid-cols-2 gap-4">
         <Card className="p-6">
-          <div className="flex flex-col space-y-4">
-            <div>
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
               <div className="text-base font-bold text-foreground">
                 Klarade dagar
               </div>
@@ -109,8 +109,8 @@ const Progress = () => {
         </Card>
 
         <Card className="p-6">
-          <div className="flex flex-col space-y-4">
-            <div>
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
               <div className="text-base font-bold text-foreground">
                 Klarade dagar i rad
               </div>
