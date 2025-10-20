@@ -56,7 +56,22 @@ const Progress = () => {
   useEffect(() => {
     const savedLogs = localStorage.getItem('dayLogs');
     if (savedLogs) {
-      setDayLogs(JSON.parse(savedLogs));
+      const parsed = JSON.parse(savedLogs);
+      // Migrate old data format to new format
+      const migratedLogs = parsed.map((log: any) => {
+        if (log.entries) {
+          return log; // Already in new format
+        } else if (log.fruitGrams !== undefined) {
+          // Old format - migrate to new
+          return {
+            date: log.date,
+            entries: [{ type: 'tip' as const, value: log.fruitGrams, tipId: 1 }]
+          };
+        }
+        return log;
+      });
+      setDayLogs(migratedLogs);
+      localStorage.setItem('dayLogs', JSON.stringify(migratedLogs)); // Save migrated data
     }
 
     const savedTips = localStorage.getItem('markedTips');
@@ -70,7 +85,7 @@ const Progress = () => {
     const achievedDays = dayLogs
       .filter(log => {
         // A day is achieved if any tip entry has 500g or more
-        return log.entries.some(entry => 
+        return log.entries && log.entries.some(entry => 
           entry.type === 'tip' && entry.value >= 500
         );
       })
