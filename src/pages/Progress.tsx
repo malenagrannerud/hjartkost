@@ -91,9 +91,7 @@ const Progress = () => {
         />
       </div>
 
-      <Separator />
-
-      <div className="grid grid-cols-2 gap-0 -mt-px">
+      <div className="grid grid-cols-2 gap-0 -mt-px pt-4">
         <div className="py-6 pr-6 pl-0 border-r border-t">
           <div className="flex flex-col h-full">
             <div className="flex-1">
