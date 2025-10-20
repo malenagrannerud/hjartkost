@@ -71,7 +71,7 @@ const Progress = () => {
         <p className="text-primary/90 text-base font-semibold">Följ dina framsteg i kalendern</p>
       </header>
 
-      <div className="pt-6 pb-2 flex justify-center">
+      <div className="pt-6 pb-0 flex justify-center">
         <Calendar
           mode="single"
           selected={date}
