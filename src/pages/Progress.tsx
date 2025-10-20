@@ -71,13 +71,13 @@ const Progress = () => {
         <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
       </header>
 
-      <div className="py-6">
+      <div className="py-6 max-w-2xl mx-auto">
         <Calendar
           mode="single"
           selected={date}
           onSelect={(newDate) => newDate && setDate(newDate)}
           locale={sv}
-          className="rounded-md border-0 w-full [&_.rdp-caption_label]:font-bold"
+          className="rounded-md border-0 w-full [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize"
           modifiers={{
             achievement: achievementDays
           }}
@@ -91,10 +91,11 @@ const Progress = () => {
         />
       </div>
 
-      <Separator />
-
-      <div className="grid grid-cols-2 gap-0 pt-6">
-        <div className="p-6 border-r">
+      <div className="grid grid-cols-2 gap-0 relative">
+        <Separator className="absolute top-0 left-0 right-0" />
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-border" />
+        
+        <div className="p-6 pt-6">
           <div className="flex flex-col h-full">
             <div className="flex-1">
               <div className="text-base font-bold text-foreground">
@@ -112,7 +113,7 @@ const Progress = () => {
           </div>
         </div>
 
-        <div className="p-6">
+        <div className="p-6 pt-6">
           <div className="flex flex-col h-full">
             <div className="flex-1">
               <div className="text-base font-bold text-foreground">
