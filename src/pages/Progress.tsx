@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
-import { Trophy, Flame } from "lucide-react";
+import { Trophy, Flame, Weight, Activity } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,8 @@ const tips = [
 const Progress = () => {
   const [date, setDate] = useState<Date>(new Date());
   const [achievementDays, setAchievementDays] = useState<Date[]>([]);
+  const [weightDays, setWeightDays] = useState<Date[]>([]);
+  const [bloodPressureDays, setBloodPressureDays] = useState<Date[]>([]);
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
   const [dayLogs, setDayLogs] = useState<DayLog[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
@@ -91,6 +93,18 @@ const Progress = () => {
       })
       .map(log => new Date(log.date));
     setAchievementDays(achievedDays);
+
+    // Track weight days
+    const weightLogDays = dayLogs
+      .filter(log => log.entries && log.entries.some(entry => entry.type === 'weight'))
+      .map(log => new Date(log.date));
+    setWeightDays(weightLogDays);
+
+    // Track blood pressure days
+    const bpLogDays = dayLogs
+      .filter(log => log.entries && log.entries.some(entry => entry.type === 'bloodPressure'))
+      .map(log => new Date(log.date));
+    setBloodPressureDays(bpLogDays);
   }, [dayLogs]);
 
   // Convert Tailwind color classes to HSL values
@@ -263,11 +277,15 @@ const Progress = () => {
           className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
           modifiers={{
             achievement: achievementDays,
+            weight: weightDays,
+            bloodPressure: bloodPressureDays,
             ...weekModifiers
           }}
           modifiersClassNames={{
             ...weekModifierClassNames,
-            achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold [&>*]:relative [&>*]:z-10"
+            achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold [&>*]:relative [&>*]:z-10",
+            weight: "relative after:content-['⚖️'] after:absolute after:bottom-0 after:left-0 after:text-[10px] after:leading-none",
+            bloodPressure: "relative after:content-['❤️'] after:absolute after:bottom-0 after:right-0 after:text-[10px] after:leading-none"
           }}
           modifiersStyles={{
             achievement: {
@@ -442,6 +460,92 @@ const Progress = () => {
               <div className="w-16 h-16 rounded-lg bg-blue-100 flex items-center justify-center">
                 <span className="text-3xl font-bold text-blue-900">{currentStreak}</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Weight and Blood Pressure Charts */}
+      <div className="grid grid-cols-2 gap-0 pt-0">
+        <div className="py-6 pr-6 pl-0 border-r border-t">
+          <div className="flex flex-col h-full">
+            <div className="flex-1 mb-4">
+              <div className="text-base font-bold text-foreground flex items-center gap-2">
+                <Weight size={18} />
+                Vikt
+              </div>
+              <div className="text-sm text-muted-foreground font-normal">
+                Loggade vikter (kg)
+              </div>
+            </div>
+            <div className="flex items-end gap-1 h-32">
+              {dayLogs
+                .flatMap(log => 
+                  log.entries
+                    .filter(e => e.type === 'weight')
+                    .map(e => ({ date: log.date, value: e.value }))
+                )
+                .slice(-10)
+                .map((entry, index) => {
+                  const maxWeight = Math.max(...dayLogs.flatMap(log => 
+                    log.entries.filter(e => e.type === 'weight').map(e => e.value)
+                  ), 100);
+                  const height = (entry.value / maxWeight) * 100;
+                  return (
+                    <div key={index} className="flex-1 flex flex-col items-center gap-1">
+                      <div 
+                        className="w-full bg-blue-500 rounded-t transition-all hover:bg-blue-600"
+                        style={{ height: `${height}%`, minHeight: '4px' }}
+                        title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.value} kg`}
+                      />
+                      <span className="text-[10px] text-muted-foreground">{entry.value}</span>
+                    </div>
+                  );
+                })}
+            </div>
+          </div>
+        </div>
+
+        <div className="py-6 pr-0 pl-6 border-t">
+          <div className="flex flex-col h-full">
+            <div className="flex-1 mb-4">
+              <div className="text-base font-bold text-foreground flex items-center gap-2">
+                <Activity size={18} />
+                Blodtryck
+              </div>
+              <div className="text-sm text-muted-foreground font-normal">
+                Loggade blodtryck (mmHg)
+              </div>
+            </div>
+            <div className="flex items-end gap-1 h-32">
+              {dayLogs
+                .flatMap(log => 
+                  log.entries
+                    .filter(e => e.type === 'bloodPressure')
+                    .map(e => ({ date: log.date, systolic: e.value, diastolic: e.value2 }))
+                )
+                .slice(-10)
+                .map((entry, index) => {
+                  const maxBP = 200;
+                  const systolicHeight = (entry.systolic / maxBP) * 100;
+                  const diastolicHeight = ((entry.diastolic || 0) / maxBP) * 100;
+                  return (
+                    <div key={index} className="flex-1 flex flex-col items-center gap-1">
+                      <div className="w-full flex flex-col gap-0.5">
+                        <div 
+                          className="w-full bg-rose-500 rounded-t transition-all hover:bg-rose-600"
+                          style={{ height: `${systolicHeight}px`, minHeight: '4px' }}
+                          title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.systolic}/${entry.diastolic}`}
+                        />
+                        <div 
+                          className="w-full bg-rose-300 rounded-t transition-all hover:bg-rose-400"
+                          style={{ height: `${diastolicHeight}px`, minHeight: '4px' }}
+                        />
+                      </div>
+                      <span className="text-[9px] text-muted-foreground">{entry.systolic}/{entry.diastolic}</span>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>
