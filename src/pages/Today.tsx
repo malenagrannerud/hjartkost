@@ -7,7 +7,7 @@ const tips = [
     id: 1,
     title: "Ät mer grönsaker, frukt och bär",
     description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
-    color: "bg-green-100",
+    color: "bg-green-200",
     textColor: "text-blue-900",
     healthScore: 4
   },
@@ -15,7 +15,7 @@ const tips = [
     id: 2,
     title: "Välj fullkorn",
     description: "När du äter spannmålsprodukter som bröd, pasta och gryn - välj helst fullkorn",
-    color: "bg-amber-50",
+    color: "bg-amber-100",
     textColor: "text-blue-900",
     healthScore: 3
   },
@@ -23,7 +23,7 @@ const tips = [
     id: 3,
     title: "Ät fisk och skaldjur",
     description: "2-3 gånger i veckan. Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
-    color: "bg-cyan-50",
+    color: "bg-cyan-100",
     textColor: "text-blue-900",
     healthScore: 3
   },
@@ -31,7 +31,7 @@ const tips = [
     id: 4,
     title: "Välj nyttiga fetter",
     description: "Använd flytande margarin och oljor i matlagning. Begränsa smör, hårdmargarin och andra mättade fetter",
-    color: "bg-yellow-50",
+    color: "bg-yellow-100",
     textColor: "text-blue-900",
     healthScore: 3
   },
@@ -39,7 +39,7 @@ const tips = [
     id: 5,
     title: "Välj magra mejeriprodukter",
     description: "Mjölk, filmjölk och yoghurt med max 1,5% fett. Ost med max 17% fett",
-    color: "bg-blue-50",
+    color: "bg-blue-100",
     textColor: "text-blue-900",
     healthScore: 3
   },
@@ -47,7 +47,7 @@ const tips = [
     id: 6,
     title: "Minska på rött och bearbetat kött",
     description: "Max 500 gram tillagat kött per vecka. Begränsa chark, korv och andra bearbetade köttprodukter",
-    color: "bg-rose-50",
+    color: "bg-rose-100",
     textColor: "text-blue-900",
     healthScore: 3
   },
@@ -55,7 +55,7 @@ const tips = [
     id: 7,
     title: "Begränsa socker och salt",
     description: "Undvik läsk, godis och bakverk. Max 6 gram salt per dag. Använd joderat salt",
-    color: "bg-orange-50",
+    color: "bg-orange-100",
     textColor: "text-blue-900",
     healthScore: 4
   },
@@ -63,7 +63,7 @@ const tips = [
     id: 8,
     title: "Ät lagom mycket",
     description: "Anpassa mängden mat efter ditt energibehov. Lyssna på din kropp och ät när du är hungrig",
-    color: "bg-purple-50",
+    color: "bg-purple-100",
     textColor: "text-blue-900",
     healthScore: 4
   },
@@ -71,7 +71,7 @@ const tips = [
     id: 9,
     title: "Rör på dig",
     description: "Minst 30 minuter om dagen. Fysisk aktivitet är viktig för hälsan tillsammans med bra matvanor",
-    color: "bg-teal-50",
+    color: "bg-teal-100",
     textColor: "text-blue-900",
     healthScore: 5
   },
@@ -79,7 +79,7 @@ const tips = [
     id: 10,
     title: "Ät mer baljväxter",
     description: "Bönor, linser och ärtor är bra proteinkällor och innehåller fibrer. Klimatsmart alternativ till kött",
-    color: "bg-green-50",
+    color: "bg-green-100",
     textColor: "text-blue-900",
     healthScore: 3
   }
