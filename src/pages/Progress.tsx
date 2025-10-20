@@ -140,6 +140,15 @@ const Progress = () => {
 
   const handleDayClick = (clickedDate: Date | undefined) => {
     if (!clickedDate) return;
+    
+    // Don't allow entries for future dates
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const clicked = new Date(clickedDate);
+    clicked.setHours(0, 0, 0, 0);
+    
+    if (clicked > today) return;
+    
     setSelectedDate(clickedDate);
     
     // Find existing log for this date
