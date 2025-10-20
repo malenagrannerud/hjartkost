@@ -169,7 +169,7 @@ const Tips = () => {
             <div className="space-y-3 pr-8">
               <div>
                 <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
-                <div className="text-blue-900 text-xs font-bold mt-0.5">
+                <div className="text-blue-900 text-xs font-bold">
                   {tip.healthScore} {tip.healthScore === 1 ? 'poäng' : 'poäng'}
                 </div>
               </div>
