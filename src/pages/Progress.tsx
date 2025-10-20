@@ -70,34 +70,37 @@ const Progress = () => {
         <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
       </header>
 
-      <Card className="p-6">
-        <Calendar
-          mode="single"
-          selected={date}
-          onSelect={(newDate) => newDate && setDate(newDate)}
-          className="rounded-md border-0 w-full"
-          modifiers={{
-            achievement: achievementDays
-          }}
-          modifiersStyles={{
-            achievement: {
-              backgroundColor: 'hsl(var(--primary))',
-              color: 'white',
-              fontWeight: 'bold'
-            }
-          }}
-        />
-      </Card>
+      <div className="flex justify-center">
+        <Card className="p-6 w-full max-w-md">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={(newDate) => newDate && setDate(newDate)}
+            className="rounded-md border-0 w-full"
+            modifiers={{
+              achievement: achievementDays
+            }}
+            modifiersStyles={{
+              achievement: {
+                backgroundColor: 'hsl(var(--primary))',
+                color: 'white',
+                fontWeight: 'bold'
+              }
+            }}
+          />
+        </Card>
+      </div>
 
       <div className="grid grid-cols-2 gap-4">
         <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
-          <div className="flex flex-col items-center text-center space-y-2">
-            <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-              <Trophy className="w-6 h-6 text-primary" />
-            </div>
-            <div className="text-3xl font-bold text-primary">{daysThisMonth}</div>
+          <div className="flex flex-col space-y-4">
             <div className="text-sm text-muted-foreground font-medium">
-              Dagar med 10+ poäng denna månad
+              Klarade dagar
+            </div>
+            <div className="flex items-center justify-center">
+              <div className="w-16 h-16 rounded-lg border-4 border-primary bg-primary/10 flex items-center justify-center">
+                <span className="text-3xl font-bold text-primary">{daysThisMonth}</span>
+              </div>
             </div>
           </div>
         </Card>
