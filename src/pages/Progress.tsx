@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay } from "date-fns";
 import { Trophy, Flame } from "lucide-react";
@@ -70,7 +70,7 @@ const Progress = () => {
         <p className="text-muted-foreground">Följ dina framsteg i kalendern</p>
       </header>
 
-      <Card className="p-6">
+      <div className="py-6">
         <Calendar
           mode="single"
           selected={date}
@@ -87,10 +87,12 @@ const Progress = () => {
             }
           }}
         />
-      </Card>
+      </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <Card className="p-6">
+      <Separator />
+
+      <div className="grid grid-cols-2 gap-0 pt-6">
+        <div className="p-6 border-r">
           <div className="flex flex-col h-full">
             <div className="flex-1">
               <div className="text-base font-bold text-foreground">
@@ -106,9 +108,9 @@ const Progress = () => {
               </div>
             </div>
           </div>
-        </Card>
+        </div>
 
-        <Card className="p-6">
+        <div className="p-6">
           <div className="flex flex-col h-full">
             <div className="flex-1">
               <div className="text-base font-bold text-foreground">
@@ -124,7 +126,7 @@ const Progress = () => {
               </div>
             </div>
           </div>
-        </Card>
+        </div>
       </div>
     </div>
   );
