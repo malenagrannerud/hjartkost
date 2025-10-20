@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Clock, Check } from "lucide-react";
+import { Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const tips = [
@@ -184,19 +184,11 @@ const Today = () => {
           <div className="space-y-3">
             {markedTipsList.map((tip) => (
               <Card key={tip.id} className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}>
-                <div 
-                  className="absolute top-3 right-3 w-6 h-6 rounded-full border-2 flex items-center justify-center bg-blue-900 border-blue-900"
-                >
-                  <Check size={16} className="text-white" strokeWidth={3} />
-                </div>
-                <div className="space-y-3 pr-8">
-                  <div className="flex items-start justify-between gap-2">
-                    <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
-                    <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
-                      {tip.healthScore} poäng
-                    </div>
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className={`font-semibold ${tip.textColor} flex-1`}>{tip.title}</h3>
+                  <div className={`${tip.textColor} bg-white/60 px-2 py-0.5 rounded-full text-xs font-bold whitespace-nowrap`}>
+                    {tip.healthScore} poäng
                   </div>
-                  <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
                 </div>
               </Card>
             ))}
