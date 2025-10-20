@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
-import { Trophy, Flame, Weight, Activity } from "lucide-react";
+import { Trophy, Flame, Weight, Activity, Trash2 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -261,6 +261,32 @@ const Progress = () => {
     setDialogOpen(false);
   };
 
+  const handleDeleteEntry = (entryIndex: number) => {
+    if (!selectedDate) return;
+    
+    const dateStr = format(selectedDate, 'yyyy-MM-dd');
+    const existingLog = dayLogs.find(log => log.date === dateStr);
+    
+    if (existingLog) {
+      const updatedEntries = existingLog.entries.filter((_, index) => index !== entryIndex);
+      const updatedLogs = dayLogs.filter(log => log.date !== dateStr);
+      
+      if (updatedEntries.length > 0) {
+        updatedLogs.push({ date: dateStr, entries: updatedEntries });
+      }
+      
+      setDayLogs(updatedLogs);
+      localStorage.setItem('dayLogs', JSON.stringify(updatedLogs));
+    }
+  };
+
+  const getExistingEntries = () => {
+    if (!selectedDate) return [];
+    const dateStr = format(selectedDate, 'yyyy-MM-dd');
+    const log = dayLogs.find(l => l.date === dateStr);
+    return log?.entries || [];
+  };
+
   return (
     <div className="p-6 pb-24 space-y-6 min-h-screen">
       <header>
@@ -296,13 +322,43 @@ const Progress = () => {
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
               {selectedDate && format(selectedDate, 'd MMMM yyyy', { locale: sv })}
             </DialogTitle>
           </DialogHeader>
           
+          {/* Existing Entries */}
+          {getExistingEntries().length > 0 && (
+            <div className="space-y-2 pb-4 border-b">
+              <Label className="text-sm font-semibold">Befintliga inlägg</Label>
+              {getExistingEntries().map((entry, index) => (
+                <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-md">
+                  <div className="text-sm">
+                    {entry.type === 'tip' && (
+                      <span>
+                        {tips.find(t => t.id === entry.tipId)?.title}: {entry.value}g
+                      </span>
+                    )}
+                    {entry.type === 'weight' && <span>Vikt: {entry.value} kg</span>}
+                    {entry.type === 'bloodPressure' && (
+                      <span>Blodtryck: {entry.value}/{entry.value2} mmHg</span>
+                    )}
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDeleteEntry(index)}
+                    className="h-8 w-8 p-0"
+                  >
+                    <Trash2 size={16} className="text-destructive" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="space-y-4 py-4">
             <div>
               <Label className="text-base mb-3 block">Vad vill du logga?</Label>
@@ -470,8 +526,7 @@ const Progress = () => {
         <div className="py-6 pr-6 pl-0 border-r border-t">
           <div className="flex flex-col h-full">
             <div className="flex-1 mb-4">
-              <div className="text-base font-bold text-foreground flex items-center gap-2">
-                <Weight size={18} />
+              <div className="text-base font-bold text-foreground">
                 Vikt
               </div>
               <div className="text-sm text-muted-foreground font-normal">
@@ -509,8 +564,7 @@ const Progress = () => {
         <div className="py-6 pr-0 pl-6 border-t">
           <div className="flex flex-col h-full">
             <div className="flex-1 mb-4">
-              <div className="text-base font-bold text-foreground flex items-center gap-2">
-                <Activity size={18} />
+              <div className="text-base font-bold text-foreground">
                 Blodtryck
               </div>
               <div className="text-sm text-muted-foreground font-normal">
