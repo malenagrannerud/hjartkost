@@ -103,8 +103,8 @@ const Progress = () => {
               </div>
             </div>
             <div className="flex items-center justify-end">
-              <div className="w-16 h-16 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-3xl font-bold text-primary-foreground">{daysThisMonth}</span>
+              <div className="w-16 h-16 rounded-lg bg-emerald-500 flex items-center justify-center">
+                <span className="text-3xl font-bold text-blue-900">{daysThisMonth}</span>
               </div>
             </div>
           </div>
