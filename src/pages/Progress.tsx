@@ -553,7 +553,7 @@ const Progress = () => {
                         style={{ height: `${height}%`, minHeight: '4px' }}
                         title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.value} kg`}
                       />
-                      <span className="text-[10px] text-muted-foreground">{entry.value}</span>
+                      <span className="text-[10px] text-muted-foreground">{format(new Date(entry.date), 'd MMM', { locale: sv })}</span>
                     </div>
                   );
                 })}
@@ -585,18 +585,12 @@ const Progress = () => {
                   const diastolicHeight = ((entry.diastolic || 0) / maxBP) * 100;
                   return (
                     <div key={index} className="flex-1 flex flex-col items-center gap-1">
-                      <div className="w-full flex flex-col gap-0.5">
-                        <div 
-                          className="w-full bg-rose-500 rounded-t transition-all hover:bg-rose-600"
-                          style={{ height: `${systolicHeight}px`, minHeight: '4px' }}
-                          title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.systolic}/${entry.diastolic}`}
-                        />
-                        <div 
-                          className="w-full bg-rose-300 rounded-t transition-all hover:bg-rose-400"
-                          style={{ height: `${diastolicHeight}px`, minHeight: '4px' }}
-                        />
-                      </div>
-                      <span className="text-[9px] text-muted-foreground">{entry.systolic}/{entry.diastolic}</span>
+                      <div 
+                        className="w-full bg-rose-500 rounded-t transition-all hover:bg-rose-600"
+                        style={{ height: `${systolicHeight}%`, minHeight: '4px' }}
+                        title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.systolic}/${entry.diastolic}`}
+                      />
+                      <span className="text-[10px] text-muted-foreground">{format(new Date(entry.date), 'd MMM', { locale: sv })}</span>
                     </div>
                   );
                 })}
