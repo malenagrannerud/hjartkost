@@ -533,7 +533,7 @@ const Progress = () => {
                 Loggade vikter (kg)
               </div>
             </div>
-            <div className="flex items-end gap-1 h-48">
+            <div className="flex items-end gap-3 h-48 justify-center">
               {dayLogs
                 .flatMap(log => 
                   log.entries
@@ -547,9 +547,9 @@ const Progress = () => {
                   ), 100);
                   const height = (entry.value / maxWeight) * 100;
                   return (
-                    <div key={index} className="flex-1 flex flex-col items-center gap-1">
+                    <div key={index} className="flex flex-col items-center gap-1">
                       <div 
-                        className="w-full bg-blue-500 rounded-t transition-all hover:bg-blue-600"
+                        className="w-6 bg-blue-500 rounded-t transition-all hover:bg-blue-600"
                         style={{ height: `${height}%`, minHeight: '4px' }}
                         title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.value} kg`}
                       />
@@ -571,7 +571,7 @@ const Progress = () => {
                 Loggade blodtryck (mmHg)
               </div>
             </div>
-            <div className="flex items-end gap-1 h-48">
+            <div className="flex items-end gap-3 h-48 justify-center">
               {dayLogs
                 .flatMap(log => 
                   log.entries
@@ -582,13 +582,12 @@ const Progress = () => {
                 .map((entry, index) => {
                   const maxBP = 200;
                   const systolicHeight = (entry.systolic / maxBP) * 100;
-                  const diastolicHeight = ((entry.diastolic || 0) / maxBP) * 100;
                   return (
-                    <div key={index} className="flex-1 flex flex-col items-center gap-1">
+                    <div key={index} className="flex flex-col items-center gap-1">
                       <div 
-                        className="w-full bg-rose-500 rounded-t transition-all hover:bg-rose-600"
+                        className="w-6 bg-rose-500 rounded-t transition-all hover:bg-rose-600"
                         style={{ height: `${systolicHeight}%`, minHeight: '4px' }}
-                        title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.systolic}/${entry.diastolic}`}
+                         title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.systolic}/${entry.diastolic}`}
                       />
                       <span className="text-[10px] text-muted-foreground">{format(new Date(entry.date), 'd MMM', { locale: sv })}</span>
                     </div>
