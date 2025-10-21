@@ -533,7 +533,7 @@ const Progress = () => {
                 Loggade vikter (kg)
               </div>
             </div>
-            <div className="flex items-end gap-1 h-32">
+            <div className="flex items-end gap-1 h-48">
               {dayLogs
                 .flatMap(log => 
                   log.entries
@@ -571,7 +571,7 @@ const Progress = () => {
                 Loggade blodtryck (mmHg)
               </div>
             </div>
-            <div className="flex items-end gap-1 h-32">
+            <div className="flex items-end gap-1 h-48">
               {dayLogs
                 .flatMap(log => 
                   log.entries
