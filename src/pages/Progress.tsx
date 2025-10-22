@@ -556,6 +556,7 @@ const Progress = () => {
                           fullDate: log.date
                         }))
                     )
+                    .sort((a, b) => new Date(a.fullDate).getTime() - new Date(b.fullDate).getTime())
                     .slice(-10)} 
                   margin={{ top: 20, bottom: 20 }}
                 >
@@ -569,8 +570,8 @@ const Progress = () => {
                   <Bar 
                     dataKey="weight" 
                     fill="hsl(217, 91%, 60%)" 
-                    radius={[4, 4, 0, 0]}
-                    maxBarSize={40}
+                    radius={[8, 8, 0, 0]}
+                    maxBarSize={20}
                   >
                     <LabelList 
                       dataKey="weight" 
@@ -617,6 +618,7 @@ const Progress = () => {
                           fullDate: log.date
                         }))
                     )
+                    .sort((a, b) => new Date(a.fullDate).getTime() - new Date(b.fullDate).getTime())
                     .slice(-10)} 
                   margin={{ top: 20, bottom: 20 }}
                 >
@@ -630,8 +632,8 @@ const Progress = () => {
                   <Bar 
                     dataKey="systolic" 
                     fill="hsl(350, 89%, 60%)" 
-                    radius={[4, 4, 0, 0]}
-                    maxBarSize={40}
+                    radius={[8, 8, 0, 0]}
+                    maxBarSize={20}
                   >
                     <LabelList 
                       dataKey="systolic" 
