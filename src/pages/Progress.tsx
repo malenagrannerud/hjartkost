@@ -8,6 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList } from 'recharts';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 interface MarkedTip {
   id: number;
@@ -533,31 +535,53 @@ const Progress = () => {
                 Loggade vikter (kg)
               </div>
             </div>
-            <div className="flex items-end gap-3 h-48 justify-center">
-              {dayLogs
-                .flatMap(log => 
-                  log.entries
-                    .filter(e => e.type === 'weight')
-                    .map(e => ({ date: log.date, value: e.value }))
-                )
-                .slice(-10)
-                .map((entry, index) => {
-                  const maxWeight = Math.max(...dayLogs.flatMap(log => 
-                    log.entries.filter(e => e.type === 'weight').map(e => e.value)
-                  ), 100);
-                  const height = (entry.value / maxWeight) * 100;
-                  return (
-                    <div key={index} className="flex flex-col items-center gap-1">
-                      <div 
-                        className="w-6 bg-blue-500 rounded-t transition-all hover:bg-blue-600"
-                        style={{ height: `${height}%`, minHeight: '4px' }}
-                        title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.value} kg`}
-                      />
-                      <span className="text-[10px] text-muted-foreground">{format(new Date(entry.date), 'd MMM', { locale: sv })}</span>
-                    </div>
-                  );
-                })}
-            </div>
+            <ChartContainer 
+              config={{ 
+                weight: { 
+                  label: "Vikt", 
+                  color: "hsl(217, 91%, 60%)" 
+                } 
+              }} 
+              className="h-48 w-full"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart 
+                  data={dayLogs
+                    .flatMap(log => 
+                      log.entries
+                        .filter(e => e.type === 'weight')
+                        .map(e => ({ 
+                          date: format(new Date(log.date), 'd MMM', { locale: sv }),
+                          weight: e.value,
+                          fullDate: log.date
+                        }))
+                    )
+                    .slice(-10)} 
+                  margin={{ top: 20, bottom: 20 }}
+                >
+                  <XAxis 
+                    dataKey="date" 
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+                  />
+                  <YAxis hide />
+                  <Bar 
+                    dataKey="weight" 
+                    fill="hsl(217, 91%, 60%)" 
+                    radius={[4, 4, 0, 0]}
+                    maxBarSize={40}
+                  >
+                    <LabelList 
+                      dataKey="weight" 
+                      position="top" 
+                      style={{ fontSize: 12, fill: 'hsl(var(--foreground))' }}
+                      formatter={(value: number) => `${value} kg`}
+                    />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
           </div>
         </div>
 
@@ -571,29 +595,54 @@ const Progress = () => {
                 Loggade blodtryck (mmHg)
               </div>
             </div>
-            <div className="flex items-end gap-3 h-48 justify-center">
-              {dayLogs
-                .flatMap(log => 
-                  log.entries
-                    .filter(e => e.type === 'bloodPressure')
-                    .map(e => ({ date: log.date, systolic: e.value, diastolic: e.value2 }))
-                )
-                .slice(-10)
-                .map((entry, index) => {
-                  const maxBP = 200;
-                  const systolicHeight = (entry.systolic / maxBP) * 100;
-                  return (
-                    <div key={index} className="flex flex-col items-center gap-1">
-                      <div 
-                        className="w-6 bg-rose-500 rounded-t transition-all hover:bg-rose-600"
-                        style={{ height: `${systolicHeight}%`, minHeight: '4px' }}
-                         title={`${format(new Date(entry.date), 'd MMM', { locale: sv })}: ${entry.systolic}/${entry.diastolic}`}
-                      />
-                      <span className="text-[10px] text-muted-foreground">{format(new Date(entry.date), 'd MMM', { locale: sv })}</span>
-                    </div>
-                  );
-                })}
-            </div>
+            <ChartContainer 
+              config={{ 
+                systolic: { 
+                  label: "Systoliskt", 
+                  color: "hsl(350, 89%, 60%)" 
+                } 
+              }} 
+              className="h-48 w-full"
+            >
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart 
+                  data={dayLogs
+                    .flatMap(log => 
+                      log.entries
+                        .filter(e => e.type === 'bloodPressure')
+                        .map(e => ({ 
+                          date: format(new Date(log.date), 'd MMM', { locale: sv }),
+                          systolic: e.value,
+                          diastolic: e.value2,
+                          fullDate: log.date
+                        }))
+                    )
+                    .slice(-10)} 
+                  margin={{ top: 20, bottom: 20 }}
+                >
+                  <XAxis 
+                    dataKey="date" 
+                    axisLine={false}
+                    tickLine={false}
+                    tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+                  />
+                  <YAxis hide />
+                  <Bar 
+                    dataKey="systolic" 
+                    fill="hsl(350, 89%, 60%)" 
+                    radius={[4, 4, 0, 0]}
+                    maxBarSize={40}
+                  >
+                    <LabelList 
+                      dataKey="systolic" 
+                      position="top" 
+                      style={{ fontSize: 12, fill: 'hsl(var(--foreground))' }}
+                      formatter={(value: number) => `${value}`}
+                    />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </ChartContainer>
           </div>
         </div>
       </div>
