@@ -312,8 +312,8 @@ const Progress = () => {
           modifiersClassNames={{
             ...weekModifierClassNames,
             achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold [&>*]:relative [&>*]:z-10",
-            weight: "relative after:content-['⚖'] after:absolute after:top-[2px] after:left-[2px] after:text-[14px] after:leading-none after:text-blue-700",
-            bloodPressure: "relative after:content-['♥'] after:absolute after:top-[16px] after:left-[2px] after:text-[14px] after:leading-none after:text-rose-600"
+            weight: "relative after:content-['⚖'] after:absolute after:top-[2px] after:left-[2px] after:text-[10px] after:leading-none after:text-blue-700",
+            bloodPressure: "relative after:content-['♥'] after:absolute after:top-[12px] after:left-[2px] after:text-[10px] after:leading-none after:text-rose-600"
           }}
           modifiersStyles={{
             achievement: {
