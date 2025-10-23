@@ -150,6 +150,15 @@ const Progress = () => {
 
   const weekModifiers = getWeekModifiers();
   const weekModifierClassNames = getWeekModifierClassNames();
+  
+  // Get all fruit dates from marked tips
+  const fruitDates: Date[] = [];
+  markedTips.forEach((tip) => {
+    const startDate = new Date(tip.markedDate);
+    for (let i = 0; i < 7; i++) {
+      fruitDates.push(addDays(startDate, i));
+    }
+  });
 
   // Calculate days in current month with 10+ points
   const getDaysWithGoalThisMonth = () => {
@@ -311,13 +320,36 @@ const Progress = () => {
           }}
           modifiersClassNames={{
             ...weekModifierClassNames,
-            achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold [&>*]:relative [&>*]:z-10",
-            weight: "relative after:content-['⚖'] after:absolute after:top-[2px] after:left-[2px] after:text-[10px] after:leading-none after:text-blue-700",
-            bloodPressure: "relative after:content-['♥'] after:absolute after:top-[12px] after:left-[2px] after:text-[10px] after:leading-none after:text-rose-600"
+            achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold"
           }}
           modifiersStyles={{
             achievement: {
-              fontWeight: 'bold'
+              backgroundColor: "transparent"
+            }
+          }}
+          components={{
+            DayContent: (props) => {
+              const hasWeight = weightDays.some(d => isSameDay(d, props.date));
+              const hasBP = bloodPressureDays.some(d => isSameDay(d, props.date));
+              const hasApple = fruitDates.some(d => isSameDay(d, props.date));
+              
+              return (
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {/* Left column - Data icons */}
+                  <div className="absolute top-0.5 left-0.5 flex flex-col gap-0.5">
+                    {hasBP && <span className="text-[10px] leading-none text-rose-600">♥</span>}
+                    {hasWeight && <span className="text-[10px] leading-none text-blue-700">⚖</span>}
+                  </div>
+                  
+                  {/* Right column - Notification icons */}
+                  <div className="absolute top-0.5 right-0.5 flex flex-col gap-0.5">
+                    {hasApple && <span className="text-[10px] leading-none">🍎</span>}
+                  </div>
+                  
+                  {/* Date number */}
+                  <span className="relative z-10">{props.date.getDate()}</span>
+                </div>
+              );
             }
           }}
         />
