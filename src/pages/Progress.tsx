@@ -4,7 +4,6 @@ import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
 import { Trophy, Flame, Weight, Activity, Trash2 } from "lucide-react";
-import type { DayContentProps } from "react-day-picker";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -110,19 +109,6 @@ const Progress = () => {
     setBloodPressureDays(bpLogDays);
   }, [dayLogs]);
 
-  // Sample data for demonstration
-  const demoData: Record<string, { 
-    hasWeight?: boolean; 
-    hasBP?: boolean; 
-    hasApple?: boolean;
-    hasImportant?: boolean;
-    hasStar?: boolean;
-  }> = {
-    '2025-01-10': { hasWeight: true, hasBP: true, hasApple: true },
-    '2025-01-15': { hasWeight: true, hasBP: false, hasApple: false, hasImportant: true, hasStar: true },
-    '2025-01-22': { hasWeight: false, hasBP: true, hasApple: false }
-  };
-
   // Convert Tailwind color classes to HSL values
   const colorToHsl = (colorClass: string): string => {
     const colorMap: { [key: string]: string } = {
@@ -140,78 +126,39 @@ const Progress = () => {
     return colorMap[colorClass] || '142 76% 76%';
   };
 
-  // Get fruit tip dates (for apple icon)
-  const getFruitDates = () => {
-    const dates: Date[] = [];
-    markedTips.forEach((tip) => {
-      if (tip.id === 1) { // "Fem nävar frukt och grönt"
-        const startDate = new Date(tip.markedDate);
-        for (let i = 0; i < 7; i++) {
-          dates.push(addDays(startDate, i));
-        }
+  // Create modifiers for each marked tip's week
+  const getWeekModifiers = () => {
+    const modifiers: { [key: string]: Date[] } = {};
+    markedTips.forEach((tip, index) => {
+      const dates: Date[] = [];
+      const startDate = new Date(tip.markedDate);
+      for (let i = 0; i < 7; i++) {
+        dates.push(addDays(startDate, i));
       }
+      modifiers[`tip${tip.id}`] = dates;
     });
-    return dates;
+    return modifiers;
   };
 
-  const fruitDates = getFruitDates();
-
-  // Custom day content component
-  const DayContent = (props: DayContentProps) => {
-    const dateStr = format(props.date, 'yyyy-MM-dd');
-    
-    // Check for demo data
-    const demo = demoData[dateStr as keyof typeof demoData];
-    
-    // Check for actual data
-    const dayLog = dayLogs.find(log => log.date === dateStr);
-    const hasWeight = demo?.hasWeight || dayLog?.entries.some(e => e.type === 'weight');
-    const hasBP = demo?.hasBP || dayLog?.entries.some(e => e.type === 'bloodPressure');
-    const hasApple = demo?.hasApple || fruitDates.some(d => isSameDay(d, props.date));
-    
-    // Demo notification icons
-    const hasImportant = demo?.hasImportant;
-    const hasStar = demo?.hasStar;
-    
-    const isAchievement = achievementDays.some(d => isSameDay(d, props.date));
-    
-    return (
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* Left Column - Data Icons */}
-        <div className="absolute top-0.5 left-0.5 flex flex-col gap-0.5 items-start z-10">
-          {hasBP && (
-            <span className="text-[10px] leading-none text-rose-600">♥</span>
-          )}
-          {hasWeight && (
-            <span className="text-[10px] leading-none text-blue-700">⚖</span>
-          )}
-        </div>
-        
-        {/* Right Column - Other Icons */}
-        <div className="absolute top-0.5 right-0.5 flex flex-col gap-0.5 items-end z-10">
-          {hasApple && (
-            <span className="text-[10px] leading-none">🍎</span>
-          )}
-          {hasImportant && (
-            <span className="text-[10px] leading-none text-amber-600">!</span>
-          )}
-          {hasStar && (
-            <span className="text-[10px] leading-none text-yellow-600">★</span>
-          )}
-        </div>
-        
-        {/* Date Number */}
-        <span className={`relative z-10 ${isAchievement ? 'font-bold' : ''}`}>
-          {props.date.getDate()}
-        </span>
-        
-        {/* Achievement Background */}
-        {isAchievement && (
-          <div className="absolute inset-[8px] bg-emerald-500 rounded-full -z-10" />
-        )}
-      </div>
-    );
+  const getWeekModifierClassNames = () => {
+    const classNames: { [key: string]: string } = {};
+    markedTips.forEach((tip) => {
+      classNames[`tip${tip.id}`] = `relative after:content-['🍏'] after:absolute after:top-0 after:right-0 after:text-[10px] after:leading-none`;
+    });
+    return classNames;
   };
+
+  const weekModifiers = getWeekModifiers();
+  const weekModifierClassNames = getWeekModifierClassNames();
+  
+  // Get all fruit dates from marked tips
+  const fruitDates: Date[] = [];
+  markedTips.forEach((tip) => {
+    const startDate = new Date(tip.markedDate);
+    for (let i = 0; i < 7; i++) {
+      fruitDates.push(addDays(startDate, i));
+    }
+  });
 
   // Calculate days in current month with 10+ points
   const getDaysWithGoalThisMonth = () => {
@@ -365,8 +312,45 @@ const Progress = () => {
           onSelect={handleDayClick}
           locale={sv}
           className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
+          modifiers={{
+            achievement: achievementDays,
+            weight: weightDays,
+            bloodPressure: bloodPressureDays,
+            ...weekModifiers
+          }}
+          modifiersClassNames={{
+            ...weekModifierClassNames,
+            achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold"
+          }}
+          modifiersStyles={{
+            achievement: {
+              backgroundColor: "transparent"
+            }
+          }}
           components={{
-            DayContent
+            DayContent: (props) => {
+              const hasWeight = weightDays.some(d => isSameDay(d, props.date));
+              const hasBP = bloodPressureDays.some(d => isSameDay(d, props.date));
+              const hasApple = fruitDates.some(d => isSameDay(d, props.date));
+              
+              return (
+                <div className="relative w-full h-full flex items-center justify-center">
+                  {/* Left column - Data icons */}
+                  <div className="absolute top-0.5 left-0.5 flex flex-col gap-0.5">
+                    {hasBP && <span className="text-[10px] leading-none text-rose-600">♥</span>}
+                    {hasWeight && <span className="text-[10px] leading-none text-blue-700">⚖</span>}
+                  </div>
+                  
+                  {/* Right column - Notification icons */}
+                  <div className="absolute top-0.5 right-0.5 flex flex-col gap-0.5">
+                    {hasApple && <span className="text-[10px] leading-none">🍎</span>}
+                  </div>
+                  
+                  {/* Date number */}
+                  <span className="relative z-10">{props.date.getDate()}</span>
+                </div>
+              );
+            }
           }}
         />
       </div>
