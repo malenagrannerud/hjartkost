@@ -76,11 +76,43 @@ const Progress = () => {
       });
       setDayLogs(migratedLogs);
       localStorage.setItem('dayLogs', JSON.stringify(migratedLogs)); // Save migrated data
+    } else {
+      // Demo data for demonstration
+      const demoLogs = [
+        { 
+          date: '2025-10-10', 
+          entries: [
+            { type: 'weight' as const, value: 75 },
+            { type: 'bloodPressure' as const, value: 120, value2: 80 }
+          ] 
+        },
+        { 
+          date: '2025-10-15', 
+          entries: [
+            { type: 'weight' as const, value: 74.5 }
+          ] 
+        },
+        { 
+          date: '2025-10-22', 
+          entries: [
+            { type: 'bloodPressure' as const, value: 118, value2: 78 }
+          ] 
+        }
+      ];
+      setDayLogs(demoLogs);
     }
 
     const savedTips = localStorage.getItem('markedTips');
     if (savedTips) {
       setMarkedTips(JSON.parse(savedTips));
+    } else {
+      // Demo marked tips for demonstration
+      const demoTips = [
+        { id: 1, markedDate: '2025-10-10T00:00:00.000Z', color: 'bg-green-200' }, // Green square on Oct 10-16
+        { id: 2, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-amber-100' }, // Second square (amber/yellow) on Oct 15-21
+        { id: 5, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-blue-100' }  // Blue square on Oct 15-21
+      ];
+      setMarkedTips(demoTips);
     }
   }, []);
 
@@ -331,7 +363,13 @@ const Progress = () => {
             DayContent: (props) => {
               const hasWeight = weightDays.some(d => isSameDay(d, props.date));
               const hasBP = bloodPressureDays.some(d => isSameDay(d, props.date));
-              const hasApple = fruitDates.some(d => isSameDay(d, props.date));
+              
+              // Find all marked tips that apply to this date (within their 7-day week)
+              const applicableTips = markedTips.filter(tip => {
+                const tipStartDate = new Date(tip.markedDate);
+                const tipEndDate = addDays(tipStartDate, 6);
+                return isWithinInterval(props.date, { start: tipStartDate, end: tipEndDate });
+              });
               
               return (
                 <div className="relative w-full h-full flex items-center justify-center">
@@ -341,9 +379,15 @@ const Progress = () => {
                     {hasWeight && <span className="text-[10px] leading-none text-blue-700">⚖</span>}
                   </div>
                   
-                  {/* Right column - Notification icons */}
+                  {/* Right column - Status squares */}
                   <div className="absolute top-0.5 right-0.5 flex flex-col gap-0.5">
-                    {hasApple && <span className="text-[10px] leading-none">🍎</span>}
+                    {applicableTips.map(tip => (
+                      <div 
+                        key={tip.id}
+                        className="w-2 h-2 rounded-sm"
+                        style={{ backgroundColor: `hsl(${colorToHsl(tip.color)})` }}
+                      />
+                    ))}
                   </div>
                   
                   {/* Date number */}
