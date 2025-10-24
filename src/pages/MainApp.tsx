@@ -5,6 +5,7 @@ import Tips from "./Tips";
 import TipDetail from "./TipDetail";
 import Progress from "./Progress";
 import Help from "./Help";
+import Tutorial from "./Tutorial";
 
 const MainApp = () => {
   return (
@@ -17,6 +18,7 @@ const MainApp = () => {
           <Route path="/tips/:id" element={<TipDetail />} />
           <Route path="/progress" element={<Progress />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/tutorial" element={<Tutorial />} />
         </Routes>
       </div>
       <BottomNav />

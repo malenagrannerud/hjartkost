@@ -125,7 +125,7 @@ const Today = () => {
             </div>
             <div 
               className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border border-border bg-card"
-              onClick={() => {/* Navigate to tutorial */}}
+              onClick={() => navigate('/app/tutorial')}
             >
               <div className="flex items-start justify-between">
                 <div>
