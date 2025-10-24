@@ -172,16 +172,7 @@ const Progress = () => {
     return modifiers;
   };
 
-  const getWeekModifierClassNames = () => {
-    const classNames: { [key: string]: string } = {};
-    markedTips.forEach((tip) => {
-      classNames[`tip${tip.id}`] = `relative after:content-['🍏'] after:absolute after:top-0 after:right-0 after:text-[10px] after:leading-none`;
-    });
-    return classNames;
-  };
-
   const weekModifiers = getWeekModifiers();
-  const weekModifierClassNames = getWeekModifierClassNames();
   
   // Get all fruit dates from marked tips
   const fruitDates: Date[] = [];
@@ -351,7 +342,6 @@ const Progress = () => {
             ...weekModifiers
           }}
           modifiersClassNames={{
-            ...weekModifierClassNames,
             achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold"
           }}
           modifiersStyles={{
@@ -375,8 +365,8 @@ const Progress = () => {
                 <div className="relative w-full h-full flex items-center justify-center">
                   {/* Left column - Data icons */}
                   <div className="absolute top-0.5 left-0.5 flex flex-col gap-0.5">
-                    {hasBP && <span className="text-[10px] leading-none text-rose-600">♥</span>}
-                    {hasWeight && <span className="text-[10px] leading-none text-blue-700">⚖</span>}
+                    {hasBP && <span className="text-xs leading-none text-rose-600">♥</span>}
+                    {hasWeight && <span className="text-xs leading-none text-blue-700">⚖</span>}
                   </div>
                   
                   {/* Right column - Status squares */}
