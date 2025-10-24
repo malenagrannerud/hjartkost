@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Clock } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { useNavigate } from "react-router-dom";
 
 const tips = [
   {
@@ -92,6 +93,7 @@ interface MarkedTip {
 }
 
 const Today = () => {
+  const navigate = useNavigate();
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
 
   useEffect(() => {
@@ -183,7 +185,11 @@ const Today = () => {
         {markedTipsList.length > 0 ? (
           <div className="space-y-3">
             {markedTipsList.map((tip) => (
-              <Card key={tip.id} className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}>
+              <Card 
+                key={tip.id} 
+                className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}
+                onClick={() => navigate(`/app/tips/${tip.id}`)}
+              >
                 <div>
                   <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
                   <div className="text-blue-900 text-xs font-bold">
