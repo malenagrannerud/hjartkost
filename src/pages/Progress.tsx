@@ -238,7 +238,8 @@ const Progress = () => {
     const clicked = new Date(clickedDate);
     clicked.setHours(0, 0, 0, 0);
     
-    if (clicked > today) return;
+    // Allow today and past dates only
+    if (clicked.getTime() > today.getTime()) return;
     
     setSelectedDate(clickedDate);
     
