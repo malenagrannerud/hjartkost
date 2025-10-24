@@ -153,7 +153,7 @@ const TipDetail = () => {
       <div className="p-6 space-y-6">
         {/* Back Button */}
         <button
-          onClick={() => navigate('/app/tips')}
+          onClick={() => navigate('/app/today')}
           className="flex items-center gap-2 text-blue-900 hover:opacity-70 transition-opacity"
         >
           <ArrowLeft size={20} />
