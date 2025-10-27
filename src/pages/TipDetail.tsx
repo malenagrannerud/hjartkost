@@ -5,7 +5,7 @@ const tips = [
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    description: "Minst 500 gram om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
+    description: "Ät minst fem nävar om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
     detailedInfo: "Grönsaker, frukt och bär innehåller fibrer, vitaminer och mineraler som kroppen behöver. De mättar bra och ger skydd mot flera sjukdomar. Försök äta minst 500 gram per dag. Variationen är viktig - olika färger innehåller olika nyttigheter. Frysta och konserverade grönsaker räknas också.",
     steps: [
       "Lägg till en portion grönsaker till varje måltid",
@@ -30,8 +30,8 @@ const tips = [
   },
   {
     id: 3,
-    title: "Ät fisk och skaldjur",
-    description: "2-3 gånger i veckan. Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
+    title: "Fisk och skaldjur 2-3 gånger i veckan.",
+    description: "Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
     detailedInfo: "Fisk och skaldjur innehåller protein, D-vitamin, jod och selen. Fet fisk innehåller dessutom omega-3-fettsyror som är viktiga för hjärtat och hjärnan. Ät fisk och skaldjur 2-3 gånger i veckan och blanda mellan fet och mager fisk. Exempel på fet fisk är lax, sill, makrill och strömming.",
     steps: [
       "Planera två fiskmiddagar varje vecka",
@@ -43,7 +43,7 @@ const tips = [
   },
   {
     id: 4,
-    title: "Välj nyttiga fetter",
+    title: "Välj rätt fett",
     description: "Använd flytande margarin och oljor i matlagning. Begränsa smör, hårdmargarin och andra mättade fetter",
     detailedInfo: "Fettkvaliteten påverkar hälsan. Omättade fetter från växtolior, flytande margarin, nötter och fet fisk är nyttigare än mättade fetter från smör, hårdmargarin och fett kött. Byt gärna ut mättade fetter mot omättade. Använd rapsolja eller olivolja i matlagningen.",
     steps: [
@@ -82,7 +82,7 @@ const tips = [
   },
   {
     id: 7,
-    title: "Begränsa socker och salt",
+    title: "Salt-halt!",
     description: "Undvik läsk, godis och bakverk. Max 6 gram salt per dag. Använd joderat salt",
     detailedInfo: "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis. För mycket salt ökar risken för högt blodtryck. Ät max 6 gram salt per dag - det motsvarar en tesked. Använd joderat salt och undvik att salta för mycket. Färdiglagad mat innehåller ofta mycket salt.",
     steps: [
