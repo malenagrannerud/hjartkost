@@ -6,6 +6,8 @@ import TipDetail from "./TipDetail";
 import Progress from "./Progress";
 import Help from "./Help";
 import Tutorial from "./Tutorial";
+import Questionnaire from "./Questionnaire";
+import HealthMetrics from "./HealthMetrics";
 
 const MainApp = () => {
   return (
@@ -19,6 +21,8 @@ const MainApp = () => {
           <Route path="/progress" element={<Progress />} />
           <Route path="/help" element={<Help />} />
           <Route path="/tutorial" element={<Tutorial />} />
+          <Route path="/questionnaire" element={<Questionnaire />} />
+          <Route path="/health-metrics" element={<HealthMetrics />} />
         </Routes>
       </div>
       <BottomNav />

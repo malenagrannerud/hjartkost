@@ -96,6 +96,8 @@ const Today = () => {
   const navigate = useNavigate();
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
   const [tutorialCompleted, setTutorialCompleted] = useState(false);
+  const [questionnaireCompleted, setQuestionnaireCompleted] = useState(false);
+  const [healthMetricsCompleted, setHealthMetricsCompleted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('markedTips');
@@ -106,6 +108,16 @@ const Today = () => {
     const tutorialDone = localStorage.getItem('tutorialCompleted');
     if (tutorialDone === 'true') {
       setTutorialCompleted(true);
+    }
+
+    const questionnaireDone = localStorage.getItem('questionnaireCompleted');
+    if (questionnaireDone === 'true') {
+      setQuestionnaireCompleted(true);
+    }
+
+    const healthMetricsDone = localStorage.getItem('healthMetricsCompleted');
+    if (healthMetricsDone === 'true') {
+      setHealthMetricsCompleted(true);
     }
   }, []);
 
@@ -154,12 +166,18 @@ const Today = () => {
           {/* Step 2 */}
           <div className="relative flex gap-4 mb-4 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
+              <div className={`w-6 h-6 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+                questionnaireCompleted 
+                  ? 'bg-primary border-2 border-primary' 
+                  : 'bg-background border-2 border-primary'
+              }`}>
+                {questionnaireCompleted && <Check size={14} className="text-white" strokeWidth={3} />}
+              </div>
               <div className="w-0.5 h-12 bg-primary/20 mt-1" />
             </div>
             <div 
               className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border border-border bg-card"
-              onClick={() => {/* Navigate to questionnaire */}}
+              onClick={() => navigate('/app/questionnaire')}
             >
               <div className="flex items-start justify-between">
                 <div>
@@ -176,15 +194,21 @@ const Today = () => {
           {/* Step 3 */}
           <div className="relative flex gap-4 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
+              <div className={`w-6 h-6 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+                healthMetricsCompleted 
+                  ? 'bg-primary border-2 border-primary' 
+                  : 'bg-background border-2 border-primary'
+              }`}>
+                {healthMetricsCompleted && <Check size={14} className="text-white" strokeWidth={3} />}
+              </div>
             </div>
             <div 
               className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border border-border bg-card"
-              onClick={() => {/* Navigate to health metrics */}}
+              onClick={() => navigate('/app/health-metrics')}
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary">BMI, blodfetter och blodtryck</h4>
+                  <h4 className="font-bold text-primary">Vikt och blodtryck</h4>
                 </div>
               </div>
             </div>
