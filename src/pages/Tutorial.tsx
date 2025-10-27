@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Heart, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
+import { ArrowLeft, Home, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import fruitsImage from "@/assets/fruits-illustration.jpg";
 
@@ -42,7 +42,7 @@ const Tutorial = () => {
         <Card className="p-6 bg-white border-border">
           <div className="flex items-start gap-4">
             <div className="bg-green-100 p-3 rounded-full flex-shrink-0">
-              <Heart className="w-6 h-6 text-green-700" />
+              <Home className="w-6 h-6 text-green-700" />
             </div>
             <div className="space-y-3">
               <h2 className="text-xl font-bold text-[#212658]">Idag-sidan</h2>
