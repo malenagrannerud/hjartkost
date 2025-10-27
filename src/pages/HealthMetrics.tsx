@@ -120,7 +120,7 @@ const HealthMetrics = () => {
         {/* Info Card */}
         <Card className="p-4 border-0 shadow-sm bg-blue-50">
           <p className="text-sm text-[#212658]">
-            <strong>Tips:</strong> Mät ditt blodtryck på samma tid varje dag för mest tillförlitliga resultat. 
+            <strong>Tips:</strong> Mät ditt blodtryck samma tid varje dag för mest tillförlitliga resultat. 
             Vila några minuter innan mätning.
           </p>
         </Card>
