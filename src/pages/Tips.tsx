@@ -186,7 +186,7 @@ const Tips = () => {
                   {tip.healthScore} {tip.healthScore === 1 ? "poäng" : "poäng"}
                 </div>
               </div>
-              <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
+              <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.detailedInfo}</p>
             </div>
           </Card>
         ))}
