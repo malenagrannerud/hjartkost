@@ -48,7 +48,7 @@ const Tutorial = () => {
             <div className="space-y-4">
               <h2 className="text-2xl font-bold text-[#212658]">Idag-sidan</h2>
               <p className="text-[#212658] leading-relaxed text-lg">
-                När du öppnar appen hamnar du på "Idag"-sidan. Här ser du dina valda hälsotips och kan 
+                När du öppnar appen hamnar du på "Idag". Här ser du dina valda hälsotips och kan 
                 följa stegen i din egen takt. Du behöver inte göra allt på en gång - ta det lugnt och 
                 börja med det som känns rätt för dig.
               </p>
