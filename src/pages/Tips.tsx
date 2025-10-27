@@ -24,8 +24,8 @@ const tips = [
   },
   {
     id: 3,
-    title: "Ät fisk och skaldjur",
-    description: "2-3 gånger i veckan. Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
+    title: "Fisk och skaldjur 2-3 gånger i veckan",
+    description: " Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
     detailedInfo: "Fisk och skaldjur innehåller protein, D-vitamin, jod och selen. Fet fisk innehåller dessutom omega-3-fettsyror som är viktiga för hjärtat och hjärnan. Ät fisk och skaldjur 2-3 gånger i veckan och blanda mellan fet och mager fisk. Exempel på fet fisk är lax, sill, makrill och strömming.",
     category: "Livsmedelsverket",
     color: "bg-cyan-100",
