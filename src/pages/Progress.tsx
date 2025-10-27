@@ -453,17 +453,17 @@ const Progress = () => {
         <DialogContent className="max-w-md max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>
-              {selectedDate && format(selectedDate, 'd MMMM yyyy', { locale: sv })}
+              Redigera {selectedDate && format(selectedDate, 'd MMMM yyyy', { locale: sv })}
             </DialogTitle>
           </DialogHeader>
           
           {/* Existing Entries */}
           {getExistingEntries().length > 0 && (
             <div className="space-y-2 pb-4 border-b">
-              <Label className="text-sm font-semibold">Befintliga inlägg</Label>
+              <Label className="text-base font-semibold">Dina inlägg</Label>
               {getExistingEntries().map((entry, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-muted rounded-md">
-                  <div className="text-sm">
+                <div key={index} className="flex items-center justify-between p-3 bg-accent/50 rounded-lg">
+                  <div className="text-sm font-medium">
                     {entry.type === 'tip' && (
                       <span>
                         {tips.find(t => t.id === entry.tipId)?.title}: {entry.value}g
@@ -478,7 +478,7 @@ const Progress = () => {
                     variant="ghost"
                     size="sm"
                     onClick={() => handleDeleteEntry(index)}
-                    className="h-8 w-8 p-0"
+                    className="h-8 w-8 p-0 hover:bg-destructive/10"
                   >
                     <Trash2 size={16} className="text-destructive" />
                   </Button>
