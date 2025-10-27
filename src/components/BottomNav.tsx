@@ -4,7 +4,6 @@ import { Home, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
 export const BottomNav = () => {
   const navItems = [
     { path: "/app/today", label: "Idag", icon: Home },
-    { path: "/app/tutorial", label: "Idag", icon: Home },
     { path: "/app/tips", label: "Tips", icon: BookOpen },
     { path: "/app/progress", label: "Framsteg", icon: TrendingUp },
     { path: "/app/help", label: "Hjälp", icon: HelpCircle },
