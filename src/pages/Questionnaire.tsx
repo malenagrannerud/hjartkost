@@ -35,14 +35,14 @@ const Questionnaire = () => {
           <button
             onClick={() => navigate('/app/today')}
             className="p-3 hover:bg-accent rounded-lg transition-colors"
-            aria-label="Gå tillbaka"
+            aria-label="Tillbaka"
           >
             <ArrowLeft size={28} className="text-[#212658]" />
           </button>
-          <h1 className="text-3xl font-bold text-[#212658]">Frågeformulär</h1>
+          <h1 className="text-3xl font-bold text-[#212658]">Matvanekollen - Testa dina matvanor</h1>
         </div>
         <p className="text-[#212658]/70 text-base ml-14">
-          Svara på frågorna så att vi kan ge dig personliga tips
+          Ta ett snabbtest och se vad du kan göra för att äta mer hälsosamt. Också små förändringar gör skillnad för hälsan!
         </p>
         {/* Progress indicator */}
         <div className="mt-4 ml-14">
@@ -97,7 +97,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 2 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Väljer du oftast haribos nappar?
+            Hur mycket grönsaker, rotfrukter och bönor äter du på en dag?
           </h3>
           <div className="space-y-3">
             {["Alltid", "Oftast", "Ibland", "Sällan"].map((option) => (
@@ -129,7 +129,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 3 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Hur ofta äter du fisk eller skaldjur?
+            Hur många dagar i veckan äter du nöt, gris, lamm, vilt, korv, bacon mm?
           </h3>
           <div className="space-y-3">
             {["3 gånger i veckan eller mer", "2 gånger i veckan", "1 gång i veckan", "Mer sällan"].map((option) => (
@@ -161,7 +161,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 4 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Hur mycket rött kött och charkuterier äter du per vecka?
+            Hur många dagar i veckan äter du fisk eller skaldjur?
           </h3>
           <div className="space-y-3">
             {["Mindre än 500 gram", "500-700 gram", "Mer än 700 gram", "Vet ej"].map((option) => (
@@ -193,7 +193,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 5 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Väljer du magra mejeriprodukter?
+            Märket Nyckelhålet finns på bröd, flingor och pasta med nyttiga fibrer och fullkorn.
           </h3>
           <div className="space-y-3">
             {["Alltid", "Oftast", "Ibland", "Sällan"].map((option) => (
@@ -225,7 +225,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 6 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Hur ofta äter eller dricker du sockrade produkter?
+            Vilka mejeriprodukter väljer du oftast?
           </h3>
           <div className="space-y-3">
             {["Sällan eller aldrig", "Någon gång i veckan", "Flera gånger i veckan", "Dagligen"].map((option) => (
@@ -257,7 +257,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 7 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Hur många minuter rör du på dig per dag?
+            Vad har du oftast på smörgåsen/i maten?
           </h3>
           <div className="space-y-3">
             {["Mer än 30 minuter", "20-30 minuter", "10-20 minuter", "Mindre än 10 minuter"].map((option) => (
@@ -289,7 +289,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 8 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Hur ofta äter du baljväxter som bönor, linser och ärtor?
+            Det här är mat med mycket salt, vilka äter du flera gånger i veckan?
           </h3>
           <div className="space-y-3">
             {["Flera gånger i veckan", "1-2 gånger i veckan", "Någon gång i månaden", "Sällan eller aldrig"].map((option) => (
