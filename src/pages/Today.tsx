@@ -96,7 +96,7 @@ const Today = () => {
   const navigate = useNavigate();
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
   const [tutorialCompleted, setTutorialCompleted] = useState(false);
-  const [questionnaireCompleted, setQuestionnaireCompleted] = useState(false);
+  const [healthPrioritiesCompleted, setHealthPrioritiesCompleted] = useState(false);
   const [healthMetricsCompleted, setHealthMetricsCompleted] = useState(false);
 
   useEffect(() => {
@@ -110,9 +110,9 @@ const Today = () => {
       setTutorialCompleted(true);
     }
 
-    const questionnaireDone = localStorage.getItem('questionnaireCompleted');
-    if (questionnaireDone === 'true') {
-      setQuestionnaireCompleted(true);
+    const healthPrioritiesDone = localStorage.getItem('healthPrioritiesCompleted');
+    if (healthPrioritiesDone === 'true') {
+      setHealthPrioritiesCompleted(true);
     }
 
     const healthMetricsDone = localStorage.getItem('healthMetricsCompleted');
@@ -168,25 +168,25 @@ const Today = () => {
           <div className="relative flex gap-5 mb-6 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
               <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
-                questionnaireCompleted 
+                healthPrioritiesCompleted 
                   ? 'bg-primary border-2 border-primary' 
                   : 'bg-background border-2 border-primary'
               }`}>
-                {questionnaireCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
+                {healthPrioritiesCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
               </div>
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
               className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
-              onClick={() => navigate('/app/questionnaire')}
-              aria-label="Gå till frågeformulär"
+              onClick={() => navigate('/app/health-priorities')}
+              aria-label="Gå till mina hälsoprioriteringar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-2 text-lg">Frågeformulär</h4>
+                  <h4 className="font-bold text-primary mb-2 text-lg">My health priorities</h4>
                   <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
-                    <span>8 min</span>
+                    <span>5 min</span>
                   </div>
                 </div>
               </div>

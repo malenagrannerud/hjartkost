@@ -6,8 +6,9 @@ import TipDetail from "./TipDetail";
 import Progress from "./Progress";
 import Help from "./Help";
 import Tutorial from "./Tutorial";
-import Questionnaire from "./Questionnaire";
+import HealthPriorities from "./HealthPriorities";
 import HealthMetrics from "./HealthMetrics";
+import Settings from "./Settings";
 
 const MainApp = () => {
   return (
@@ -21,8 +22,9 @@ const MainApp = () => {
           <Route path="/progress" element={<Progress />} />
           <Route path="/help" element={<Help />} />
           <Route path="/tutorial" element={<Tutorial />} />
-          <Route path="/questionnaire" element={<Questionnaire />} />
+          <Route path="/health-priorities" element={<HealthPriorities />} />
           <Route path="/health-metrics" element={<HealthMetrics />} />
+          <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
       <BottomNav />

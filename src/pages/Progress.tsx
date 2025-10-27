@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Separator } from "@/components/ui/separator";
 import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
-import { Trophy, Flame, Weight, Activity, Trash2 } from "lucide-react";
+import { Trophy, Flame, Weight, Activity, Trash2, Settings } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -41,6 +42,7 @@ const tips = [
 ];
 
 const Progress = () => {
+  const navigate = useNavigate();
   const [date, setDate] = useState<Date>(new Date());
   const [achievementDays, setAchievementDays] = useState<Date[]>([]);
   const [weightDays, setWeightDays] = useState<Date[]>([]);
@@ -383,9 +385,18 @@ const Progress = () => {
 
   return (
     <div className="p-6 pb-24 space-y-8 min-h-screen">
-      <header>
-        <h1 className="text-4xl font-bold text-blue-900 mb-2">Framsteg</h1>
-        <p className="text-blue-900/90 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+      <header className="flex items-start justify-between">
+        <div>
+          <h1 className="text-4xl font-bold text-blue-900 mb-2">Framsteg</h1>
+          <p className="text-blue-900/90 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+        </div>
+        <button
+          onClick={() => navigate('/app/settings')}
+          className="p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]"
+          aria-label="Inställningar"
+        >
+          <Settings size={28} className="text-[#212658]" />
+        </button>
       </header>
 
       <div className="pt-6 pb-0 flex justify-center">
