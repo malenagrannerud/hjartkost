@@ -122,3 +122,21 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Calendar today indicator - red and smaller */
+.rdp-day_today {
+  font-weight: 600;
+  color: hsl(0 84% 60%) !important;
+}
+
+.rdp-day_today::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: hsl(0 84% 60%);
+  border-radius: 50%;
+}
