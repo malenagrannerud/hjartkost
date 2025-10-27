@@ -6,8 +6,7 @@ const tips = [
     id: 1,
     title: "Fem nävar frukt och grönt",
     description: "Ät minst fem nävar om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
-    detailedInfo:
-      "Grönsaker, frukt och bär innehåller fibrer, vitaminer och mineraler som kroppen behöver. De mättar bra och ger skydd mot flera sjukdomar. Försök äta minst 500 gram per dag. Variationen är viktig - olika färger innehåller olika nyttigheter. Frysta och konserverade grönsaker räknas också.",
+    detailedInfo: "hallå",
     steps: [
       "Lägg till en portion grönsaker till varje måltid",
       "Förbered frukt och grönsaker på söndagar så de är lättillgängliga",
@@ -89,7 +88,7 @@ const tips = [
   },
   {
     id: 7,
-    title: "Salt-halt",
+    title: "Salt-halt!",
     description: "Undvik läsk, godis och bakverk. Max 6 gram salt per dag. Använd joderat salt",
     detailedInfo:
       "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis. För mycket salt ökar risken för högt blodtryck. Ät max 6 gram salt per dag - det motsvarar en tesked. Använd joderat salt och undvik att salta för mycket. Färdiglagad mat innehåller ofta mycket salt.",
