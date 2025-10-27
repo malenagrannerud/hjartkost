@@ -97,7 +97,7 @@ const Questionnaire = () => {
             <span className="text-sm font-semibold text-[#212658]/60">Fråga 2 av 8</span>
           </div>
           <h3 className="font-bold text-xl text-[#212658] mb-5 leading-relaxed">
-            Väljer du oftast fullkornsprodukter?
+            Väljer du oftast haribos nappar?
           </h3>
           <div className="space-y-3">
             {["Alltid", "Oftast", "Ibland", "Sällan"].map((option) => (
