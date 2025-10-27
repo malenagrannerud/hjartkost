@@ -27,7 +27,7 @@ const tips = [
   },
   {
     id: 4,
-    title: "Rätt fett",
+    title: "Rätt fett!",
     color: "bg-yellow-100",
     textColor: "text-blue-900",
     healthScore: 3,
@@ -48,7 +48,7 @@ const tips = [
   },
   {
     id: 7,
-    title: "Salt-halt",
+    title: "Salt-halt!",
     color: "bg-orange-100",
     textColor: "text-blue-900",
     healthScore: 4,
@@ -67,7 +67,6 @@ const tips = [
     textColor: "text-blue-900",
     healthScore: 5,
   },
-
   {
     id: 10,
     title: "Ät mer baljväxter",
@@ -75,7 +74,6 @@ const tips = [
     textColor: "text-blue-900",
     healthScore: 3,
   },
-
   {
     id: 11,
     title: "Minska på sockret",
@@ -153,7 +151,6 @@ const Tips = () => {
                   {tip.healthScore} {tip.healthScore === 1 ? "poäng" : "poäng"}
                 </div>
               </div>
-              <p className={`text-sm ${tip.textColor} opacity-80`}>{tip.description}</p>
             </div>
           </Card>
         ))}
