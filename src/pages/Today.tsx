@@ -154,7 +154,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-2 text-lg">Lär dej om hur appen fungerar</h4>
+                  <h4 className="font-bold text-primary mb-2 text-lg">Hur appen fungerar</h4>
                   <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
@@ -183,7 +183,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-2 text-lg">My health priorities</h4>
+                  <h4 className="font-bold text-primary mb-2 text-lg">Anpassa mina råd</h4>
                   <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
@@ -220,7 +220,7 @@ const Today = () => {
       </div>
 
       <div className="space-y-6 mt-10">
-        <h3 className="text-2xl font-bold text-primary">Mina valda tips</h3>
+        <h3 className="text-2xl font-bold text-primary">Mina tips för vecka ett</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
