@@ -9,9 +9,9 @@ interface HealthPriority {
 }
 
 const healthPriorityLabels: Record<string, string> = {
-  cholesterol: "Sänka mitt kolesterol",
-  bloodPressure: "Sänka mitt blodtryck",
-  diabetes: "Minska risker för diabetes typ 2",
+  cholesterol: "Sänk mitt kolesterol",
+  bloodPressure: "Sänk mitt blodtryck",
+  diabetes: "Minska risken för diabetes typ 2",
   weight: "Viktbalans",
   general: "Förebygga hjärt- och kärlsjukdom"
 };

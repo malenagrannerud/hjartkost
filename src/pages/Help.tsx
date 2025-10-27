@@ -26,7 +26,7 @@ const Help = () => {
               Hur ofta ska jag använda appen?
             </AccordionTrigger>
             <AccordionContent className="text-muted-foreground text-base leading-relaxed pb-6">
-              Vi rekommenderar att du använder appen dagligen för att få bästa resultat. 
+              Vi rekommenderar att du använder appen dagligen i början av programmet. 
               Checka in varje dag för att se dina tips och följa dina framsteg.
             </AccordionContent>
           </AccordionItem>

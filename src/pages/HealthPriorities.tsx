@@ -21,17 +21,17 @@ interface Medication {
 const healthPriorities: HealthPriority[] = [
   {
     id: "cholesterol",
-    label: "Sänka mitt kolesterol",
+    label: "Sänk mitt kolesterol",
     description: "Få tips om hälsosamma fetter och mat som sänker kolesterolet."
   },
   {
     id: "bloodPressure",
-    label: "Sänka mitt blodtryck",
+    label: "Sänk mitt blodtryck",
     description: "Få påminnelser och alternativ för att hålla koll på saltet."
   },
   {
     id: "diabetes",
-    label: "Minska risker för diabetes typ 2",
+    label: "Minska risken för diabetes typ 2",
     description: "Få råd om kolhydrater och socker vid typ 2-diabetes eller metabola syndromet."
   },
   {
@@ -69,7 +69,7 @@ const medications: Medication[] = [
       },
       {
         id: "diuretics",
-        label: "Vattenburna tabletter",
+        label: "Diuretika",
         description: "Till exempel: Hydroklorotiazid"
       }
     ]
