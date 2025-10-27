@@ -138,7 +138,10 @@ const Tutorial = () => {
         {/* Navigation buttons at bottom */}
         <div className="flex gap-3 pt-4">
           <button
-            onClick={() => navigate('/app/today')}
+            onClick={() => {
+              localStorage.setItem('tutorialCompleted', 'true');
+              navigate('/app/today');
+            }}
             className="flex-1 bg-[#212658] text-white py-4 rounded-lg font-semibold hover:opacity-90 transition-opacity"
           >
             Kom igång

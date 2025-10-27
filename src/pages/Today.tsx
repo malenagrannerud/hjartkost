@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Clock } from "lucide-react";
+import { Clock, Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 
@@ -95,11 +95,17 @@ interface MarkedTip {
 const Today = () => {
   const navigate = useNavigate();
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
+  const [tutorialCompleted, setTutorialCompleted] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem('markedTips');
     if (saved) {
       setMarkedTips(JSON.parse(saved));
+    }
+    
+    const tutorialDone = localStorage.getItem('tutorialCompleted');
+    if (tutorialDone === 'true') {
+      setTutorialCompleted(true);
     }
   }, []);
 
@@ -120,7 +126,13 @@ const Today = () => {
           {/* Step 1 */}
           <div className="relative flex gap-4 mb-4 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className="w-6 h-6 rounded-full bg-background border-2 border-primary shadow-md z-10" />
+              <div className={`w-6 h-6 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+                tutorialCompleted 
+                  ? 'bg-primary border-2 border-primary' 
+                  : 'bg-background border-2 border-primary'
+              }`}>
+                {tutorialCompleted && <Check size={14} className="text-white" strokeWidth={3} />}
+              </div>
               <div className="w-0.5 h-12 bg-primary/20 mt-1" />
             </div>
             <div 
