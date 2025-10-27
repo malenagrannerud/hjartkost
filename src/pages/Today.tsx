@@ -124,38 +124,39 @@ const Today = () => {
   const markedTipsList = tips.filter(tip => markedTips.some(mt => mt.id === tip.id));
 
   return (
-    <div className="p-6 pb-24 space-y-6">
+    <div className="p-6 pb-24 space-y-8">
       <header>
-        <h1 className="text-3xl font-bold text-primary mb-1">Idag</h1>
-        <p className="text-primary/90 text-base font-normal">Uppdateras i din egen takt</p>
+        <h1 className="text-4xl font-bold text-primary mb-2">Idag</h1>
+        <p className="text-primary/90 text-lg font-normal">Uppdateras i din egen takt</p>
       </header>
 
-      <div className="space-y-4">
-        <h3 className="text-lg font-bold text-primary">Starta här</h3>
+      <div className="space-y-6">
+        <h3 className="text-2xl font-bold text-primary">Starta här</h3>
         
         {/* Vertical Progress Stepper */}
         <div className="relative">
           {/* Step 1 */}
-          <div className="relative flex gap-4 mb-4 items-center">
+          <div className="relative flex gap-5 mb-6 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className={`w-6 h-6 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+              <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
                 tutorialCompleted 
                   ? 'bg-primary border-2 border-primary' 
                   : 'bg-background border-2 border-primary'
               }`}>
-                {tutorialCompleted && <Check size={14} className="text-white" strokeWidth={3} />}
+                {tutorialCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
               </div>
-              <div className="w-0.5 h-12 bg-primary/20 mt-1" />
+              <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border border-border bg-card"
+              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
               onClick={() => navigate('/app/tutorial')}
+              aria-label="Gå till tutorial"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-1">Lär dej om hur appen fungerar</h4>
-                  <div className="flex items-center gap-1 text-xs text-primary/70 font-semibold">
-                    <Clock size={16} strokeWidth={2.5} />
+                  <h4 className="font-bold text-primary mb-2 text-lg">Lär dej om hur appen fungerar</h4>
+                  <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
+                    <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
                 </div>
@@ -164,26 +165,27 @@ const Today = () => {
           </div>
           
           {/* Step 2 */}
-          <div className="relative flex gap-4 mb-4 items-center">
+          <div className="relative flex gap-5 mb-6 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className={`w-6 h-6 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+              <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
                 questionnaireCompleted 
                   ? 'bg-primary border-2 border-primary' 
                   : 'bg-background border-2 border-primary'
               }`}>
-                {questionnaireCompleted && <Check size={14} className="text-white" strokeWidth={3} />}
+                {questionnaireCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
               </div>
-              <div className="w-0.5 h-12 bg-primary/20 mt-1" />
+              <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border border-border bg-card"
+              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
               onClick={() => navigate('/app/questionnaire')}
+              aria-label="Gå till frågeformulär"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-1">Frågeformulär</h4>
-                  <div className="flex items-center gap-1 text-xs text-primary/70 font-semibold">
-                    <Clock size={16} strokeWidth={2.5} />
+                  <h4 className="font-bold text-primary mb-2 text-lg">Frågeformulär</h4>
+                  <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
+                    <Clock size={20} strokeWidth={2.5} />
                     <span>8 min</span>
                   </div>
                 </div>
@@ -192,23 +194,24 @@ const Today = () => {
           </div>
           
           {/* Step 3 */}
-          <div className="relative flex gap-4 items-center">
+          <div className="relative flex gap-5 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className={`w-6 h-6 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+              <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
                 healthMetricsCompleted 
                   ? 'bg-primary border-2 border-primary' 
                   : 'bg-background border-2 border-primary'
               }`}>
-                {healthMetricsCompleted && <Check size={14} className="text-white" strokeWidth={3} />}
+                {healthMetricsCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
               </div>
             </div>
             <div 
-              className="flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border border-border bg-card"
+              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
               onClick={() => navigate('/app/health-metrics')}
+              aria-label="Gå till hälsomätningar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary">Vikt och blodtryck</h4>
+                  <h4 className="font-bold text-primary text-lg">Vikt och blodtryck</h4>
                 </div>
               </div>
             </div>
@@ -216,19 +219,20 @@ const Today = () => {
         </div>
       </div>
 
-      <div className="space-y-4 mt-8">
-        <h3 className="text-lg font-bold text-primary">Mina valda tips</h3>
+      <div className="space-y-6 mt-10">
+        <h3 className="text-2xl font-bold text-primary">Mina valda tips</h3>
         {markedTipsList.length > 0 ? (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {markedTipsList.map((tip) => (
               <Card 
                 key={tip.id} 
-                className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}
+                className={`p-6 hover:shadow-lg transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-sm min-h-[80px]`}
                 onClick={() => navigate(`/app/tips/${tip.id}`)}
+                aria-label={`Visa detaljer om ${tip.title}`}
               >
                 <div>
-                  <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
-                  <div className="text-blue-900 text-xs font-bold">
+                  <h3 className={`font-bold text-lg ${tip.textColor} mb-2`}>{tip.title}</h3>
+                  <div className="text-blue-900 text-base font-bold">
                     {tip.healthScore} poäng
                   </div>
                 </div>
@@ -236,7 +240,7 @@ const Today = () => {
             ))}
           </div>
         ) : (
-          <p className="text-primary/70 text-sm">Välj ett eller två tips för veckan under "Tips"</p>
+          <p className="text-primary/70 text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
         )}
       </div>
     </div>

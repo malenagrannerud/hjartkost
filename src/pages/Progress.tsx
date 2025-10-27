@@ -382,10 +382,10 @@ const Progress = () => {
   };
 
   return (
-    <div className="p-6 pb-24 space-y-6 min-h-screen">
+    <div className="p-6 pb-24 space-y-8 min-h-screen">
       <header>
-        <h1 className="text-3xl font-bold text-blue-900 mb-1">Framsteg</h1>
-        <p className="text-blue-900/90 text-base font-normal">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+        <h1 className="text-4xl font-bold text-blue-900 mb-2">Framsteg</h1>
+        <p className="text-blue-900/90 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
       </header>
 
       <div className="pt-6 pb-0 flex justify-center">
@@ -394,7 +394,7 @@ const Progress = () => {
           selected={date}
           onSelect={handleDayClick}
           locale={sv}
-          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-head_cell]:capitalize mx-auto text-sm [&_button]:cursor-pointer"
+          className="rounded-md border-0 [&_.rdp-caption_label]:font-bold [&_.rdp-caption_label]:capitalize [&_.rdp-caption_label]:text-xl [&_.rdp-head_cell]:capitalize [&_.rdp-head_cell]:text-base mx-auto text-lg [&_button]:cursor-pointer [&_button]:min-h-[48px] [&_button]:min-w-[48px] [&_button]:text-lg"
           modifiers={{
             achievement: achievementDays,
             weight: weightDays,
@@ -489,26 +489,26 @@ const Progress = () => {
 
           <div className="space-y-4 py-4">
             <div>
-              <Label className="text-base mb-3 block">Vad vill du logga?</Label>
-              <div className="grid grid-cols-3 gap-2">
+              <Label className="text-lg mb-4 block font-semibold">Vad vill du logga?</Label>
+              <div className="grid grid-cols-3 gap-3">
                 <Button
                   variant={entryType === 'tip' ? 'default' : 'outline'}
                   onClick={() => setEntryType('tip')}
-                  className="w-full"
+                  className="w-full text-base py-6 min-h-[56px]"
                 >
                   Tips
                 </Button>
                 <Button
                   variant={entryType === 'weight' ? 'default' : 'outline'}
                   onClick={() => setEntryType('weight')}
-                  className="w-full"
+                  className="w-full text-base py-6 min-h-[56px]"
                 >
                   Vikt
                 </Button>
                 <Button
                   variant={entryType === 'bloodPressure' ? 'default' : 'outline'}
                   onClick={() => setEntryType('bloodPressure')}
-                  className="w-full"
+                  className="w-full text-base py-6 min-h-[56px]"
                 >
                   Blodtryck
                 </Button>
@@ -600,11 +600,11 @@ const Progress = () => {
             )}
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setDialogOpen(false)}>
+          <DialogFooter className="gap-3">
+            <Button variant="outline" onClick={() => setDialogOpen(false)} className="text-base py-6 min-h-[56px]">
               Avbryt
             </Button>
-            <Button onClick={handleSaveEntry}>
+            <Button onClick={handleSaveEntry} className="text-base py-6 min-h-[56px]">
               Spara
             </Button>
           </DialogFooter>
