@@ -59,6 +59,8 @@ const Progress = () => {
   // Load day logs and marked tips from localStorage
   useEffect(() => {
     const savedLogs = localStorage.getItem('dayLogs');
+    let logs: DayLog[] = [];
+    
     if (savedLogs) {
       const parsed = JSON.parse(savedLogs);
       // Migrate old data format to new format
@@ -74,8 +76,7 @@ const Progress = () => {
         }
         return log;
       });
-      setDayLogs(migratedLogs);
-      localStorage.setItem('dayLogs', JSON.stringify(migratedLogs)); // Save migrated data
+      logs = migratedLogs;
     } else {
       // Demo data for demonstration
       const demoLogs = [
@@ -99,8 +100,66 @@ const Progress = () => {
           ] 
         }
       ];
-      setDayLogs(demoLogs);
+      logs = demoLogs;
     }
+
+    // Load health metrics from HealthMetrics page
+    const savedHealthMetrics = localStorage.getItem('healthMetrics');
+    if (savedHealthMetrics) {
+      const metrics = JSON.parse(savedHealthMetrics);
+      const metricsDate = format(new Date(metrics.date), 'yyyy-MM-dd');
+      
+      // Check if this date already has entries
+      const existingLog = logs.find(log => log.date === metricsDate);
+      
+      if (existingLog) {
+        // Add weight if not already present
+        const hasWeight = existingLog.entries.some(e => e.type === 'weight');
+        if (!hasWeight && metrics.weight) {
+          existingLog.entries.push({ 
+            type: 'weight' as const, 
+            value: parseFloat(metrics.weight) 
+          });
+        }
+        
+        // Add blood pressure if not already present
+        const hasBP = existingLog.entries.some(e => e.type === 'bloodPressure');
+        if (!hasBP && metrics.systolic && metrics.diastolic) {
+          existingLog.entries.push({ 
+            type: 'bloodPressure' as const, 
+            value: parseInt(metrics.systolic), 
+            value2: parseInt(metrics.diastolic) 
+          });
+        }
+      } else {
+        // Create new log entry with the metrics
+        const newEntries: DayLog['entries'] = [];
+        
+        if (metrics.weight) {
+          newEntries.push({ 
+            type: 'weight' as const, 
+            value: parseFloat(metrics.weight) 
+          });
+        }
+        
+        if (metrics.systolic && metrics.diastolic) {
+          newEntries.push({ 
+            type: 'bloodPressure' as const, 
+            value: parseInt(metrics.systolic), 
+            value2: parseInt(metrics.diastolic) 
+          });
+        }
+        
+        if (newEntries.length > 0) {
+          logs.push({ date: metricsDate, entries: newEntries });
+        }
+      }
+      
+      // Save the updated logs back to localStorage
+      localStorage.setItem('dayLogs', JSON.stringify(logs));
+    }
+    
+    setDayLogs(logs);
 
     const savedTips = localStorage.getItem('markedTips');
     if (savedTips) {
