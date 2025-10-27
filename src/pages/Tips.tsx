@@ -16,7 +16,7 @@ const tips = [
   },
   {
     id: 2,
-    title: "Välj fullkorn",
+    title: "Fyll på med fullkorn",
     detailedInfo:
       "Fullkornsprodukter innehåller mer fibrer, vitaminer och mineraler än produkter av raffinerat mjöl. Fibrer mättar bra och är viktiga för matsmältningen. Fullkorn kan också ge skydd mot hjärt-kärlsjukdom och typ 2-diabetes. Välj gärna rågbröd, havregryn, fullkornspasta och råris.",
     category: "Livsmedelsverket",
