@@ -16,8 +16,8 @@ export const tips: Tip[] = [
     color: "bg-[#C8E6A1]",
     textColor: "text-blue-900",
     healthScore: 4,
-    description: "Ät minst fem nävar om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
-    detailedInfo: "Frukt och grönsaker innehåller vitaminer, mineraler, fibrer och antioxidanter som skyddar din hälsa. Genom att äta olika färger får du en bredd av näringsämnen.",
+    description: "Frukt",
+    detailedInfo: "Fem nävar grönsaker, rotfrukter, frukter och bär per dag minskar risken för hjärt- och kärlsjukdom, cancer i bland annat bröst och tjocktarm samt förtidig död. Det beror på det höga innehållet av fibrer och antioxidanter samt ett lågt energiinnehåll.",
     steps: [
       "Lägg till en portion grönsaker till varje måltid",
       "Förbered frukt och grönsaker på söndagar så de är lättillgängliga",
@@ -40,7 +40,7 @@ export const tips: Tip[] = [
   },
   {
     id: 3,
-    title: "Fisk och skaldjur 2-3 gånger i veckan",
+    title: "Fisk och skaldjur 3 gånger i veckan",
     color: "bg-cyan-100",
     textColor: "text-blue-900",
     healthScore: 3,
@@ -54,7 +54,7 @@ export const tips: Tip[] = [
   },
   {
     id: 4,
-    title: "Rätt fett!",
+    title: "Rätt fett",
     color: "bg-yellow-100",
     textColor: "text-blue-900",
     healthScore: 3,
@@ -96,7 +96,7 @@ export const tips: Tip[] = [
   },
   {
     id: 7,
-    title: "Salt-halt!",
+    title: "Salt-halt",
     color: "bg-orange-100",
     textColor: "text-blue-900",
     healthScore: 4,

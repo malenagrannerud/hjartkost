@@ -145,10 +145,10 @@ const HealthPriorities = () => {
           >
             <ArrowLeft size={28} className="text-[#212658]" />
           </button>
-          <h1 className="text-3xl font-bold text-[#212658]">Anpassa appen efter mina mål</h1>
+          <h1 className="text-3xl font-bold text-[#212658]">Anpassa mina tips</h1>
         </div>
         <p className="text-[#212658]/70 text-base ml-14">
-          Välj alla som passar dina mål. Dina tips anpassas då för att du ska nå dina mål – du kan ändra detta när som helst.
+          Dina tips anpassas efter dina mål och mediciner du tar. Du kan ändra detta när som helst under "Inställningar".
         </p>
       </header>
 

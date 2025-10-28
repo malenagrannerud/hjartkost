@@ -46,7 +46,7 @@ const Today = () => {
       <header>
         <h1 className="text-4xl font-bold text-[#212658] mb-3">Idag</h1>
         <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">
-          Välj ut tips att fokusera på denna vecka
+          Uppdateras i din takt  
         </p>
       </header>
 
@@ -74,7 +74,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Hur appen fungerar</h4>
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Så fungerar appen</h4>
                   <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
@@ -103,7 +103,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa råd</h4>
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa mina tips</h4>
                   <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
