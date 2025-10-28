@@ -174,7 +174,7 @@ const Today = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
+    <div className="min-h-screen p-6 pb-32 space-y-8 bg-[#FCFAF7]">
       <header>
         <div className="flex items-start justify-between mb-3">
           <h1 className="text-4xl font-bold text-[#212658]">Idag</h1>
@@ -221,20 +221,20 @@ const Today = () => {
       </header>
 
       {/* Unified Progress Flow */}
-      <div className="space-y-2">
+      <div className="space-y-4 relative z-10">
         {/* Starta här section */}
         <h2 className="text-base font-bold text-[#212658] ml-9 mb-2">Starta här</h2>
 
         {/* Onboarding items (first 3) */}
-        {allProgressItems.slice(0, 3).map((item, index) => {
+        {allProgressItems.slice(0, 3).map((item, index, onboardingItems) => {
           const state = itemStates[item.id];
           const isCompleted = state?.completed || false;
-          const isLastOnboarding = index === 2 && markedTipsList.length === 0;
+          const isLastOnboarding = index === onboardingItems.length - 1 && markedTipsList.length === 0;
 
           return (
-            <div key={item.id} className="relative flex gap-4 mb-4 items-center">
+            <div key={item.id} className="relative flex items-start gap-4">
               {/* Checkpoint Circle with Dotted Line */}
-              <div className="flex flex-col items-center flex-shrink-0">
+              <div className="flex flex-col items-center flex-shrink-0 pt-5">
                 <div 
                   className={`w-5 h-5 rounded-full shadow-sm z-10 flex items-center justify-center transition-colors ${getCircleColor(item.id)}`}
                 >
@@ -242,13 +242,13 @@ const Today = () => {
                 </div>
                 {/* Dotted line - show unless last onboarding AND no tips */}
                 {!isLastOnboarding && (
-                  <div className="border-l-2 border-dotted border-primary/30 h-20 mt-1" />
+                  <div className="border-l-2 border-dotted border-primary/30 h-16 mt-1" />
                 )}
               </div>
               
               {/* Card Content */}
               <div 
-                className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] ${
+                className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] mb-4 ${
                   item.type === 'tip' 
                     ? `${item.color} border-0 shadow-sm` 
                     : 'bg-card border-2 border-border'
@@ -275,7 +275,7 @@ const Today = () => {
         {/* Veckans tips section - only if tips exist */}
         {markedTipsList.length > 0 && (
           <>
-            <h2 className="text-base font-bold text-[#212658] ml-9 mb-2 mt-6">Veckans tips</h2>
+            <h2 className="text-base font-bold text-[#212658] ml-9 mb-2">Veckans tips</h2>
 
             {/* Tips items (from index 3 onwards) */}
             {allProgressItems.slice(3).map((item, index, tipsArray) => {
@@ -284,9 +284,9 @@ const Today = () => {
               const isLast = index === tipsArray.length - 1;
 
               return (
-                <div key={item.id} className="relative flex gap-4 mb-4 items-center">
+                <div key={item.id} className="relative flex items-start gap-4">
                   {/* Checkpoint Circle with Dotted Line */}
-                  <div className="flex flex-col items-center flex-shrink-0">
+                  <div className="flex flex-col items-center flex-shrink-0 pt-5">
                     <div 
                       className={`w-5 h-5 rounded-full shadow-sm z-10 flex items-center justify-center transition-colors ${getCircleColor(item.id)}`}
                     >
@@ -294,13 +294,13 @@ const Today = () => {
                     </div>
                     {/* Dotted line - only if not last tip */}
                     {!isLast && (
-                      <div className="border-l-2 border-dotted border-primary/30 h-20 mt-1" />
+                      <div className="border-l-2 border-dotted border-primary/30 h-16 mt-1" />
                     )}
                   </div>
                   
                   {/* Card Content */}
                   <div 
-                    className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] ${
+                    className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] mb-4 ${
                       item.type === 'tip' 
                         ? `${item.color} border-0 shadow-sm` 
                         : 'bg-card border-2 border-border'
@@ -329,6 +329,36 @@ const Today = () => {
             </p>
           </div>
         )}
+      </div>
+
+      {/* Bottom Navigation Bar - Moved to front */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 py-3 px-6">
+        <div className="flex justify-between items-center max-w-md mx-auto">
+          <Button 
+            variant="ghost" 
+            className="flex flex-col items-center gap-1 h-auto py-2"
+            onClick={() => navigate('/app/today')}
+          >
+            <div className="w-2 h-2 bg-[#212658] rounded-full"></div>
+            <span className="text-xs font-medium text-[#212658]">Idag</span>
+          </Button>
+          <Button 
+            variant="ghost" 
+            className="flex flex-col items-center gap-1 h-auto py-2"
+            onClick={() => navigate('/app/tips')}
+          >
+            <div className="w-2 h-2 bg-[#212658]/30 rounded-full"></div>
+            <span className="text-xs font-medium text-[#212658]/70">Tips</span>
+          </Button>
+          <Button 
+            variant="ghost" 
+            className="flex flex-col items-center gap-1 h-auto py-2"
+            onClick={() => navigate('/app/profile')}
+          >
+            <div className="w-2 h-2 bg-[#212658]/30 rounded-full"></div>
+            <span className="text-xs font-medium text-[#212658]/70">Profil</span>
+          </Button>
+        </div>
       </div>
     </div>
   );
