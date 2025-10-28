@@ -230,7 +230,7 @@ const Today = () => {
           
           {/* Step 3 */}
           <div className="relative flex gap-5 items-center">
-            <div className="flex items-center flex-shrink-0">
+            <div className="flex flex-col items-center flex-shrink-0">
               <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
                 healthMetricsCompleted 
                   ? 'bg-primary border-2 border-primary' 
