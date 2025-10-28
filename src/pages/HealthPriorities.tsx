@@ -125,6 +125,16 @@ const HealthPriorities = () => {
     localStorage.setItem('healthPriorities', JSON.stringify(data));
     localStorage.setItem('healthPrioritiesCompleted', 'true');
     
+    // Add to completed activities
+    const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
+    completedActivities.push({
+      id: 'health-priorities',
+      title: 'Anpassa tips efter mina mål',
+      completedDate: new Date().toISOString(),
+      type: 'health-priorities'
+    });
+    localStorage.setItem('completedActivities', JSON.stringify(completedActivities));
+    
     toast({
       title: "Inställningar sparade",
       description: "Dina val har sparats och appen anpassas efter dina mål.",

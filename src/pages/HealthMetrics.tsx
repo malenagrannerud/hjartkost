@@ -30,6 +30,17 @@ const HealthMetrics = () => {
     };
     localStorage.setItem('healthMetrics', JSON.stringify(metrics));
     localStorage.setItem('healthMetricsCompleted', 'true');
+    
+    // Add to completed activities
+    const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
+    completedActivities.push({
+      id: 'health-metrics',
+      title: 'Vikt och blodtryck',
+      completedDate: new Date().toISOString(),
+      type: 'health-metrics'
+    });
+    localStorage.setItem('completedActivities', JSON.stringify(completedActivities));
+    
     navigate('/app/today');
   };
 

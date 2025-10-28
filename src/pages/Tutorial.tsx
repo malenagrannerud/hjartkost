@@ -141,6 +141,17 @@ const Tutorial = () => {
           <button
             onClick={() => {
               localStorage.setItem('tutorialCompleted', 'true');
+              
+              // Add to completed activities
+              const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
+              completedActivities.push({
+                id: 'tutorial',
+                title: 'Så fungerar appen',
+                completedDate: new Date().toISOString(),
+                type: 'tutorial'
+              });
+              localStorage.setItem('completedActivities', JSON.stringify(completedActivities));
+              
               navigate('/app/today');
             }}
             className="flex-1 bg-[#212658] text-white py-6 rounded-lg font-bold text-xl hover:opacity-90 transition-opacity min-h-[64px]"
