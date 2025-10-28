@@ -242,7 +242,7 @@ const Today = () => {
                 </div>
                 {/* Dotted line - show unless last onboarding AND no tips */}
                 {!isLastOnboarding && (
-                  <div className="border-l-2 border-dotted border-primary/30 h-20 mt-1" />
+                  <div className="border-l-2 border-dotted border-primary/30 flex-1 mt-1 min-h-[20px]" />
                 )}
               </div>
               
