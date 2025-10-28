@@ -384,11 +384,11 @@ const Progress = () => {
   };
 
   return (
-    <div className="p-6 pb-24 space-y-8 min-h-screen">
+    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
       <header className="flex items-start justify-between">
         <div>
-          <h1 className="text-4xl font-bold text-blue-900 mb-2">Framsteg</h1>
-          <p className="text-blue-900/90 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+          <h1 className="text-4xl font-bold text-[#212658] mb-2">Framsteg</h1>
+          <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
         </div>
         <button
           onClick={() => navigate('/app/settings')}

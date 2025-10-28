@@ -42,14 +42,16 @@ const Today = () => {
   const markedTipsList = tips.filter(tip => markedTips.some(mt => mt.id === tip.id));
 
   return (
-    <div className="p-6 pb-24 space-y-8">
+    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
       <header>
-        <h1 className="text-4xl font-bold text-primary mb-2">Idag</h1>
-        <p className="text-primary/90 text-lg font-normal">Uppdateras i din egen takt</p>
+        <h1 className="text-4xl font-bold text-[#212658] mb-3">Idag</h1>
+        <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">
+          Välj ut tips att fokusera på denna vecka
+        </p>
       </header>
 
       <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-primary">Starta här</h3>
+        <h3 className="text-2xl font-bold text-[#212658]">Starta här</h3>
         
         {/* Vertical Progress Stepper */}
         <div className="relative">
@@ -72,8 +74,8 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-2 text-lg">Hur appen fungerar</h4>
-                  <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Hur appen fungerar</h4>
+                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -101,8 +103,8 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary mb-2 text-lg">Anpassa mina råd</h4>
-                  <div className="flex items-center gap-2 text-base text-primary/70 font-semibold">
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa mina råd</h4>
+                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -129,7 +131,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-primary text-lg">Vikt och blodtryck</h4>
+                  <h4 className="font-bold text-[#212658] text-lg">Vikt och blodtryck</h4>
                 </div>
               </div>
             </div>
@@ -138,7 +140,7 @@ const Today = () => {
       </div>
 
       <div className="space-y-6 mt-10">
-        <h3 className="text-2xl font-bold text-primary">Mina tips för vecka ett</h3>
+        <h3 className="text-2xl font-bold text-[#212658]">Mina tips för vecka ett</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
@@ -158,7 +160,7 @@ const Today = () => {
             ))}
           </div>
         ) : (
-          <p className="text-primary/70 text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
+          <p className="text-[#212658]/70 text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
         )}
       </div>
     </div>

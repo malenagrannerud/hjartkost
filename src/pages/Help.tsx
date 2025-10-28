@@ -3,10 +3,10 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const Help = () => {
   return (
-    <div className="p-6 pb-24 space-y-8">
+    <div className="min-h-screen p-6 pb-16 space-y-8 bg-[#FCFAF7]">
       <header>
-        <h1 className="text-4xl font-bold text-primary mb-2">Hjälp</h1>
-        <p className="text-primary/90 text-lg font-normal">Vanliga frågor och svar</p>
+        <h1 className="text-4xl font-bold text-[#212658] mb-2">Hjälp</h1>
+        <p className="text-[#212658]/70 text-lg font-normal">Vanliga frågor och svar</p>
       </header>
 
       <Card className="p-8 border-2">

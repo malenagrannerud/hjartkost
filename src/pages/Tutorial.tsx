@@ -7,7 +7,7 @@ const Tutorial = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen pb-24 bg-[#FCFAF7]">
+    <div className="min-h-screen pb-16 bg-[#FCFAF7]">
       {/* Header */}
       <div className="bg-white border-b border-border sticky top-0 z-10">
         <div className="p-6">

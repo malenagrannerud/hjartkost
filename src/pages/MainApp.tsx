@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { BottomNav } from "@/components/BottomNav";
 import Today from "./Today";
 import Tips from "./Tips";
@@ -11,6 +11,11 @@ import HealthMetrics from "./HealthMetrics";
 import Settings from "./Settings";
 
 const MainApp = () => {
+  const location = useLocation();
+  
+  // Show bottom nav only on main pages (Headspace style)
+  const showBottomNav = ["/app/today", "/app/tips", "/app/progress"].includes(location.pathname);
+  
   return (
     <>
       <div className="flex-1 bg-background overflow-y-auto">
@@ -27,7 +32,7 @@ const MainApp = () => {
           <Route path="/settings" element={<Settings />} />
         </Routes>
       </div>
-      <BottomNav />
+      {showBottomNav && <BottomNav />}
     </>
   );
 };

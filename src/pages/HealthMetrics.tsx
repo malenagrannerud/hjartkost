@@ -36,7 +36,7 @@ const HealthMetrics = () => {
   const isValid = weight !== "" && systolic !== "" && diastolic !== "";
 
   return (
-    <div className="min-h-screen pb-24 bg-[#FCFAF7]">
+    <div className="min-h-screen pb-16 bg-[#FCFAF7]">
       {/* Header */}
       <header className="bg-white border-b border-border sticky top-0 z-10 p-6">
         <div className="flex items-center gap-3 mb-2">
