@@ -99,15 +99,6 @@ const HealthPriorities = () => {
       setSelectedPriorities(data.priorities || []);
       setSelectedMedications(data.medications || []);
     }
-
-    // Track that this page was opened
-    const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
-    if (!itemStates['health-priorities']) {
-      itemStates['health-priorities'] = { opened: false, completed: false };
-    }
-    itemStates['health-priorities'].opened = true;
-    itemStates['health-priorities'].openedDate = new Date().toISOString();
-    localStorage.setItem('itemStates', JSON.stringify(itemStates));
   }, []);
 
   const handlePriorityToggle = (id: string) => {
@@ -133,15 +124,6 @@ const HealthPriorities = () => {
     };
     localStorage.setItem('healthPriorities', JSON.stringify(data));
     localStorage.setItem('healthPrioritiesCompleted', 'true');
-    
-    // Update item state to completed
-    const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
-    if (!itemStates['health-priorities']) {
-      itemStates['health-priorities'] = { opened: true, completed: false };
-    }
-    itemStates['health-priorities'].completed = true;
-    itemStates['health-priorities'].completedDate = new Date().toISOString();
-    localStorage.setItem('itemStates', JSON.stringify(itemStates));
     
     // Add to completed activities
     const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
