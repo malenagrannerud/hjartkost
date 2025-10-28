@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"; // state - track and update marked 
 import { useNavigate } from "react-router-dom"; // navigate to TipDeital when cards are clicked
 import { Card } from "@/components/ui/card"; // Reusable component from components/ui/card. @ point
 import { Check } from "lucide-react";        // checkmark icon
+import { tips } from './Tips';
 
 export const tips = [    // array of 11 tips
   {
