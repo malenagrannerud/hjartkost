@@ -119,10 +119,11 @@ const Today = () => {
   );
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
-      <header>
+    <div className="min-h-screen p-6 pb-24 bg-background">
+      {/* Header */}
+      <header className="mb-8">
         <div className="flex items-start justify-between mb-3">
-          <h1 className="text-4xl font-bold text-[#212658]">Idag</h1>
+          <h1 className="text-4xl font-bold text-foreground">Idag</h1>
           <Sheet>
             <SheetTrigger asChild>
               <Button 
@@ -131,28 +132,28 @@ const Today = () => {
                 className="h-10 w-10 rounded-full hover:bg-accent"
                 aria-label="Visa senaste aktiviteter"
               >
-                <History size={24} className="text-[#212658]" />
+                <History size={20} className="text-foreground" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:max-w-md bg-[#FCFAF7]">
-              <SheetHeader>
-                <SheetTitle className="text-2xl font-bold text-[#212658]">Senast</SheetTitle>
+            <SheetContent side="right" className="w-full sm:max-w-md bg-background">
+              <SheetHeader className="mb-6">
+                <SheetTitle className="text-2xl font-bold text-foreground">Senast</SheetTitle>
               </SheetHeader>
-              <div className="mt-6 space-y-4">
+              <div className="space-y-4">
                 {allCompletedActivities.length > 0 ? (
                   allCompletedActivities.map((activity, index) => (
                     <Card 
                       key={`${activity.id}-${index}`}
-                      className="p-4 bg-card border-2 border-border"
+                      className="p-4 bg-card border-border"
                     >
-                      <h4 className="font-semibold text-[#212658] mb-1">{activity.title}</h4>
-                      <p className="text-sm text-[#212658]/60">
+                      <h4 className="font-semibold text-card-foreground mb-1">{activity.title}</h4>
+                      <p className="text-sm text-muted-foreground">
                         {getRelativeTime(activity.completedDate)}
                       </p>
                     </Card>
                   ))
                 ) : (
-                  <p className="text-[#212658]/70 text-center py-8">
+                  <p className="text-muted-foreground text-center py-8">
                     Inga genomförda aktiviteter än
                   </p>
                 )}
@@ -160,114 +161,112 @@ const Today = () => {
             </SheetContent>
           </Sheet>
         </div>
-        <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">
+        <p className="text-lg text-muted-foreground leading-relaxed">
           Uppdateras i din takt  
         </p>
       </header>
 
-      <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-[#212658]">Starta här</h3>
+      {/* Starta här Section */}
+      <section className="mb-10">
+        <h2 className="text-2xl font-bold text-foreground mb-6">Starta här</h2>
         
         {/* Vertical Progress Stepper */}
-        <div className="relative">
+        <div className="space-y-4">
           {/* Step 1 */}
-          <div className="relative flex gap-5 mb-6 items-center">
+          <div className="progress-item">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+              <div className={`progress-dot ${
                 tutorialCompleted 
-                  ? 'bg-primary border-2 border-primary' 
-                  : 'bg-background border-2 border-primary'
+                  ? 'bg-primary border-primary' 
+                  : 'bg-background border-primary'
               }`}>
-                {tutorialCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
+                {tutorialCompleted && <Check size={14} className="text-primary-foreground" strokeWidth={3} />}
               </div>
-              <div className="w-0.5 h-14 bg-primary/20 mt-1" />
+              <div className="progress-line" />
             </div>
-            <div 
-              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
+            <Card 
+              className="flex-1 p-5 hover:bg-accent/50 transition-all cursor-pointer active:scale-[0.98] min-h-[80px] card-hover"
               onClick={() => navigate('/app/tutorial')}
-              aria-label="Gå till tutorial"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Så fungerar appen</h4>
-                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
-                    <Clock size={20} strokeWidth={2.5} />
+                  <h3 className="font-bold text-card-foreground mb-2">Så fungerar appen</h3>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
+                    <Clock size={16} />
                     <span>5 min</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
           
           {/* Step 2 */}
-          <div className="relative flex gap-5 mb-6 items-center">
+          <div className="progress-item">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+              <div className={`progress-dot ${
                 healthPrioritiesCompleted 
-                  ? 'bg-primary border-2 border-primary' 
-                  : 'bg-background border-2 border-primary'
+                  ? 'bg-primary border-primary' 
+                  : 'bg-background border-primary'
               }`}>
-                {healthPrioritiesCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
+                {healthPrioritiesCompleted && <Check size={14} className="text-primary-foreground" strokeWidth={3} />}
               </div>
-              <div className="w-0.5 h-14 bg-primary/20 mt-1" />
+              <div className="progress-line" />
             </div>
-            <div 
-              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
+            <Card 
+              className="flex-1 p-5 hover:bg-accent/50 transition-all cursor-pointer active:scale-[0.98] min-h-[80px] card-hover"
               onClick={() => navigate('/app/health-priorities')}
-              aria-label="Gå till mina hälsoprioriteringar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa tips efter mina mål</h4>
-                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
-                    <Clock size={20} strokeWidth={2.5} />
+                  <h3 className="font-bold text-card-foreground mb-2">Anpassa tips efter mina mål</h3>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground font-medium">
+                    <Clock size={16} />
                     <span>5 min</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
           
           {/* Step 3 */}
-          <div className="relative flex gap-5 items-center">
+          <div className="progress-item">
             <div className="flex flex-col items-center flex-shrink-0">
-              <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
+              <div className={`progress-dot ${
                 healthMetricsCompleted 
-                  ? 'bg-primary border-2 border-primary' 
-                  : 'bg-background border-2 border-primary'
+                  ? 'bg-primary border-primary' 
+                  : 'bg-background border-primary'
               }`}>
-                {healthMetricsCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
+                {healthMetricsCompleted && <Check size={14} className="text-primary-foreground" strokeWidth={3} />}
               </div>
             </div>
-            <div 
-              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
+            <Card 
+              className="flex-1 p-5 hover:bg-accent/50 transition-all cursor-pointer active:scale-[0.98] min-h-[80px] card-hover"
               onClick={() => navigate('/app/health-metrics')}
-              aria-label="Gå till hälsomätningar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] text-lg">Vikt och blodtryck</h4>
+                  <h3 className="font-bold text-card-foreground">Vikt och blodtryck</h3>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="space-y-6 mt-10">
-        <h3 className="text-2xl font-bold text-[#212658]">Mina tips den här veckan</h3>
+      {/* Tips Section */}
+      <section>
+        <h2 className="text-2xl font-bold text-foreground mb-6">Mina tips den här veckan</h2>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
               <Card 
                 key={tip.id} 
-                className={`p-6 hover:shadow-lg transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-sm min-h-[80px]`}
+                className={`p-5 hover:shadow-lg transition-all cursor-pointer active:scale-[0.98] border-0 min-h-[80px] card-hover ${tip.color}`}
                 onClick={() => navigate(`/app/tips/${tip.id}`)}
-                aria-label={`Visa detaljer om ${tip.title}`}
               >
                 <div>
-                  <h3 className={`font-bold text-lg ${tip.textColor} mb-2`}>{tip.title}</h3>
-                  <div className="text-blue-900 text-base font-bold">
+                  <h3 className={`font-bold ${tip.textColor} mb-2`}>{tip.title}</h3>
+                  <div className="text-blue-900 text-sm font-bold">
                     {tip.healthScore} poäng
                   </div>
                 </div>
@@ -275,9 +274,13 @@ const Today = () => {
             ))}
           </div>
         ) : (
-          <p className="text-[#212658]/70 text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
+          <Card className="p-6 bg-accent/30 border-accent">
+            <p className="text-muted-foreground text-center leading-relaxed">
+              Välj ett eller två tips för veckan under "Tips"
+            </p>
+          </Card>
         )}
-      </div>
+      </section>
     </div>
   );
 };
