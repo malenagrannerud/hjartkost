@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { tips } from "@/data/tips";
@@ -6,6 +7,20 @@ const TipDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const tip = tips.find((t) => t.id === Number(id));
+
+  useEffect(() => {
+    if (tip) {
+      // Track that this tip was opened
+      const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
+      const tipKey = `tip-${tip.id}`;
+      if (!itemStates[tipKey]) {
+        itemStates[tipKey] = { opened: false, completed: false };
+      }
+      itemStates[tipKey].opened = true;
+      itemStates[tipKey].openedDate = new Date().toISOString();
+      localStorage.setItem('itemStates', JSON.stringify(itemStates));
+    }
+  }, [tip]);
 
   if (!tip) {
     return <div>Tip not found</div>;

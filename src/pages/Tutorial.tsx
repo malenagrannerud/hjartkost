@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Home, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
@@ -5,6 +6,17 @@ import fruitsImage from "@/assets/fruits-illustration.jpg";
 
 const Tutorial = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Track that this page was opened
+    const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
+    if (!itemStates['tutorial']) {
+      itemStates['tutorial'] = { opened: false, completed: false };
+    }
+    itemStates['tutorial'].opened = true;
+    itemStates['tutorial'].openedDate = new Date().toISOString();
+    localStorage.setItem('itemStates', JSON.stringify(itemStates));
+  }, []);
 
   return (
     <div className="min-h-screen pb-16 bg-[#FCFAF7]">
@@ -141,6 +153,15 @@ const Tutorial = () => {
           <button
             onClick={() => {
               localStorage.setItem('tutorialCompleted', 'true');
+              
+              // Update item state to completed
+              const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
+              if (!itemStates['tutorial']) {
+                itemStates['tutorial'] = { opened: true, completed: false };
+              }
+              itemStates['tutorial'].completed = true;
+              itemStates['tutorial'].completedDate = new Date().toISOString();
+              localStorage.setItem('itemStates', JSON.stringify(itemStates));
               
               // Add to completed activities
               const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');

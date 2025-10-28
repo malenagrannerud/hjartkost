@@ -19,6 +19,15 @@ const HealthMetrics = () => {
       setSystolic(metrics.systolic || "");
       setDiastolic(metrics.diastolic || "");
     }
+
+    // Track that this page was opened
+    const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
+    if (!itemStates['health-metrics']) {
+      itemStates['health-metrics'] = { opened: false, completed: false };
+    }
+    itemStates['health-metrics'].opened = true;
+    itemStates['health-metrics'].openedDate = new Date().toISOString();
+    localStorage.setItem('itemStates', JSON.stringify(itemStates));
   }, []);
 
   const handleSubmit = () => {
@@ -30,6 +39,15 @@ const HealthMetrics = () => {
     };
     localStorage.setItem('healthMetrics', JSON.stringify(metrics));
     localStorage.setItem('healthMetricsCompleted', 'true');
+    
+    // Update item state to completed
+    const itemStates = JSON.parse(localStorage.getItem('itemStates') || '{}');
+    if (!itemStates['health-metrics']) {
+      itemStates['health-metrics'] = { opened: true, completed: false };
+    }
+    itemStates['health-metrics'].completed = true;
+    itemStates['health-metrics'].completedDate = new Date().toISOString();
+    localStorage.setItem('itemStates', JSON.stringify(itemStates));
     
     // Add to completed activities
     const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
