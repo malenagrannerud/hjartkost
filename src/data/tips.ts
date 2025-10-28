@@ -13,7 +13,7 @@ export const tips: Tip[] = [
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    color: "bg-emerald-200",
+    color: "bg-green-400",
     textColor: "text-blue-900",
     healthScore: 4,
     description: "Frukt",
