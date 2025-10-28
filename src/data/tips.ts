@@ -20,8 +20,8 @@ export const tips: Tip[] = [
     detailedInfo:
       "Fem nävar grönsaker, rotfrukter, frukter och bär per dag minskar risken för hjärt- och kärlsjukdom, cancer i bland annat bröst och tjocktarm samt förtidig död. Det beror på det höga innehållet av fibrer och antioxidanter samt ett lågt energiinnehåll.",
     steps: [
-      "Lägg till en portion grönsaker till varje måltid",
-      "Förbered frukt och grönsaker på söndagar så de är lättillgängliga",
+      "Förbered frukter och grönsaker på söndagar så de är lättillgängliga",
+      "Förbered pizzasallad eller råkost för veckan.",
       "Börja alltid lunchen med en sallad eller grönsaker",
     ],
   },
@@ -32,10 +32,9 @@ export const tips: Tip[] = [
     textColor: "text-blue-900",
     healthScore: 3,
     description: "..",
-    detailedInfo:
-      "Fullkornsprodukter innehåller mer fibrer, vitaminer och mineraler än produkter av raffinerat mjöl. Fibrer mättar bra och är viktiga för matsmältningen.",
+    detailedInfo: "...",
     steps: [
-      "Byt ut ditt vanliga bröd mot fullkornsbröd denna vecka",
+      "Byt ut vitt bröd mot fullkornsbröd",
       "Välj havregryn eller fullkornsflingor till frukost",
       "Testa fullkornspasta eller råris istället för vanliga varianter",
     ],
@@ -46,12 +45,12 @@ export const tips: Tip[] = [
     color: "bg-cyan-100",
     textColor: "text-blue-900",
     healthScore: 3,
-    description: "Variera mellan fet fisk som lax, sill och makrill och magert som torsk",
+    description: "...",
     detailedInfo:
       "Fisk och skaldjur innehåller protein, D-vitamin, jod och selen. Fet fisk innehåller dessutom omega-3-fettsyror som är viktiga för hjärtat och hjärnan.",
     steps: [
       "Planera två fiskmiddagar varje vecka",
-      "Prova en ny fiskrätt varje månad",
+      "Fisksoppa kan varieras. Prova olika recept",
       "Köp fryst fisk för att alltid ha hemma",
     ],
   },
@@ -167,13 +166,9 @@ export const tips: Tip[] = [
     color: "bg-green-100",
     textColor: "text-blue-900",
     healthScore: 3,
-    description: "Undvik läsk, godis och bakverk. Välj frukt istället för sötsaker",
+    description: "...",
     detailedInfo:
       "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis.",
-    steps: [
-      "Byt ut läsk mot vatten eller sprudel",
-      "Välj frukt eller nötter istället för godis",
-      "Läs innehållsförteckningar och undvik produkter med mycket tillsatt socker",
-    ],
+    steps: ["Byt läsk mot vatten eller sprudel", "Välj färska bär istället för sylt", "Läs innehållsförtecknin"],
   },
 ];
