@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { tips } from './Tips';
+import { tips } from "@/data/tips";
 
 const TipDetail = () => {
   const { id } = useParams();
