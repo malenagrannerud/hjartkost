@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"; // navigate to TipDeital when ca
 import { Card } from "@/components/ui/card"; // Reusable component from components/ui/card. @ point
 import { Check } from "lucide-react";        // checkmark icon
 
-const tips = [    // array of 11 tips
+export const tips = [    // array of 11 tips
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
