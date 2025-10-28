@@ -19,7 +19,7 @@ export const tips: Tip[] = [
     description: "Frukt",
     detailedInfo: [
       "Fem nävar grönsaker, rotfrukter, frukter och bär per dag minskar risken för",
-      "hjärt- och kärlsjukdom,cancer i bland annat bröst och tjocktarm samt",
+      "hjärt- och kärlsjukdom, cancer i bland annat bröst och tjocktarm samt",
       "förtidig död.",
       "Det beror på det höga innehållet av fibrer och antioxidanter",
       "samt ett lågt energiinnehåll.",
