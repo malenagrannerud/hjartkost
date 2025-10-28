@@ -174,7 +174,7 @@ const Today = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
+    <div className="min-h-screen p-6 pb-32 space-y-8 bg-white">
       <header>
         <div className="flex items-start justify-between mb-3">
           <h1 className="text-4xl font-bold text-[#212658]">Idag</h1>
@@ -189,7 +189,7 @@ const Today = () => {
                 <History size={24} className="text-[#212658]" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:max-w-md bg-[#FCFAF7]">
+            <SheetContent side="right" className="w-full sm:max-w-md bg-white">
               <SheetHeader>
                 <SheetTitle className="text-2xl font-bold text-[#212658]">Senast</SheetTitle>
               </SheetHeader>
@@ -229,7 +229,7 @@ const Today = () => {
             const isLast = index === allProgressItems.length - 1;
             
             return (
-              <div key={item.id} className="relative flex gap-4 mb-4 items-start">
+              <div key={item.id} className="relative flex gap-4 mb-4 items-center">
                 {/* Checkpoint Circle with Dotted Line */}
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div 
@@ -239,13 +239,13 @@ const Today = () => {
                   </div>
                   {/* Dotted line - only if not last */}
                   {!isLast && (
-                    <div className="border-l-2 border-dotted border-primary/30 h-16 mt-1" />
+                    <div className="border-l-2 border-dotted border-primary/30 h-16" />
                   )}
                 </div>
                 
                 {/* Card Content */}
                 <div 
-                  className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] ${
+                  className={`flex-1 p-5 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] ${
                     item.type === 'tip' 
                       ? `${item.color} border-0 shadow-sm` 
                       : 'bg-card border-2 border-border'
