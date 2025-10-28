@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"; // navigate to TipDeital when ca
 import { Card } from "@/components/ui/card"; // Reusable component from components/ui/card. @ point
 import { Check } from "lucide-react";        // checkmark icon
 
-export const tips = [    // array of 11 tips
+const tips = [    // array of 11 tips
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
@@ -20,14 +20,14 @@ export const tips = [    // array of 11 tips
   },
   {
     id: 3,
-    title: "Fisk och skaldjur 2-3 gånger i veckan",
+    title: "Fisk och skaldjur 3 gånger i veckan",
     color: "bg-cyan-100",
     textColor: "text-blue-900",
     healthScore: 3,
   },
   {
     id: 4,
-    title: "Rätt fett!",
+    title: "Rätt fett",
     color: "bg-yellow-100",
     textColor: "text-blue-900",
     healthScore: 3,
@@ -48,7 +48,7 @@ export const tips = [    // array of 11 tips
   },
   {
     id: 7,
-    title: "Salt-halt!",
+    title: "Salt-halt",
     color: "bg-orange-100",
     textColor: "text-blue-900",
     healthScore: 4,
@@ -69,7 +69,7 @@ export const tips = [    // array of 11 tips
   },
   {
     id: 10,
-    title: "Ät mer baljväxter",
+    title: "Mer baljväxter",
     color: "bg-green-100",
     textColor: "text-blue-900",
     healthScore: 3,
