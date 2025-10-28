@@ -41,8 +41,8 @@ const healthPriorities: HealthPriority[] = [
   },
   {
     id: "general",
-    label: "Inget ovanstående – ge mig tips för att förebygga hjärt- och kärlsjukdom",
-    description: ""
+    label: "Inget ovanstående",
+    description: "Ge mig tips för att förebygga hjärt- och kärlsjukdom och bli piggare"
   }
 ];
 
@@ -145,10 +145,10 @@ const HealthPriorities = () => {
           >
             <ArrowLeft size={28} className="text-[#212658]" />
           </button>
-          <h1 className="text-3xl font-bold text-[#212658]">Anpassa mina tips</h1>
+          <h1 className="text-3xl font-bold text-[#212658]">Anpassa tips efter mina mål</h1>
         </div>
         <p className="text-[#212658]/70 text-base ml-14">
-          Dina tips anpassas efter dina mål och mediciner du tar. Du kan ändra detta när som helst under "Inställningar".
+          Bocka i dina mål och mediciner du tar. Då anpassas tips något till dej, även fast de är väligt lika. Du kan ändra detta när som helst under "Inställningar".
         </p>
       </header>
 
