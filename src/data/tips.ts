@@ -13,22 +13,12 @@ export const tips: Tip[] = [
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    color: "bg-green-300",
+    color: "bg-green-400",
     textColor: "text-blue-900",
     healthScore: 4,
     description: "Frukt",
-    detailedInfo:[
-      "Fem nävar grönsaker, rotfrukter, frukter och bär per dag minskar risken för", 
-      "hjärt- och kärlsjukdom,cancer i bland annat bröst och tjocktarm samt", 
-      "förtidig död.", 
-      "Det beror på det höga innehållet av fibrer och antioxidanter", 
-      "samt ett lågt energiinnehåll.",
-
-
-
-      
-    ]
-     
+    detailedInfo:
+      "Fem nävar grönsaker, rotfrukter, frukter och bär per dag minskar risken för hjärt- och kärlsjukdom, cancer i bland annat bröst och tjocktarm samt förtidig död. Det beror på det höga innehållet av fibrer och antioxidanter samt ett lågt energiinnehåll.",
     steps: [
       "Lägg till en portion grönsaker till varje måltid",
       "Förbered frukt och grönsaker på söndagar så de är lättillgängliga",
