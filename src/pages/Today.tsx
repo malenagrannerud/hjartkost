@@ -103,7 +103,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa mina råd</h4>
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa råd</h4>
                   <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
@@ -140,7 +140,7 @@ const Today = () => {
       </div>
 
       <div className="space-y-6 mt-10">
-        <h3 className="text-2xl font-bold text-[#212658]">Mina tips för vecka ett</h3>
+        <h3 className="text-2xl font-bold text-[#212658]">Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
