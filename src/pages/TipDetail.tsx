@@ -5,7 +5,7 @@ const tips = [
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    description: "Ät minst fem nävar om dagen. Välj gärna olika färger för att få i dig olika näringsämnen",
+    description: "Beskrivning",
     detailedInfo: "hallå",
     steps: [
       "Lägg till en portion grönsaker till varje måltid",
@@ -143,6 +143,25 @@ const tips = [
     textColor: "text-blue-900",
   },
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const TipDetail = () => {
   const { id } = useParams();
