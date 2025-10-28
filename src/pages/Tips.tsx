@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Card } from "@/components/ui/card";
-import { Check } from "lucide-react";
+import { useState, useEffect } from "react"; // state - track and update marked Tips
+import { useNavigate } from "react-router-dom"; // navigate to TipDeital when cards are clicked
+import { Card } from "@/components/ui/card"; // Reusable component from components/ui/card. @ point
+import { Check } from "lucide-react";        // checkmark icon
 
-const tips = [
+const tips = [    // array of 11 tips
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    color: "bg-green-200",
+    color: "bg-green",
     textColor: "text-blue-900",
     healthScore: 4,
   },

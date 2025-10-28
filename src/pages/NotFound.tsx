@@ -1,3 +1,7 @@
+
+// JavaScript with JSX syntax (html style)--> React code.
+// "Not Found", displays when users try to access routes that don't exist
+
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
