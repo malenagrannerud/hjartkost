@@ -7,7 +7,7 @@ const tips = [    // array of 11 tips
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    color: "bg-green",
+    color: "bg-[#C8E6A1]",
     textColor: "text-blue-900",
     healthScore: 4,
   },
