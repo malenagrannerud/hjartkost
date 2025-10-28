@@ -27,7 +27,7 @@ const tips = [    // array of 11 tips
   },
   {
     id: 4,
-    title: "Rätt fett",
+    title: "Rätt fett!",
     color: "bg-yellow-100",
     textColor: "text-blue-900",
     healthScore: 3,
@@ -48,7 +48,7 @@ const tips = [    // array of 11 tips
   },
   {
     id: 7,
-    title: "Salt-halt",
+    title: "Salt-halt!",
     color: "bg-orange-100",
     textColor: "text-blue-900",
     healthScore: 4,
@@ -69,7 +69,7 @@ const tips = [    // array of 11 tips
   },
   {
     id: 10,
-    title: "Mer baljväxter",
+    title: "Ät mer baljväxter",
     color: "bg-green-100",
     textColor: "text-blue-900",
     healthScore: 3,
