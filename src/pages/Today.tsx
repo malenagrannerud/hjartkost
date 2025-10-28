@@ -226,29 +226,29 @@ const Today = () => {
         <h2 className="text-base font-bold text-[#212658] ml-9 mb-2">Starta här</h2>
 
         {/* Onboarding items (first 3) */}
-        {allProgressItems.slice(0, 3).map((item, index, onboardingArray) => {
+        {allProgressItems.slice(0, 3).map((item, index) => {
           const state = itemStates[item.id];
           const isCompleted = state?.completed || false;
-          const isLastItem = index === onboardingArray.length - 1 && markedTipsList.length === 0;
+          const isLastOnboarding = index === 2 && markedTipsList.length === 0;
 
           return (
-            <div key={item.id} className="relative flex gap-4 items-center">
+            <div key={item.id} className="relative flex gap-4 mb-4 items-center">
               {/* Checkpoint Circle with Dotted Line */}
-              <div className="flex flex-col items-center h-full flex-shrink-0">
+              <div className="flex flex-col items-center flex-shrink-0">
                 <div 
                   className={`w-5 h-5 rounded-full shadow-sm z-10 flex items-center justify-center transition-colors ${getCircleColor(item.id)}`}
                 >
                   {isCompleted && <Check size={12} className="text-white" strokeWidth={3} />}
                 </div>
-                {/* Dotted line - show for all except last item */}
-                {!isLastItem && (
-                  <div className="border-l-2 border-dotted border-primary/30 h-full mt-1" />
+                {/* Dotted line - show unless last onboarding AND no tips */}
+                {!isLastOnboarding && (
+                  <div className="border-l-2 border-dotted border-primary/30 h-20 mt-1" />
                 )}
               </div>
               
               {/* Card Content */}
               <div 
-                className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] my-4 ${
+                className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] ${
                   item.type === 'tip' 
                     ? `${item.color} border-0 shadow-sm` 
                     : 'bg-card border-2 border-border'
@@ -281,26 +281,26 @@ const Today = () => {
             {allProgressItems.slice(3).map((item, index, tipsArray) => {
               const state = itemStates[item.id];
               const isCompleted = state?.completed || false;
-              const isLastItem = index === tipsArray.length - 1;
+              const isLast = index === tipsArray.length - 1;
 
               return (
-                <div key={item.id} className="relative flex gap-4 items-center">
+                <div key={item.id} className="relative flex gap-4 mb-4 items-center">
                   {/* Checkpoint Circle with Dotted Line */}
-                  <div className="flex flex-col items-center h-full flex-shrink-0">
+                  <div className="flex flex-col items-center flex-shrink-0">
                     <div 
                       className={`w-5 h-5 rounded-full shadow-sm z-10 flex items-center justify-center transition-colors ${getCircleColor(item.id)}`}
                     >
                       {isCompleted && <Check size={12} className="text-white" strokeWidth={3} />}
                     </div>
                     {/* Dotted line - only if not last tip */}
-                    {!isLastItem && (
-                      <div className="border-l-2 border-dotted border-primary/30 h-full mt-1" />
+                    {!isLast && (
+                      <div className="border-l-2 border-dotted border-primary/30 h-20 mt-1" />
                     )}
                   </div>
                   
                   {/* Card Content */}
                   <div 
-                    className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] my-4 ${
+                    className={`flex-1 p-5 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] min-h-[72px] ${
                       item.type === 'tip' 
                         ? `${item.color} border-0 shadow-sm` 
                         : 'bg-card border-2 border-border'
