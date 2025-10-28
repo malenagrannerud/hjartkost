@@ -31,7 +31,7 @@ export const tips: Tip[] = [
     color: "bg-amber-100",
     textColor: "text-blue-900",
     healthScore: 3,
-    description: "När du äter spannmålsprodukter som bröd, pasta och gryn - välj helst fullkorn",
+    description: "..",
     detailedInfo:
       "Fullkornsprodukter innehåller mer fibrer, vitaminer och mineraler än produkter av raffinerat mjöl. Fibrer mättar bra och är viktiga för matsmältningen.",
     steps: [
