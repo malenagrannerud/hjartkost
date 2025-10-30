@@ -43,10 +43,10 @@ const Tips = () => {
   const isMarked = (tipId: number) => markedTips.some((tip) => tip.id === tipId);
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-6 bg-[#FCFAF7]">
+    <div className="min-h-screen p-6 pb-24 space-y-6 bg-background">
       <header>
-        <h1 className="text-4xl font-bold text-[#212658] mb-1">Mina tips</h1>
-        <p className="text-[#212658]/70 text-lg font-normal">Välj ett eller två tips per vecka</p>
+        <h1 className="text-4xl font-bold text-foreground mb-1">Mina tips</h1>
+        <p className="text-muted-foreground text-lg font-normal">Välj ett eller två tips per vecka</p>
       </header>
 
       <div className="space-y-4">

@@ -13,8 +13,8 @@ export const tips: Tip[] = [
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    color: "bg-green-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-green",
+    textColor: "text-foreground",
     healthScore: 4,
     description: "Frukt",
     detailedInfo:
@@ -28,8 +28,8 @@ export const tips: Tip[] = [
   {
     id: 2,
     title: "Fyll på med fullkorn",
-    color: "bg-amber-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-amber",
+    textColor: "text-foreground",
     healthScore: 3,
     description: "..",
     detailedInfo: "...",
@@ -42,8 +42,8 @@ export const tips: Tip[] = [
   {
     id: 3,
     title: "Fisk och skaldjur 3 gånger i veckan",
-    color: "bg-cyan-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-cyan",
+    textColor: "text-foreground",
     healthScore: 3,
     description: "...",
     detailedInfo:
@@ -57,8 +57,8 @@ export const tips: Tip[] = [
   {
     id: 4,
     title: "Rätt fett",
-    color: "bg-yellow-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-yellow",
+    textColor: "text-foreground",
     healthScore: 3,
     description:
       "Använd flytande margarin och oljor i matlagning. Begränsa smör, hårdmargarin och andra mättade fetter",
@@ -73,8 +73,8 @@ export const tips: Tip[] = [
   {
     id: 5,
     title: "Mera magra mejerier",
-    color: "bg-blue-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-blue",
+    textColor: "text-foreground",
     healthScore: 3,
     description: "Mjölk, filmjölk och yoghurt med max 1,5% fett. Ost med max 17% fett",
     detailedInfo:
@@ -88,8 +88,8 @@ export const tips: Tip[] = [
   {
     id: 6,
     title: "Minska på rött och bearbetat kött",
-    color: "bg-rose-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-rose",
+    textColor: "text-foreground",
     healthScore: 3,
     description: "Max 500 gram tillagat kött per vecka. Begränsa chark, korv och andra bearbetade köttprodukter",
     detailedInfo:
@@ -103,8 +103,8 @@ export const tips: Tip[] = [
   {
     id: 7,
     title: "Salt-halt",
-    color: "bg-orange-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-orange",
+    textColor: "text-foreground",
     healthScore: 4,
     description: "Minska saltintaget till max 6 gram per dag. Använd joderat salt",
     detailedInfo:
@@ -118,8 +118,8 @@ export const tips: Tip[] = [
   {
     id: 8,
     title: "Ät lagom mycket",
-    color: "bg-purple-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-purple",
+    textColor: "text-foreground",
     healthScore: 4,
     description: "Anpassa mängden mat efter ditt energibehov. Lyssna på din kropp och ät när du är hungrig",
     detailedInfo:
@@ -133,8 +133,8 @@ export const tips: Tip[] = [
   {
     id: 9,
     title: "Rör på dig minst 30 min om dagen",
-    color: "bg-teal-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-teal",
+    textColor: "text-foreground",
     healthScore: 5,
     description: "Fysisk aktivitet är viktig för hälsan tillsammans med bra matvanor",
     detailedInfo:
@@ -148,8 +148,8 @@ export const tips: Tip[] = [
   {
     id: 10,
     title: "Ät mer baljväxter",
-    color: "bg-green-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-green",
+    textColor: "text-foreground",
     healthScore: 3,
     description: "Bönor, linser och ärtor är bra proteinkällor och innehåller fibrer. Klimatsmart alternativ till kött",
     detailedInfo:
@@ -163,8 +163,8 @@ export const tips: Tip[] = [
   {
     id: 11,
     title: "Minska på sockret",
-    color: "bg-green-100",
-    textColor: "text-blue-900",
+    color: "bg-tip-green",
+    textColor: "text-foreground",
     healthScore: 3,
     description: "...",
     detailedInfo:

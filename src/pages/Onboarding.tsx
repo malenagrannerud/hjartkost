@@ -28,7 +28,7 @@ const Onboarding = ({ onComplete }: OnboardingProps) => {
   };
 
   return (
-    <div className={`flex-1 flex flex-col items-start justify-between p-8 ${step === 2 ? 'bg-[#D5EDF9]' : ''}`}>
+    <div className={`flex-1 flex flex-col items-start justify-between p-8 ${step === 2 ? 'bg-info/20' : ''}`}>
       {step === 1 && (
         <>
           <div className="flex-1 flex flex-col justify-center space-y-6 w-full">

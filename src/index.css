@@ -8,31 +8,29 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 217 65% 19%;
+    /* Backgrounds - Per user's custom knowledge: frames use #FCFAF7 */
+    --background: 29 43% 97%;        /* #FCFAF7 - beige for main app background */
+    --background-elevated: 0 0% 100%; /* #FFFFFF - white for cards */
+    --foreground: 228 65% 24%;       /* #212658 - dark blue for main headers */
 
-    --card: 0 0% 100%;
-    --card-foreground: 217 65% 19%;
+    --card: 0 0% 100%;               /* White cards */
+    --card-foreground: 228 65% 24%;  /* #212658 text */
 
     --popover: 0 0% 100%;
-    --popover-foreground: 217 65% 19%;
+    --popover-foreground: 228 65% 24%;
 
-    --primary: 220 60% 25%;
+    /* Brand Colors */
+    --primary: 228 65% 24%;          /* #212658 - main brand color */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 340 82% 67%;
+    --secondary: 340 82% 67%;        /* Pink */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-
-    --accent: 340 82% 92%;
-    --accent-foreground: 340 82% 30%;
-
-    --success: 142 76% 36%;
+    /* Semantic Colors */
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
 
-    --info: 199 89% 48%;
+    --info: 189 94% 43%;
     --info-foreground: 0 0% 100%;
 
     --warning: 38 92% 50%;
@@ -41,11 +39,20 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 262 52% 47%;
+    /* Neutral Colors */
+    --muted: 220 13% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --radius: 1rem;
+    --accent: 340 82% 92%;
+    --accent-foreground: 340 82% 30%;
+
+    /* Form Elements */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 228 65% 24%;             /* Match primary */
+
+    /* Border Radius */
+    --radius: 0.5rem;                /* 8px default */
     
     --gradient-primary: linear-gradient(135deg, hsl(262 52% 47%), hsl(280 60% 60%));
     --gradient-secondary: linear-gradient(135deg, hsl(340 82% 67%), hsl(340 82% 82%));
