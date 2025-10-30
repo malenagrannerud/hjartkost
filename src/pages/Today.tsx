@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { pageTitle, pageSubtitle, sectionHeading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { pageTitle, pageSubtitle, sectionHeading, sectionSubheading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding } from "@/lib/design-tokens";
 import { getStorageItem, setStorageItem } from "@/lib/storage";
 import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
 
