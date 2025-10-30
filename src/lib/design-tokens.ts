@@ -66,12 +66,14 @@ export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 /**
  * SECTION HEADINGS 18 px (Starta här, Mina tips den här veckan, etc.)
  * Used for section headers within pages
+ * subheading 16 px
  */
 export const sectionHeading = "text-lg font-bold text-[#212658]";
 
+export const sectionSubheading = "text-base font-semibold text-[#212658]";
+
 /**
- * CARD TITLES
- * Used for titles within cards
+ * CARD TITLES- Used for titles within cards
  */
 export const cardTitle = "text-xl font-bold text-[#212658]";
 
