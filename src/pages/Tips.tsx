@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
 import TipCard from "@/components/TipCard";
+import { getStorageItem, setStorageItem } from "@/lib/storage";
+import { markedTipsSchema } from "@/lib/schemas";
 
 interface MarkedTip {
   id: number;
@@ -12,12 +14,12 @@ interface MarkedTip {
 const Tips = () => {
   const navigate = useNavigate();
   const [markedTips, setMarkedTips] = useState<MarkedTip[]>(() => {
-    const saved = localStorage.getItem("markedTips");
-    return saved ? JSON.parse(saved) : [];
+    const saved = getStorageItem("markedTips", markedTipsSchema);
+    return saved ? (saved as MarkedTip[]) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("markedTips", JSON.stringify(markedTips));
+    setStorageItem("markedTips", markedTips);
   }, [markedTips]);
 
   const toggleMark = (e: React.MouseEvent, tipId: number) => {

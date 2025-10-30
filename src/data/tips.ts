@@ -31,8 +31,8 @@ export const tips: Tip[] = [
     color: "bg-tip-amber",
     textColor: "text-foreground",
     healthScore: 3,
-    description: "..",
-    detailedInfo: "...",
+    description: "Välj helst fullkornsbröd, fullkornspasta, råris och havregryn",
+    detailedInfo: "Fullkorn innehåller fibrer, vitaminer, mineraler och antioxidanter. Fullkornsprodukter minskar risken för hjärt-kärlsjukdom, typ 2-diabetes och vissa cancerformer. De håller dig mätt längre och hjälper till att stabilisera blodsockernivåerna.",
     steps: [
       "Byt ut vitt bröd mot fullkornsbröd",
       "Välj havregryn eller fullkornsflingor till frukost",
@@ -166,9 +166,13 @@ export const tips: Tip[] = [
     color: "bg-tip-green",
     textColor: "text-foreground",
     healthScore: 3,
-    description: "...",
+    description: "Begränsa sötsaker, läsk och godis. Max 10% av ditt dagliga energiintag",
     detailedInfo:
-      "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis.",
-    steps: ["Byt läsk mot vatten eller sprudel", "Välj färska bär istället för sylt", "Läs innehållsförtecknin"],
+      "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis. WHO rekommenderar max 50 gram socker per dag.",
+    steps: [
+      "Byt läsk mot vatten eller sprudel", 
+      "Välj färska bär istället för sylt", 
+      "Läs innehållsförteckningen - socker har många namn (glukos, fruktossirap, sackaros)"
+    ],
   },
 ];

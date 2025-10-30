@@ -5,7 +5,11 @@ import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
 import { Trophy, Flame, Weight, Activity, Trash2, Settings } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { tips } from "@/data/tips";
+import { getStorageItem, setStorageItem } from "@/lib/storage";
+import { dayLogsSchema, markedTipsSchema, healthMetricsSchema } from "@/lib/schemas";
+import { colorToHsl, getWeekModifiers } from "@/lib/calendar-utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -28,19 +32,6 @@ interface DayLog {
   }[];
 }
 
-const tips = [
-  { id: 1, title: "Fem nävar frukt och grönt" },
-  { id: 2, title: "Välj fullkorn" },
-  { id: 3, title: "Ät fisk och skaldjur" },
-  { id: 4, title: "Välj nyttiga fetter" },
-  { id: 5, title: "Välj magra mejeriprodukter" },
-  { id: 6, title: "Minska på rött och bearbetat kött" },
-  { id: 7, title: "Begränsa socker och salt" },
-  { id: 8, title: "Ät lagom mycket" },
-  { id: 9, title: "Rör på dig" },
-  { id: 10, title: "Ät mer baljväxter" }
-];
-
 const Progress = () => {
   const navigate = useNavigate();
   const [date, setDate] = useState<Date>(new Date());
@@ -58,15 +49,14 @@ const Progress = () => {
   const [systolicInput, setSystolicInput] = useState("");
   const [diastolicInput, setDiastolicInput] = useState("");
   
-  // Load day logs and marked tips from localStorage
+  // Load day logs and marked tips from localStorage with safe parsing
   useEffect(() => {
-    const savedLogs = localStorage.getItem('dayLogs');
+    const savedLogs = getStorageItem('dayLogs', dayLogsSchema);
     let logs: DayLog[] = [];
     
     if (savedLogs) {
-      const parsed = JSON.parse(savedLogs);
-      // Migrate old data format to new format
-      const migratedLogs = parsed.map((log: any) => {
+      // Migrate old data format to new format if needed
+      const migratedLogs = savedLogs.map((log: any) => {
         if (log.entries) {
           return log; // Already in new format
         } else if (log.fruitGrams !== undefined) {
@@ -106,10 +96,9 @@ const Progress = () => {
     }
 
     // Load health metrics from HealthMetrics page
-    const savedHealthMetrics = localStorage.getItem('healthMetrics');
+    const savedHealthMetrics = getStorageItem('healthMetrics', healthMetricsSchema);
     if (savedHealthMetrics) {
-      const metrics = JSON.parse(savedHealthMetrics);
-      const metricsDate = format(new Date(metrics.date), 'yyyy-MM-dd');
+      const metricsDate = format(new Date(savedHealthMetrics.date), 'yyyy-MM-dd');
       
       // Check if this date already has entries
       const existingLog = logs.find(log => log.date === metricsDate);
@@ -117,38 +106,38 @@ const Progress = () => {
       if (existingLog) {
         // Add weight if not already present
         const hasWeight = existingLog.entries.some(e => e.type === 'weight');
-        if (!hasWeight && metrics.weight) {
+        if (!hasWeight && savedHealthMetrics.weight) {
           existingLog.entries.push({ 
             type: 'weight' as const, 
-            value: parseFloat(metrics.weight) 
+            value: parseFloat(savedHealthMetrics.weight) 
           });
         }
         
         // Add blood pressure if not already present
         const hasBP = existingLog.entries.some(e => e.type === 'bloodPressure');
-        if (!hasBP && metrics.systolic && metrics.diastolic) {
+        if (!hasBP && savedHealthMetrics.systolic && savedHealthMetrics.diastolic) {
           existingLog.entries.push({ 
             type: 'bloodPressure' as const, 
-            value: parseInt(metrics.systolic), 
-            value2: parseInt(metrics.diastolic) 
+            value: parseInt(savedHealthMetrics.systolic), 
+            value2: parseInt(savedHealthMetrics.diastolic) 
           });
         }
       } else {
         // Create new log entry with the metrics
         const newEntries: DayLog['entries'] = [];
         
-        if (metrics.weight) {
+        if (savedHealthMetrics.weight) {
           newEntries.push({ 
             type: 'weight' as const, 
-            value: parseFloat(metrics.weight) 
+            value: parseFloat(savedHealthMetrics.weight) 
           });
         }
         
-        if (metrics.systolic && metrics.diastolic) {
+        if (savedHealthMetrics.systolic && savedHealthMetrics.diastolic) {
           newEntries.push({ 
             type: 'bloodPressure' as const, 
-            value: parseInt(metrics.systolic), 
-            value2: parseInt(metrics.diastolic) 
+            value: parseInt(savedHealthMetrics.systolic), 
+            value2: parseInt(savedHealthMetrics.diastolic) 
           });
         }
         
@@ -158,20 +147,20 @@ const Progress = () => {
       }
       
       // Save the updated logs back to localStorage
-      localStorage.setItem('dayLogs', JSON.stringify(logs));
+      setStorageItem('dayLogs', logs);
     }
     
     setDayLogs(logs);
 
-    const savedTips = localStorage.getItem('markedTips');
-    if (savedTips) {
-      setMarkedTips(JSON.parse(savedTips));
+    const savedTips = getStorageItem('markedTips', markedTipsSchema);
+    if (savedTips && savedTips.length > 0) {
+      setMarkedTips(savedTips as MarkedTip[]);
     } else {
       // Demo marked tips for demonstration
-      const demoTips = [
-        { id: 1, markedDate: '2025-10-10T00:00:00.000Z', color: 'bg-green-200' }, // Green square on Oct 10-16
-        { id: 2, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-amber-100' }, // Second square (amber/yellow) on Oct 15-21
-        { id: 5, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-blue-100' }  // Blue square on Oct 15-21
+      const demoTips: MarkedTip[] = [
+        { id: 1, markedDate: '2025-10-10T00:00:00.000Z', color: 'bg-green-200' },
+        { id: 2, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-amber-100' },
+        { id: 5, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-blue-100' }
       ];
       setMarkedTips(demoTips);
     }
@@ -202,38 +191,7 @@ const Progress = () => {
     setBloodPressureDays(bpLogDays);
   }, [dayLogs]);
 
-  // Convert Tailwind color classes to HSL values
-  const colorToHsl = (colorClass: string): string => {
-    const colorMap: { [key: string]: string } = {
-      'bg-green-200': '142 76% 76%',
-      'bg-amber-100': '48 96% 89%',
-      'bg-cyan-100': '185 96% 90%',
-      'bg-yellow-100': '55 92% 88%',
-      'bg-blue-100': '214 95% 93%',
-      'bg-rose-100': '356 100% 94%',
-      'bg-orange-100': '43 100% 90%',
-      'bg-purple-100': '270 100% 95%',
-      'bg-teal-100': '166 76% 87%',
-      'bg-green-100': '138 76% 87%'
-    };
-    return colorMap[colorClass] || '142 76% 76%';
-  };
-
-  // Create modifiers for each marked tip's week
-  const getWeekModifiers = () => {
-    const modifiers: { [key: string]: Date[] } = {};
-    markedTips.forEach((tip, index) => {
-      const dates: Date[] = [];
-      const startDate = new Date(tip.markedDate);
-      for (let i = 0; i < 7; i++) {
-        dates.push(addDays(startDate, i));
-      }
-      modifiers[`tip${tip.id}`] = dates;
-    });
-    return modifiers;
-  };
-
-  const weekModifiers = getWeekModifiers();
+  const weekModifiers = getWeekModifiers(markedTips);
   
   // Get all fruit dates from marked tips
   const fruitDates: Date[] = [];
@@ -351,7 +309,7 @@ const Progress = () => {
       updatedLogs.push({ date: dateStr, entries: updatedEntries });
       
       setDayLogs(updatedLogs);
-      localStorage.setItem('dayLogs', JSON.stringify(updatedLogs));
+      setStorageItem('dayLogs', updatedLogs);
     }
     
     setDialogOpen(false);
@@ -372,7 +330,7 @@ const Progress = () => {
       }
       
       setDayLogs(updatedLogs);
-      localStorage.setItem('dayLogs', JSON.stringify(updatedLogs));
+      setStorageItem('dayLogs', updatedLogs);
     }
   };
 
@@ -384,19 +342,21 @@ const Progress = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
+    <div className="min-h-screen p-6 pb-24 space-y-8 bg-background">
       <header className="flex items-start justify-between">
         <div>
-          <h1 className="text-4xl font-bold text-[#212658] mb-2">Framsteg</h1>
-          <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+          <h1 className="text-4xl font-bold text-foreground mb-2">Framsteg</h1>
+          <p className="text-muted-foreground text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
         </div>
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           onClick={() => navigate('/app/settings')}
-          className="p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]"
+          className="min-h-[48px] min-w-[48px]"
           aria-label="Inställningar"
         >
-          <Settings size={28} className="text-[#212658]" />
-        </button>
+          <Settings size={28} className="text-foreground" />
+        </Button>
       </header>
 
       <div className="pt-6 pb-0 flex justify-center">
@@ -466,6 +426,9 @@ const Progress = () => {
             <DialogTitle>
               Redigera {selectedDate && format(selectedDate, 'd MMMM yyyy', { locale: sv })}
             </DialogTitle>
+            <DialogDescription>
+              Lägg till eller ta bort hälsodata för denna dag
+            </DialogDescription>
           </DialogHeader>
           
           {/* Existing Entries */}

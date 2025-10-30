@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { getStorageItem, setStorageItem } from "@/lib/storage";
+import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
 
 interface MarkedTip {
   id: number;
@@ -29,30 +31,30 @@ const Today = () => {
   const [recentActivities, setRecentActivities] = useState<CompletedActivity[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('markedTips');
+    const saved = getStorageItem('markedTips', markedTipsSchema);
     if (saved) {
-      setMarkedTips(JSON.parse(saved));
+      setMarkedTips(saved as MarkedTip[]);
     }
     
-    const tutorialDone = localStorage.getItem('tutorialCompleted');
-    if (tutorialDone === 'true') {
+    const tutorialDone = getStorageItem('tutorialCompleted');
+    if (tutorialDone === 'true' || tutorialDone === true) {
       setTutorialCompleted(true);
     }
 
-    const healthPrioritiesDone = localStorage.getItem('healthPrioritiesCompleted');
-    if (healthPrioritiesDone === 'true') {
+    const healthPrioritiesDone = getStorageItem('healthPrioritiesCompleted');
+    if (healthPrioritiesDone === 'true' || healthPrioritiesDone === true) {
       setHealthPrioritiesCompleted(true);
     }
 
-    const healthMetricsDone = localStorage.getItem('healthMetricsCompleted');
-    if (healthMetricsDone === 'true') {
+    const healthMetricsDone = getStorageItem('healthMetricsCompleted');
+    if (healthMetricsDone === 'true' || healthMetricsDone === true) {
       setHealthMetricsCompleted(true);
     }
 
     // Load completed activities
-    const completed = localStorage.getItem('completedActivities');
+    const completed = getStorageItem('completedActivities', completedActivitiesSchema);
     if (completed) {
-      setCompletedActivities(JSON.parse(completed));
+      setCompletedActivities(completed as CompletedActivity[]);
     }
 
     // Check for daily reset at midnight
@@ -61,18 +63,17 @@ const Today = () => {
 
   const checkAndResetDaily = () => {
     const today = new Date().toDateString();
-    const lastReset = localStorage.getItem('lastResetDate');
+    const lastReset = getStorageItem('lastResetDate') as string | null;
     
     if (lastReset !== today) {
       // It's a new day - move completed activities to recent
-      const completed = localStorage.getItem('completedActivities');
+      const completed = getStorageItem('completedActivities', completedActivitiesSchema);
       if (completed) {
-        const activities: CompletedActivity[] = JSON.parse(completed);
-        const recent = localStorage.getItem('recentActivities');
-        const existingRecent: CompletedActivity[] = recent ? JSON.parse(recent) : [];
+        const recent = getStorageItem('recentActivities', completedActivitiesSchema);
+        const existingRecent: CompletedActivity[] = (recent as CompletedActivity[]) || [];
         
         // Combine and keep only last 30 days
-        const allRecent = [...existingRecent, ...activities];
+        const allRecent = [...existingRecent, ...(completed as CompletedActivity[])];
         const thirtyDaysAgo = new Date();
         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
         
@@ -80,20 +81,20 @@ const Today = () => {
           new Date(activity.completedDate) > thirtyDaysAgo
         );
         
-        localStorage.setItem('recentActivities', JSON.stringify(filteredRecent));
+        setStorageItem('recentActivities', filteredRecent);
         setRecentActivities(filteredRecent);
         
         // Clear today's completed activities
-        localStorage.setItem('completedActivities', JSON.stringify([]));
+        setStorageItem('completedActivities', []);
         setCompletedActivities([]);
       }
       
-      localStorage.setItem('lastResetDate', today);
+      setStorageItem('lastResetDate', today);
     } else {
       // Load recent activities
-      const recent = localStorage.getItem('recentActivities');
+      const recent = getStorageItem('recentActivities', completedActivitiesSchema);
       if (recent) {
-        setRecentActivities(JSON.parse(recent));
+        setRecentActivities(recent as CompletedActivity[]);
       }
     }
   };
