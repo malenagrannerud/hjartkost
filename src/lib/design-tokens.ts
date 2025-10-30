@@ -64,10 +64,10 @@ export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
 export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 
 /**
- * SECTION HEADINGS (Starta här, Mina tips den här veckan, etc.)
+ * SECTION HEADINGS 18 px (Starta här, Mina tips den här veckan, etc.)
  * Used for section headers within pages
  */
-export const sectionHeading = "text-2xl font-bold text-[#212658]";
+export const sectionHeading = "text-lg font-bold text-[#212658]";
 
 /**
  * CARD TITLES
