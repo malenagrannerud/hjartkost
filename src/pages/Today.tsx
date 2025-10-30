@@ -165,11 +165,7 @@ const Today = () => {
               </div>
             </SheetContent>
           </Sheet>
-        </div>
-        <p className={pageSubtitle}>
-          Uppdateras i din takt  
-        </p>
-      </header>
+       </header>
 
       {/* STARTA HÄR SECTION - CENTRALIZED HEADING */}
       <div className="space-y-4">
