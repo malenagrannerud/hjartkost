@@ -148,11 +148,14 @@ const Today = () => {
         <div className="mt-6 space-y-4">
           {allCompletedActivities.length > 0 ? (
             allCompletedActivities.map((activity, index) => (
+              /* STANDARDIZATION: Uses standardCard (light blue bg, p-5 padding, min-h-80px) */
               <Card 
                 key={`${activity.id}-${index}`}
                 className={standardCard}
               >
+                {/* STANDARDIZED FONT: text-xl via cardTitle */}
                 <h4 className={`${cardTitle} mb-1`}>{activity.title}</h4>
+                {/* STANDARDIZED FONT: text-sm via cardTextSmall */}
                 <p className={cardTextSmall}>
                   {getRelativeTime(activity.completedDate)}
                 </p>
@@ -173,7 +176,7 @@ const Today = () => {
         
         {/* Vertical Progress Stepper */}
         <div className="relative">
-          {/* Step 1 */}
+          {/* Step 1 - STANDARDIZED: Uses interactiveCard for consistent styling */}
           <div className="relative flex gap-5 mb-6 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
               <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
@@ -185,24 +188,27 @@ const Today = () => {
               </div>
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
-            <div 
-              className={`standardCard`}
+            {/* STANDARDIZATION: Uses interactiveCard (light blue bg, p-5 padding, min-h-80px) */}
+            <Card 
+              className={interactiveCard}
               onClick={() => navigate('/app/tutorial')}
               aria-label="Gå till tutorial"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`cardTitle`}>Så fungerar appen</h4>
+                  {/* STANDARDIZED FONT: text-xl via cardTitle */}
+                  <h4 className={cardTitle}>Så fungerar appen</h4>
+                  {/* STANDARDIZED FONT: text-base via cardText */}
                   <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
           
-          {/* Step 2 */}
+          {/* Step 2 - STANDARDIZED: Uses interactiveCard for consistent styling */}
           <div className="relative flex gap-5 mb-6 items-center">
             <div className="flex flex-col items-center flex-shrink-0">
               <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
@@ -214,24 +220,27 @@ const Today = () => {
               </div>
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
-            <div 
-              className={`standardCard`}
+            {/* STANDARDIZATION: Uses interactiveCard (light blue bg, p-5 padding, min-h-80px) */}
+            <Card 
+              className={interactiveCard}
               onClick={() => navigate('/app/health-priorities')}
               aria-label="Gå till mina hälsoprioriteringar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`cardTitle`}>Anpassa tips efter mina mål</h4>
-                  <div className={`cardText`}>
+                  {/* STANDARDIZED FONT: text-xl via cardTitle */}
+                  <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
+                  {/* STANDARDIZED FONT: text-base via cardText */}
+                  <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
           
-          {/* Step 3 */}
+          {/* Step 3 - STANDARDIZED: Uses interactiveCard for consistent styling */}
           <div className="relative flex gap-5 items-center">
             <div className="flex items-center flex-shrink-0">
               <div className={`w-8 h-8 rounded-full shadow-md z-10 flex items-center justify-center transition-colors ${
@@ -242,26 +251,30 @@ const Today = () => {
                 {healthMetricsCompleted && <Check size={18} className="text-white" strokeWidth={3} />}
               </div>
             </div>
-            <div 
-              className={`interactiveCard`}
+            {/* STANDARDIZATION: Uses interactiveCard (light blue bg, p-5 padding, min-h-80px) */}
+            <Card 
+              className={interactiveCard}
               onClick={() => navigate('/app/health-metrics')}
               aria-label="Gå till hälsomätningar"
             >
               <div className="flex items-start justify-between">
                 <div>
+                  {/* STANDARDIZED FONT: text-xl via cardTitle */}
                   <h4 className={cardTitle}>Vikt och blodtryck</h4>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </div>
 
-      {/* MINA TIPS SECTION - CENTRALIZED HEADING */}
+      {/* MINA TIPS SECTION - TipCards keep their specific colors (not light blue) */}
       <div className="space-y-6">
         <h3 className={sectionSubheading}>Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
+            {/* STANDARDIZATION: TipCard uses same padding (p-5), fonts (text-xl/text-base), min-h-80px 
+                but keeps tip-specific colors (requirement: tip cards keep their colors) */}
             {markedTipsList.map((tip) => (
               <TipCard
                 key={tip.id}
