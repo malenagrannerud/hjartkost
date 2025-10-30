@@ -109,19 +109,19 @@ export const labelText = "text-[#212658] font-semibold";
  * STANDARD CARD
  * Default card padding and styling
  */
-export const standardCard = "p-5 border-0 shadow-sm bg-blue-50";
+export const standardCard = "p-5 border-0 shadow-sm";
 
 /**
  * COMPACT CARD
  * Smaller padding for dense layouts
  */
-export const compactCard = "p-5 border-0 shadow-sm bg-blue-50";
+export const compactCard = "p-5 border-0 shadow-sm";
 
 /**
  * INTERACTIVE CARD
  * Card with hover and click effects
  */
-export const interactiveCard = "p-5 border-0 shadow-sm cursor-pointer hover:bg-blue-100 transition-all active:scale-[0.98] bg-blue-50";
+export const interactiveCard = "p-5 border-1 shadow-sm cursor-pointer hover:bg-accent/50 transition-all active:scale-[0.98]";
 
 /**
  * TIP CARD

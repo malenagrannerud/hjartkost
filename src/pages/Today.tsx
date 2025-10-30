@@ -3,6 +3,7 @@ import { Clock, Check, History } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
+import TipCard from "@/components/TipCard";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { pageTitle, pageSubtitle, sectionHeading, sectionSubheading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding } from "@/lib/design-tokens";
@@ -189,13 +190,13 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className={interactiveCard}
+              className={`standardCard`}
               onClick={() => navigate('/app/tutorial')}
               aria-label="Gå till tutorial"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={cardTitle}>Så fungerar appen</h4>
+                  <h4 className={`cardTitle`}>Så fungerar appen</h4>
                   <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
@@ -218,14 +219,14 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className={interactiveCard}
+              className={`standardCard`}
               onClick={() => navigate('/app/health-priorities')}
               aria-label="Gå till mina hälsoprioriteringar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
-                  <div className={`flex items-center gap-2 ${cardText}`}>
+                  <h4 className={`cardTitle`}>Anpassa tips efter mina mål</h4>
+                  <div className={`cardText`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -246,7 +247,7 @@ const Today = () => {
               </div>
             </div>
             <div 
-              className={interactiveCard}
+              className={`interactiveCard`}
               onClick={() => navigate('/app/health-metrics')}
               aria-label="Gå till hälsomätningar"
             >
@@ -266,19 +267,13 @@ const Today = () => {
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
-              <Card 
-                key={tip.id} 
-                className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none min-h-[80px]`}
+              <TipCard
+                key={tip.id}
+                tip={tip}
+                isMarked={true}
+                onToggleMark={(e) => e.stopPropagation()}
                 onClick={() => navigate(`/app/tips/${tip.id}`)}
-                aria-label={`Visa detaljer om ${tip.title}`}
-              >
-                <div>
-                  <h3 className={`text-xl font-bold ${tip.textColor} mb-1`}>{tip.title}</h3>
-                  <div className="text-blue-900 text-base font-bold">
-                    {tip.healthScore} poäng
-                  </div>
-                </div>
-              </Card>
+              />
             ))}
           </div>
         ) : (

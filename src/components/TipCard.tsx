@@ -23,12 +23,10 @@ const TipCard = ({ tip, isMarked, onToggleMark, onClick }: TipCardProps) => {
       >
         {isMarked && <Check size={16} className="text-white" strokeWidth={3} />}
       </div>
-      <div className="space-y-3 pr-8">
-        <div>
-          <h3 className={`text-xl font-bold ${tip.textColor} mb-1`}>{tip.title}</h3>
-          <div className="text-blue-900 text-base font-bold">
-            {tip.healthScore} {tip.healthScore === 1 ? "poäng" : "poäng"}
-          </div>
+      <div className="pr-8">
+        <h3 className={`font-semibold text-xl ${tip.textColor} mb-2`}>{tip.title}</h3>
+        <div className="text-blue-900 text-base font-bold">
+          {tip.healthScore} poäng
         </div>
       </div>
     </Card>
