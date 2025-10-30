@@ -1,0 +1,89 @@
+/* ==========================================
+ * TAILWIND DIRECTIVES
+ * ========================================== */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================
+ * CSS VARIABLES - DESIGN SYSTEM COLORS
+ * All colors in HSL format for Tailwind
+ * ========================================== */
+
+@layer base {
+  :root {
+    /* Background Colors */
+    --background: 0 0% 100%;           /* #FFFFFF - Pure white */
+    --foreground: 230 36% 27%;         /* #212658 - Dark blue text */
+
+    /* Card Colors */
+    --card: 0 0% 100%;                 /* #FFFFFF - White cards */
+    --card-foreground: 230 36% 27%;    /* #212658 - Card text */
+
+    /* Primary Colors (main buttons, links) */
+    --primary: 230 36% 27%;            /* #212658 - Dark blue */
+    --primary-foreground: 0 0% 100%;   /* #FFFFFF - White text on primary */
+
+    /* Secondary Colors */
+    --secondary: 0 0% 96%;             /* Light gray for subtle elements */
+    --secondary-foreground: 230 36% 27%; /* Dark blue text */
+
+    /* Muted Colors (disabled states, subtle text) */
+    --muted: 0 0% 96%;                 /* Light gray background */
+    --muted-foreground: 230 36% 27%;   /* Dark blue at 70% opacity handled by text */
+
+    /* Accent Colors (hover states) */
+    --accent: 0 0% 96%;                /* Light gray for hover */
+    --accent-foreground: 230 36% 27%;  /* Dark blue text */
+
+    /* Border & Input */
+    --border: 0 0% 90%;                /* Light gray borders */
+    --input: 0 0% 90%;                 /* Input borders */
+    --ring: 230 36% 27%;               /* Focus ring color */
+
+    /* Status Colors */
+    --success: 145 55% 57%;            /* Green for success */
+    --success-foreground: 0 0% 100%;   /* White text */
+    
+    --warning: 45 93% 78%;             /* Amber for warnings */
+    --warning-foreground: 230 36% 27%; /* Dark text */
+    
+    --destructive: 0 84% 60%;          /* Red for errors */
+    --destructive-foreground: 0 0% 100%; /* White text */
+
+    --info: 201 96% 32%;               /* Blue for info */
+    --info-foreground: 0 0% 100%;      /* White text */
+
+    /* Popover */
+    --popover: 0 0% 100%;              /* White popover background */
+    --popover-foreground: 230 36% 27%; /* Dark blue text */
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 230 36% 27%;
+    --sidebar-primary: 230 36% 27%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 230 36% 27%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 230 36% 27%;
+
+    /* Border Radius */
+    --radius: 0.5rem;
+  }
+}
+
+/* ==========================================
+ * GLOBAL STYLES
+ * ========================================== */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
