@@ -189,13 +189,13 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className={`standardCard`}
+              className={interactiveCard}
               onClick={() => navigate('/app/tutorial')}
               aria-label="Gå till tutorial"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`cardTitle`}>Så fungerar appen</h4>
+                  <h4 className={cardTitle}>Så fungerar appen</h4>
                   <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
@@ -218,14 +218,14 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className={`standardCard`}
+              className={interactiveCard}
               onClick={() => navigate('/app/health-priorities')}
               aria-label="Gå till mina hälsoprioriteringar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`cardTitle`}>Anpassa tips efter mina mål</h4>
-                  <div className={`cardText`}>
+                  <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
+                  <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -246,7 +246,7 @@ const Today = () => {
               </div>
             </div>
             <div 
-              className={`interactiveCard`}
+              className={interactiveCard}
               onClick={() => navigate('/app/health-metrics')}
               aria-label="Gå till hälsomätningar"
             >
@@ -268,13 +268,13 @@ const Today = () => {
             {markedTipsList.map((tip) => (
               <Card 
                 key={tip.id} 
-                className={`p-6 hover:shadow-lg transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-sm min-h-[80px]`}
+                className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none min-h-[80px]`}
                 onClick={() => navigate(`/app/tips/${tip.id}`)}
                 aria-label={`Visa detaljer om ${tip.title}`}
               >
                 <div>
-                  <h3 className={`${cardTitle} ${tip.textColor} mb-2`}>{tip.title}</h3>
-                  <div className={`${cardText} font-bold text-blue-900`}>
+                  <h3 className={`text-xl font-bold ${tip.textColor} mb-1`}>{tip.title}</h3>
+                  <div className="text-blue-900 text-base font-bold">
                     {tip.healthScore} poäng
                   </div>
                 </div>

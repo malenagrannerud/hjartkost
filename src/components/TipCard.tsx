@@ -12,7 +12,7 @@ interface TipCardProps {
 const TipCard = ({ tip, isMarked, onToggleMark, onClick }: TipCardProps) => {
   return (
     <Card
-      className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none`}
+      className={`p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-none min-h-[80px]`}
       onClick={onClick}
     >
       <div
@@ -25,8 +25,8 @@ const TipCard = ({ tip, isMarked, onToggleMark, onClick }: TipCardProps) => {
       </div>
       <div className="space-y-3 pr-8">
         <div>
-          <h3 className={`font-semibold ${tip.textColor}`}>{tip.title}</h3>
-          <div className="text-blue-900 text-xs font-bold">
+          <h3 className={`text-xl font-bold ${tip.textColor} mb-1`}>{tip.title}</h3>
+          <div className="text-blue-900 text-base font-bold">
             {tip.healthScore} {tip.healthScore === 1 ? "poäng" : "poäng"}
           </div>
         </div>
