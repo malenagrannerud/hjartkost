@@ -55,7 +55,7 @@ export const colors = {
  * PAGE TITLES (Idag, Tips, Framsteg)
  * Used for main page headers
  */
-export const pageTitle = "text-4xl font-bold text-[#212658]";
+export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
 
 /**
  * PAGE SUBTITLES

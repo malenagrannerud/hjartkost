@@ -379,8 +379,8 @@ const Progress = () => {
     <div className={`${pageContainer} ${pagePadding} space-y-8`}>
       <header className="flex items-start justify-between">
         <div>
-          <h1 className={`${pageTitle} mb-2`}>Framsteg</h1>
-          <p className={pageSubtitle}>Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+          <h1 className={pageTitle}>Mina sidor</h1>
+          <p className={pageSubtitle}>Följ dina framsteg & redigera loggar</p>
         </div>
         <Button variant="ghost" onClick={() => navigate('/app/settings')} className={iconButton} aria-label="Inställningar">
           <Settings size={28} className="text-foreground" />
