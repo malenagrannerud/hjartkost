@@ -7,19 +7,12 @@ import { sv } from "date-fns/locale";
 import { Trophy, Flame, Weight, Activity, Trash2, Settings } from "lucide-react";
 import { tips } from "@/data/tips";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
-import { colorToHsl, getWeekModifiers } from "@/lib/calendar-utils";
 import { pageTitle, pageSubtitle, sectionHeading, iconButton, pageContainer, pagePadding } from "@/lib/design-tokens";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList } from 'recharts';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-
-interface MarkedTip {
-  id: number;
-  markedDate: string;
-  color: string;
-}
 
 interface DayLog {
   date: string;
@@ -39,7 +32,6 @@ const Progress = () => {
   const [achievementDays, setAchievementDays] = useState<Date[]>([]);
   const [weightDays, setWeightDays] = useState<Date[]>([]);
   const [bloodPressureDays, setBloodPressureDays] = useState<Date[]>([]);
-  const [markedTips, setMarkedTips] = useState<MarkedTip[]>([]);
   const [dayLogs, setDayLogs] = useState<DayLog[]>([]);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -154,19 +146,6 @@ const Progress = () => {
     }
     
     setDayLogs(logs);
-
-    const savedTips = localStorage.getItem('markedTips');
-    if (savedTips) {
-      setMarkedTips(JSON.parse(savedTips));
-    } else {
-      // Demo marked tips for demonstration
-      const demoTips = [
-        { id: 1, markedDate: '2025-10-10T00:00:00.000Z', color: 'bg-green-200' }, // Green square on Oct 10-16
-        { id: 2, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-amber-100' }, // Second square (amber/yellow) on Oct 15-21
-        { id: 5, markedDate: '2025-10-15T00:00:00.000Z', color: 'bg-blue-100' }  // Blue square on Oct 15-21
-      ];
-      setMarkedTips(demoTips);
-    }
   }, []);
 
   // Update achievement days based on day logs (500g+ threshold for tips)
@@ -193,48 +172,6 @@ const Progress = () => {
       .map(log => new Date(log.date));
     setBloodPressureDays(bpLogDays);
   }, [dayLogs]);
-
-  // Convert Tailwind color classes to HSL values
-  const colorToHsl = (colorClass: string): string => {
-    const colorMap: { [key: string]: string } = {
-      'bg-green-200': '142 76% 76%',
-      'bg-amber-100': '48 96% 89%',
-      'bg-cyan-100': '185 96% 90%',
-      'bg-yellow-100': '55 92% 88%',
-      'bg-blue-100': '214 95% 93%',
-      'bg-rose-100': '356 100% 94%',
-      'bg-orange-100': '43 100% 90%',
-      'bg-purple-100': '270 100% 95%',
-      'bg-teal-100': '166 76% 87%',
-      'bg-green-100': '138 76% 87%'
-    };
-    return colorMap[colorClass] || '142 76% 76%';
-  };
-
-  // Create modifiers for each marked tip's week
-  const getWeekModifiers = () => {
-    const modifiers: { [key: string]: Date[] } = {};
-    markedTips.forEach((tip, index) => {
-      const dates: Date[] = [];
-      const startDate = new Date(tip.markedDate);
-      for (let i = 0; i < 7; i++) {
-        dates.push(addDays(startDate, i));
-      }
-      modifiers[`tip${tip.id}`] = dates;
-    });
-    return modifiers;
-  };
-
-  const weekModifiers = getWeekModifiers();
-  
-  // Get all fruit dates from marked tips
-  const fruitDates: Date[] = [];
-  markedTips.forEach((tip) => {
-    const startDate = new Date(tip.markedDate);
-    for (let i = 0; i < 7; i++) {
-      fruitDates.push(addDays(startDate, i));
-    }
-  });
 
   // Calculate days in current month with 10+ points
   const getDaysWithGoalThisMonth = () => {
@@ -397,8 +334,7 @@ const Progress = () => {
           modifiers={{
             achievement: achievementDays,
             weight: weightDays,
-            bloodPressure: bloodPressureDays,
-            ...weekModifiers
+            bloodPressure: bloodPressureDays
           }}
           modifiersClassNames={{
             achievement: "relative before:content-[''] before:absolute before:inset-[8px] before:bg-emerald-500 before:rounded-full before:-z-10 !text-blue-900 font-bold"
@@ -413,30 +349,12 @@ const Progress = () => {
               const hasWeight = weightDays.some(d => isSameDay(d, props.date));
               const hasBP = bloodPressureDays.some(d => isSameDay(d, props.date));
               
-              // Find all marked tips that apply to this date (within their 7-day week)
-              const applicableTips = markedTips.filter(tip => {
-                const tipStartDate = new Date(tip.markedDate);
-                const tipEndDate = addDays(tipStartDate, 6);
-                return isWithinInterval(props.date, { start: tipStartDate, end: tipEndDate });
-              });
-              
               return (
                 <div className="relative w-full h-full flex items-center justify-center">
-                  {/* Left column - Data icons */}
+                  {/* Data icons */}
                   <div className="absolute top-0.5 left-0.5 flex flex-col gap-0.5">
                     {hasBP && <span className="text-xs leading-none text-rose-600">♥</span>}
                     {hasWeight && <span className="text-xs leading-none text-blue-700">⚖</span>}
-                  </div>
-                  
-                  {/* Right column - Status squares */}
-                  <div className="absolute top-0.5 right-0.5 flex flex-col gap-0.5">
-                    {applicableTips.map(tip => (
-                      <div 
-                        key={tip.id}
-                        className="w-2 h-2 rounded-sm"
-                        style={{ backgroundColor: `hsl(${colorToHsl(tip.color)})` }}
-                      />
-                    ))}
                   </div>
                   
                   {/* Date number */}
