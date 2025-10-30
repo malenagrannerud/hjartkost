@@ -218,7 +218,7 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className={`flex-1 ${standardCard} rounded-lg min-h-[80px]`}
+              className={`flex-1 ${interactiveCard} rounded-lg min-h-[80px]`}
               onClick={() => navigate('/app/health-priorities')}
               aria-label="Gå till mina hälsoprioriteringar"
             >
