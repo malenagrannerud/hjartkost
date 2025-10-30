@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { tips } from "@/data/tips";
+import { pageTitle, sectionHeading, cardText, backButton, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { Button } from "@/components/ui/button";
 
 const TipDetail = () => {
   const { id } = useParams();
@@ -12,35 +14,36 @@ const TipDetail = () => {
   }
 
   return (
-    <div className="min-h-screen pb-16 bg-[#FCFAF7]">
+    <div className={`${pageContainer} pb-16`}>
       {/* Color Header */}
       <div className={`w-full h-[200px] ${tip.color}`}></div>
 
-      {/* Content */}
-      <div className="p-6 space-y-6">
-        {/* Back Button */}
-        <button
+      {/* Content - CENTRALIZED STYLES */}
+      <div className={`${pagePadding} space-y-6`}>
+        {/* Back Button - Using Button component */}
+        <Button
+          variant="ghost"
           onClick={() => navigate(-1)}
-          className="flex items-center gap-3 p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px]"
+          className={`${backButton} flex gap-3`}
         >
-          <ArrowLeft size={28} className="text-[#212658]" />
-          <span className="text-lg font-semibold text-[#212658]">Tillbaka</span>
-        </button>
+          <ArrowLeft size={28} className="text-foreground" />
+          <span className="text-lg font-semibold text-foreground">Tillbaka</span>
+        </Button>
 
-        {/* Title */}
-        <h1 className="text-4xl font-bold text-[#212658] leading-tight">{tip.title}</h1>
+        {/* Title - CENTRALIZED */}
+        <h1 className={`${pageTitle} leading-tight`}>{tip.title}</h1>
 
-        {/* Description */}
-        <p className="text-[#212658] leading-relaxed text-lg">{tip.detailedInfo}</p>
+        {/* Description - CENTRALIZED */}
+        <p className={`text-foreground leading-relaxed text-lg`}>{tip.detailedInfo}</p>
 
-        {/* Steps */}
+        {/* Steps - CENTRALIZED */}
         <div className="space-y-4 pt-4">
           {tip.steps.map((step, index) => (
             <div key={index} className="space-y-2">
-              <h3 className="font-bold text-[#212658] text-xl">
+              <h3 className={`${sectionHeading} text-xl`}>
                 Steg {index + 1}
               </h3>
-              <p className="text-[#212658] text-base leading-relaxed">{step}</p>
+              <p className={`${cardText} text-base leading-relaxed`}>{step}</p>
             </div>
           ))}
         </div>

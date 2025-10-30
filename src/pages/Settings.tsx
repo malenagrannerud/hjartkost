@@ -2,6 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Heart, Pill } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { pageTitle, cardTitle, cardText, interactiveCard, headerContainer, backButton, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { getStorageItem } from "@/lib/storage";
+import { healthPrioritiesSchema } from "@/lib/schemas";
 
 interface HealthPriority {
   id: string;
@@ -32,34 +36,34 @@ const Settings = () => {
   const [medications, setMedications] = useState<string[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('healthPriorities');
-    if (saved) {
-      const data = JSON.parse(saved);
+    const data = getStorageItem('healthPriorities', healthPrioritiesSchema);
+    if (data) {
       setPriorities(data.priorities || []);
       setMedications(data.medications || []);
     }
   }, []);
 
   return (
-    <div className="min-h-screen pb-16 bg-[#FCFAF7]">
-      {/* Header */}
-      <header className="bg-white border-b border-border sticky top-0 z-10 p-6">
+    <div className={`${pageContainer} pb-16`}>
+      {/* Header - CENTRALIZED */}
+      <header className={headerContainer}>
         <div className="flex items-center gap-3">
-          <button
+          <Button
+            variant="ghost"
             onClick={() => navigate('/app/progress')}
-            className="p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]"
+            className={backButton}
             aria-label="Tillbaka"
           >
-            <ArrowLeft size={28} className="text-[#212658]" />
-          </button>
-          <h1 className="text-3xl font-bold text-[#212658]">Inställningar</h1>
+            <ArrowLeft size={28} className="text-foreground" />
+          </Button>
+          <h1 className={`${pageTitle} text-3xl`}>Inställningar</h1>
         </div>
       </header>
 
-      <div className="p-6 space-y-6">
-        {/* Health Priorities Card */}
+      <div className={`${pagePadding} space-y-6`}>
+        {/* Health Priorities Card - CENTRALIZED & FIXED NAVIGATION */}
         <Card 
-          className="p-6 border-2 shadow-sm cursor-pointer hover:bg-accent/50 transition-all active:scale-[0.98]"
+          className={interactiveCard}
           onClick={() => navigate('/app/health-priorities')}
         >
           <div className="flex items-start gap-4">
@@ -67,25 +71,25 @@ const Settings = () => {
               <Heart size={24} className="text-primary" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-xl text-[#212658] mb-2">Mina hälsomål</h3>
+              <h3 className={`${cardTitle} mb-2`}>Mina hälsomål</h3>
               {priorities.length > 0 ? (
                 <div className="space-y-1">
                   {priorities.map((id) => (
-                    <p key={id} className="text-[#212658]/70 text-base">
+                    <p key={id} className={cardText}>
                       • {healthPriorityLabels[id]}
                     </p>
                   ))}
                 </div>
               ) : (
-                <p className="text-[#212658]/70 text-base">Inga mål valda ännu</p>
+                <p className={cardText}>Inga mål valda ännu</p>
               )}
             </div>
           </div>
         </Card>
 
-        {/* Medications Card */}
+        {/* Medications Card - CENTRALIZED & SAME NAVIGATION AS HEALTH PRIORITIES */}
         <Card 
-          className="p-6 border-2 shadow-sm cursor-pointer hover:bg-accent/50 transition-all active:scale-[0.98]"
+          className={interactiveCard}
           onClick={() => navigate('/app/health-priorities')}
         >
           <div className="flex items-start gap-4">
@@ -93,17 +97,17 @@ const Settings = () => {
               <Pill size={24} className="text-primary" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-xl text-[#212658] mb-2">Mina läkemedel</h3>
+              <h3 className={`${cardTitle} mb-2`}>Mina läkemedel</h3>
               {medications.length > 0 ? (
                 <div className="space-y-1">
                   {medications.map((id) => (
-                    <p key={id} className="text-[#212658]/70 text-base">
+                    <p key={id} className={cardText}>
                       • {medicationLabels[id]}
                     </p>
                   ))}
                 </div>
               ) : (
-                <p className="text-[#212658]/70 text-base">Inga läkemedel valda ännu</p>
+                <p className={cardText}>Inga läkemedel valda ännu</p>
               )}
             </div>
           </div>

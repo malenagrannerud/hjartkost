@@ -31,12 +31,13 @@ export const tips: Tip[] = [
     color: "bg-amber-100",
     textColor: "text-blue-900",
     healthScore: 3,
-    description: "..",
-    detailedInfo: "...",
+    description: "Välj helst fullkornsbröd, fullkornspasta, råris och havregryn",
+    detailedInfo: "Fullkorn innehåller fibrer, vitaminer och mineraler som är viktiga för din hälsa. Genom att välja fullkorn istället för raffinerade produkter får du mer näring och håller dig mätt längre. Fullkorn har också visats minska risken för hjärt-kärlsjukdomar och typ 2-diabetes.",
     steps: [
       "Byt ut vitt bröd mot fullkornsbröd",
       "Välj havregryn eller fullkornsflingor till frukost",
       "Testa fullkornspasta eller råris istället för vanliga varianter",
+      "Ha havregryn eller müsli med fullkorn till frukost"
     ],
   },
   {
@@ -166,9 +167,14 @@ export const tips: Tip[] = [
     color: "bg-green-100",
     textColor: "text-blue-900",
     healthScore: 3,
-    description: "...",
-    detailedInfo:
-      "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis.",
-    steps: ["Byt läsk mot vatten eller sprudel", "Välj färska bär istället för sylt", "Läs innehållsförtecknin"],
+    description: "Begränsa sötsaker, läsk och godis. Max 10% av ditt dagliga energiintag",
+    detailedInfo: "För mycket socker och salt är skadligt för hjärtat och blodtrycket. Genom att minska på dessa kan du förbättra din hälsa avsevärt. Socker ökar risken för övervikt och diabetes, medan för mycket salt höjer blodtrycket.",
+    steps: [
+      "Undvik läsk, saft och andra sockrade drycker",
+      "Begränsa sötsaker och godis till speciella tillfällen",
+      "Koka själv så du kan kontrollera salt- och sockermängden",
+      "Läs innehållsförteckningen - socker har många namn (glukos, sackaros, fruktossirap)",
+      "Använd kryddor istället för salt för mer smak"
+    ],
   },
 ];

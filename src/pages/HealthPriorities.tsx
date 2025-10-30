@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { pageTitle, sectionHeading, cardTitle, cardText, standardCard, headerContainer, backButton, primaryButton, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { getStorageItem, setStorageItem } from "@/lib/storage";
+import { healthPrioritiesSchema, completedActivitiesSchema } from "@/lib/schemas";
 
 interface HealthPriority {
   id: string;
@@ -93,9 +97,8 @@ const HealthPriorities = () => {
   const [selectedMedications, setSelectedMedications] = useState<string[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('healthPriorities');
-    if (saved) {
-      const data = JSON.parse(saved);
+    const data = getStorageItem('healthPriorities', healthPrioritiesSchema);
+    if (data) {
       setSelectedPriorities(data.priorities || []);
       setSelectedMedications(data.medications || []);
     }
@@ -122,18 +125,19 @@ const HealthPriorities = () => {
       priorities: selectedPriorities,
       medications: selectedMedications
     };
-    localStorage.setItem('healthPriorities', JSON.stringify(data));
+    setStorageItem('healthPriorities', data, healthPrioritiesSchema);
     localStorage.setItem('healthPrioritiesCompleted', 'true');
     
     // Add to completed activities
-    const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
-    completedActivities.push({
+    const completedActivities = getStorageItem('completedActivities', completedActivitiesSchema) || [];
+    const activities = Array.isArray(completedActivities) ? completedActivities : [];
+    activities.push({
       id: 'health-priorities',
       title: 'Anpassa tips efter mina mål',
       completedDate: new Date().toISOString(),
       type: 'health-priorities'
     });
-    localStorage.setItem('completedActivities', JSON.stringify(completedActivities));
+    setStorageItem('completedActivities', activities, completedActivitiesSchema);
     
     toast({
       title: "Inställningar sparade",
@@ -144,31 +148,32 @@ const HealthPriorities = () => {
   };
 
   return (
-    <div className="min-h-screen pb-24 bg-[#FCFAF7]">
-      {/* Header */}
-      <header className="bg-white border-b border-border sticky top-0 z-10 p-6">
+    <div className={`${pageContainer} pb-24`}>
+      {/* Header - CENTRALIZED */}
+      <header className={headerContainer}>
         <div className="flex items-center gap-3 mb-3">
-          <button
+          <Button
+            variant="ghost"
             onClick={() => navigate('/app/today')}
-            className="p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]"
+            className={backButton}
             aria-label="Tillbaka"
           >
-            <ArrowLeft size={28} className="text-[#212658]" />
-          </button>
-          <h1 className="text-3xl font-bold text-[#212658]">Anpassa tips efter mina mål</h1>
+            <ArrowLeft size={28} className="text-foreground" />
+          </Button>
+          <h1 className={`${pageTitle} text-3xl`}>Anpassa tips efter mina mål</h1>
         </div>
-        <p className="text-[#212658]/70 text-base ml-14">
+        <p className={`${cardText} ml-14`}>
           Bocka i dina mål och mediciner du tar. Då anpassas tips något till dej, även fast de är väligt lika. Du kan ändra detta när som helst under "Inställningar".
         </p>
       </header>
 
-      <div className="p-6 space-y-8">
-        {/* Health Priorities Section */}
+      <div className={`${pagePadding} space-y-8`}>
+        {/* Health Priorities Section - CENTRALIZED */}
         <section>
-          <h2 className="text-2xl font-bold text-[#212658] mb-4">Hjälp mej att:</h2>
+          <h2 className={`${sectionHeading} mb-4`}>Hjälp mej att:</h2>
           <div className="space-y-4">
             {healthPriorities.map((priority) => (
-              <Card key={priority.id} className="p-6 border-2 shadow-sm">
+              <Card key={priority.id} className={standardCard}>
                 <label className="flex items-start gap-4 cursor-pointer">
                   <Checkbox
                     checked={selectedPriorities.includes(priority.id)}
@@ -177,11 +182,11 @@ const HealthPriorities = () => {
                     aria-label={priority.label}
                   />
                   <div className="flex-1">
-                    <div className="font-bold text-lg text-[#212658] mb-1">
+                    <div className={`${cardTitle} text-lg mb-1`}>
                       {priority.label}
                     </div>
                     {priority.description && (
-                      <p className="text-[#212658]/70 text-base">
+                      <p className={cardText}>
                         {priority.description}
                       </p>
                     )}
@@ -192,15 +197,15 @@ const HealthPriorities = () => {
           </div>
         </section>
 
-        {/* Medications Section */}
+        {/* Medications Section - CENTRALIZED */}
         <section>
-          <h2 className="text-2xl font-bold text-[#212658] mb-2">Läkemedel</h2>
-          <p className="text-[#212658]/70 text-base mb-4">
+          <h2 className={`${sectionHeading} mb-2`}>Läkemedel</h2>
+          <p className={`${cardText} mb-4`}>
             Markera de läkemedel du tar regelbundet.
           </p>
           <div className="space-y-4">
             {medications.map((medication) => (
-              <Card key={medication.id} className="p-6 border-2 shadow-sm">
+              <Card key={medication.id} className={standardCard}>
                 <label className="flex items-start gap-4 cursor-pointer">
                   <Checkbox
                     checked={selectedMedications.includes(medication.id)}
@@ -209,11 +214,11 @@ const HealthPriorities = () => {
                     aria-label={medication.label}
                   />
                   <div className="flex-1">
-                    <div className="font-bold text-lg text-[#212658] mb-1">
+                    <div className={`${cardTitle} text-lg mb-1`}>
                       {medication.label}
                     </div>
                     {medication.description && (
-                      <p className="text-[#212658]/70 text-base">
+                      <p className={cardText}>
                         {medication.description}
                       </p>
                     )}
@@ -232,10 +237,10 @@ const HealthPriorities = () => {
                           aria-label={subOption.label}
                         />
                         <div className="flex-1">
-                          <div className="font-semibold text-base text-[#212658]">
+                          <div className="font-semibold text-base text-foreground">
                             {subOption.label}
                           </div>
-                          <p className="text-[#212658]/70 text-sm">
+                          <p className="text-sm text-muted-foreground">
                             {subOption.description}
                           </p>
                         </div>
@@ -248,14 +253,14 @@ const HealthPriorities = () => {
           </div>
         </section>
 
-        {/* Save Button */}
-        <button
+        {/* Save Button - Using Button component with CENTRALIZED STYLING */}
+        <Button
           onClick={handleSave}
-          className="w-full py-6 rounded-lg font-bold text-xl transition-all bg-[#212658] text-white hover:opacity-90 shadow-lg min-h-[64px]"
+          className={primaryButton}
           aria-label="Spara mina val"
         >
           Spara mina val
-        </button>
+        </Button>
       </div>
     </div>
   );

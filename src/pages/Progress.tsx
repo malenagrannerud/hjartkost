@@ -5,7 +5,10 @@ import { Calendar } from "@/components/ui/calendar";
 import { format, startOfMonth, endOfMonth, isSameDay, addDays, isWithinInterval } from "date-fns";
 import { sv } from "date-fns/locale";
 import { Trophy, Flame, Weight, Activity, Trash2, Settings } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { tips } from "@/data/tips";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription } from "@/components/ui/dialog";
+import { colorToHsl, getWeekModifiers } from "@/lib/calendar-utils";
+import { pageTitle, pageSubtitle, sectionHeading, iconButton, pageContainer, pagePadding } from "@/lib/design-tokens";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -384,19 +387,15 @@ const Progress = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
+    <div className={`${pageContainer} ${pagePadding} space-y-8`}>
       <header className="flex items-start justify-between">
         <div>
-          <h1 className="text-4xl font-bold text-[#212658] mb-2">Framsteg</h1>
-          <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
+          <h1 className={`${pageTitle} mb-2`}>Framsteg</h1>
+          <p className={pageSubtitle}>Följ dina framsteg, lägg till vikt eller blodtryck, eller redigera loggar</p>
         </div>
-        <button
-          onClick={() => navigate('/app/settings')}
-          className="p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]"
-          aria-label="Inställningar"
-        >
-          <Settings size={28} className="text-[#212658]" />
-        </button>
+        <Button variant="ghost" onClick={() => navigate('/app/settings')} className={iconButton} aria-label="Inställningar">
+          <Settings size={28} className="text-foreground" />
+        </Button>
       </header>
 
       <div className="pt-6 pb-0 flex justify-center">
@@ -466,6 +465,7 @@ const Progress = () => {
             <DialogTitle>
               Redigera {selectedDate && format(selectedDate, 'd MMMM yyyy', { locale: sv })}
             </DialogTitle>
+            <DialogDescription>Lägg till eller ta bort inlägg för denna dag</DialogDescription>
           </DialogHeader>
           
           {/* Existing Entries */}

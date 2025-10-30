@@ -8,8 +8,9 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 217 65% 19%;
+    /* ========== USER REQUIREMENT: bg=#FCFAF7, header=#212658 ========== */
+    --background: 40 67% 98%;  /* #FCFAF7 - Beige main background */
+    --foreground: 228 46% 26%;  /* #212658 - Dark blue for headers */
 
     --card: 0 0% 100%;
     --card-foreground: 217 65% 19%;

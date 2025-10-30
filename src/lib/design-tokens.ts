@@ -1,233 +1,212 @@
 /**
- * Design Tokens - Single Source of Truth
- * All colors, typography, spacing, and other design values
+ * ==========================================
+ * CENTRALIZED DESIGN TOKENS
+ * ==========================================
+ * 
+ * All titles, subtitles, headings, text styles, card sizes, 
+ * and colors are defined here for consistency across the app.
+ * 
+ * USAGE: Import and use these tokens in all components
+ * Example: import { pageTitle, sectionHeading } from '@/lib/design-tokens'
  */
 
-// ============= COLORS =============
+// ==========================================
+// 🎨 COLORS (Based on user requirements)
+// ==========================================
 export const colors = {
-  // Brand Colors
-  primary: {
-    main: '#212658',        // Dark blue (from user's custom knowledge)
-    light: '#3d4a8f',
-    dark: '#151a3d',
-  },
-  secondary: {
-    main: '#F472B6',        // Pink
-    light: '#FCE7F3',
-    dark: '#BE185D',
-  },
-  
-  // Semantic Colors
-  success: {
-    main: '#22C55E',
-    light: '#86EFAC',
-    dark: '#15803D',
-  },
-  info: {
-    main: '#06B6D4',
-    light: '#7DD3FC',
-    dark: '#0E7490',
-  },
-  warning: {
-    main: '#F59E0B',
-    light: '#FCD34D',
-    dark: '#B45309',
-  },
-  error: {
-    main: '#EF4444',
-    light: '#FCA5A5',
-    dark: '#B91C1C',
-  },
-  
-  // Neutral Colors
-  neutral: {
-    white: '#FFFFFF',
-    black: '#000000',
-    gray: {
-      50: '#F9FAFB',
-      100: '#F3F4F6',
-      200: '#E5E7EB',
-      300: '#D1D5DB',
-      400: '#9CA3AF',
-      500: '#6B7280',
-      600: '#4B5563',
-      700: '#374151',
-      800: '#1F2937',
-      900: '#111827',
-    },
-  },
-  
-  // Background Colors (per user's custom knowledge)
+  // Main background for all frames
   background: {
-    primary: '#fffdfaff',     // Beige - main background for frames
-    secondary: '#FFFFFF',   // White - for cards/elevated surfaces
-    tertiary: '#D5EDF9',    // Light blue - special sections
+    primary: '#FCFAF7',    // Beige - main background
+    secondary: '#FFFFFF',  // White - for cards
+    tertiary: '#D5EDF9',   // Light blue - special sections
   },
   
-  // Tip Card Colors
+  // Main header color
+  header: {
+    main: '#212658',       // Dark blue - ALL main headers
+    secondary: '#212658',  // Same for consistency
+  },
+  
+  // Text colors
+  text: {
+    primary: '#212658',         // Main text
+    secondary: 'rgba(33, 38, 88, 0.7)',  // 70% opacity for subtitles
+  },
+  
+  // Tip card colors
   tipCards: {
-    green: '#59ca80ff',       // bg-green-100
-    amber: '#f6e5a0ff',       // bg-amber-100
-    cyan: '#aad9ddff',        // bg-cyan-100
-    yellow: '#FEF9C3',      // bg-yellow-100
-    blue: '#DBEAFE',        // bg-blue-100
-    rose: '#FFE4E6',        // bg-rose-100
-    orange: '#FFEDD5',      // bg-orange-100
-    purple: '#F3E8FF',      // bg-purple-100
-    teal: '#CCFBF1',        // bg-teal-100
+    green: '#59ca80ff',
+    amber: '#f6e5a0ff',
+    cyan: '#aad9ddff',
+    yellow: '#FEF9C3',
+    blue: '#DBEAFE',
+    rose: '#FFE4E6',
+    orange: '#FFEDD5',
+    purple: '#F3E8FF',
+    teal: '#CCFBF1',
   },
 } as const;
 
-// ============= TYPOGRAPHY =============
-export const typography = {
-  fontFamily: {
-    sans: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-    serif: 'Georgia, "Times New Roman", serif',
-    mono: '"Courier New", monospace',
-  },
-  fontSize: {
-    xs: '0.75rem',      // 12px
-    sm: '0.875rem',     // 14px
-    base: '1rem',       // 16px
-    lg: '1.125rem',     // 18px
-    xl: '1.25rem',      // 20px
-    '2xl': '1.5rem',    // 24px
-    '3xl': '1.875rem',  // 30px
-    '4xl': '2.25rem',   // 36px
-    '5xl': '3rem',      // 48px
-  },
-  fontWeight: {
-    normal: 400,
-    medium: 500,
-    semibold: 600,
-    bold: 700,
-  },
-  lineHeight: {
-    tight: 1.25,
-    normal: 1.5,
-    relaxed: 1.75,
-  },
-  roles: {
-    // HEADINGS
-    h1: `text-4xl font-bold leading-tight`,
-    h2: `text-3xl font-bold leading-tight`, 
-    sh1: `text-2xl font-semibold leading-tight`,
-    sh2: `text-xl font-semibold leading-normal`,
-    
-    // BODY TEXT
-    
-    body: `text-base font-normal leading-normal`,
-    bodySmall: `text-sm font-normal leading-normal`,
-    
-    // UI TEXT  
-    buttonLarge: `text-lg font-semibold leading-normal`,
-    button: `text-base font-medium leading-normal`,
-    buttonSmall: `text-sm font-medium leading-normal`,
-    
-    // CAPTIONS & LABELS
-    caption: `text-sm font-normal leading-normal`,
-    label: `text-sm font-medium leading-normal`,
-  },
-} as const;
+// ==========================================
+// 📝 TYPOGRAPHY - CENTRALIZED TEXT STYLES
+// ==========================================
 
-// ============= SPACING =============
-export const spacing = {
-  0: '0',
-  1: '0.25rem',   // 4px
-  2: '0.5rem',    // 8px
-  3: '0.75rem',   // 12px
-  4: '1rem',      // 16px
-  5: '1.25rem',   // 20px
-  6: '1.5rem',    // 24px
-  8: '2rem',      // 32px
-  10: '2.5rem',   // 40px
-  12: '3rem',     // 48px
-  16: '4rem',     // 64px
-  20: '5rem',     // 80px
-  24: '6rem',     // 96px
-  32: '8rem',     // 128px
-} as const;
+/**
+ * PAGE TITLES (Idag, Tips, Framsteg)
+ * Used for main page headers
+ */
+export const pageTitle = "text-4xl font-bold text-[#212658]";
 
-// ============= BORDER RADIUS =============
-export const borderRadius = {
-  none: '0',
-  sm: '0.125rem',   // 2px
-  base: '0.25rem',  // 4px
-  md: '0.375rem',   // 6px
-  lg: '0.5rem',     // 8px
-  xl: '0.75rem',    // 12px
-  '2xl': '1rem',    // 16px
-  full: '9999px',
-} as const;
+/**
+ * PAGE SUBTITLES
+ * Used under page titles
+ */
+export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 
-// ============= SHADOWS =============
-export const shadows = {
-  sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-  base: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1)',
-  md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)',
-  lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)',
-  xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-  none: 'none',
-} as const;
+/**
+ * SECTION HEADINGS (Starta här, Mina tips den här veckan, etc.)
+ * Used for section headers within pages
+ */
+export const sectionHeading = "text-2xl font-bold text-[#212658]";
 
-// ============= TRANSITIONS =============
-export const transitions = {
-  fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
-  base: '200ms cubic-bezier(0.4, 0, 0.2, 1)',
-  slow: '300ms cubic-bezier(0.4, 0, 0.2, 1)',
-  slower: '500ms cubic-bezier(0.4, 0, 0.2, 1)',
-} as const;
+/**
+ * CARD TITLES
+ * Used for titles within cards
+ */
+export const cardTitle = "text-xl font-bold text-[#212658]";
 
-// ============= BREAKPOINTS =============
-export const breakpoints = {
-  sm: '640px',
-  md: '768px',
-  lg: '1024px',
-  xl: '1280px',
-  '2xl': '1536px',
-} as const;
+/**
+ * CARD TEXT
+ * Used for body text within cards
+ */
+export const cardText = "text-base text-[#212658]/70";
 
-// ============= Z-INDEX SCALE =============
-export const zIndex = {
-  hide: -1,
-  base: 0,
-  dropdown: 1000,
-  sticky: 1100,
-  fixed: 1200,
-  modalBackdrop: 1300,
-  modal: 1400,
-  popover: 1500,
-  tooltip: 1600,
-} as const;
+/**
+ * SMALL CARD TEXT
+ * Used for secondary text in cards
+ */
+export const cardTextSmall = "text-sm text-[#212658]/70";
 
-// Helper function to convert hex to HSL (for Tailwind CSS variables)
-export function hexToHSL(hex: string): string {
-  // Remove # if present
-  hex = hex.replace('#', '');
-  
-  // Convert hex to RGB
-  const r = parseInt(hex.substring(0, 2), 16) / 255;
-  const g = parseInt(hex.substring(2, 4), 16) / 255;
-  const b = parseInt(hex.substring(4, 6), 16) / 255;
-  
-  const max = Math.max(r, g, b);
-  const min = Math.min(r, g, b);
-  let h = 0, s = 0, l = (max + min) / 2;
-  
-  if (max !== min) {
-    const d = max - min;
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-    
-    switch (max) {
-      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-      case g: h = ((b - r) / d + 2) / 6; break;
-      case b: h = ((r - g) / d + 4) / 6; break;
-    }
-  }
-  
-  h = Math.round(h * 360);
-  s = Math.round(s * 100);
-  l = Math.round(l * 100);
-  
-  return `${h} ${s}% ${l}%`;
-}
+/**
+ * BUTTON TEXT (large)
+ * Used for primary action buttons
+ */
+export const buttonTextLarge = "text-xl font-bold";
+
+/**
+ * BUTTON TEXT (regular)
+ * Used for standard buttons
+ */
+export const buttonText = "text-base font-semibold";
+
+/**
+ * LABEL TEXT
+ * Used for form labels
+ */
+export const labelText = "text-[#212658] font-semibold";
+
+// ==========================================
+// 📦 CARD SIZES - STANDARDIZED DIMENSIONS
+// ==========================================
+
+/**
+ * STANDARD CARD
+ * Default card padding and styling
+ */
+export const standardCard = "p-6 border-2 shadow-sm";
+
+/**
+ * COMPACT CARD
+ * Smaller padding for dense layouts
+ */
+export const compactCard = "p-5 border-0 shadow-sm";
+
+/**
+ * INTERACTIVE CARD
+ * Card with hover and click effects
+ */
+export const interactiveCard = "p-6 border-2 shadow-sm cursor-pointer hover:bg-accent/50 transition-all active:scale-[0.98]";
+
+/**
+ * TIP CARD
+ * Special styling for tip cards
+ */
+export const tipCard = "p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] relative border-0 shadow-none";
+
+// ==========================================
+// 🎯 COMPONENT STYLES
+// ==========================================
+
+/**
+ * BACK BUTTON
+ * Standardized back button styling
+ */
+export const backButton = "p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]";
+
+/**
+ * ICON BUTTON
+ * Standardized icon button styling
+ */
+export const iconButton = "p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px] min-w-[48px]";
+
+/**
+ * PRIMARY BUTTON
+ * Main action button styling
+ */
+export const primaryButton = "w-full py-6 rounded-lg font-bold text-xl transition-all bg-[#212658] text-white hover:opacity-90 shadow-lg min-h-[64px]";
+
+/**
+ * SECONDARY BUTTON
+ * Secondary action button styling
+ */
+export const secondaryButton = "w-full py-4 rounded-lg font-semibold transition-opacity bg-[#212658] text-white hover:opacity-90";
+
+/**
+ * DISABLED BUTTON
+ * Disabled button styling
+ */
+export const disabledButton = "bg-gray-300 text-gray-500 cursor-not-allowed";
+
+// ==========================================
+// 📐 LAYOUT CONSTANTS
+// ==========================================
+
+/**
+ * PAGE CONTAINER
+ * Main page container styling
+ */
+export const pageContainer = "min-h-screen pb-24 space-y-6 bg-[#FCFAF7]";
+
+/**
+ * PAGE PADDING
+ * Standard page padding
+ */
+export const pagePadding = "p-6";
+
+/**
+ * HEADER CONTAINER
+ * Page header styling
+ */
+export const headerContainer = "bg-white border-b border-border sticky top-0 z-10 p-6";
+
+// ==========================================
+// 🎪 HELPER FUNCTIONS
+// ==========================================
+
+/**
+ * Get background color for pages
+ */
+export const getBackgroundColor = () => colors.background.primary;
+
+/**
+ * Get header color
+ */
+export const getHeaderColor = () => colors.header.main;
+
+/**
+ * Get text color with opacity
+ */
+export const getTextColor = (opacity: number = 1) => {
+  if (opacity === 1) return colors.text.primary;
+  return colors.text.secondary;
+};

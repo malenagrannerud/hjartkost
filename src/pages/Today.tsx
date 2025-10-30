@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { pageTitle, pageSubtitle, sectionHeading, cardTitle, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { getStorageItem, setStorageItem } from "@/lib/storage";
+import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
 
 interface MarkedTip {
   id: number;
@@ -29,9 +32,9 @@ const Today = () => {
   const [recentActivities, setRecentActivities] = useState<CompletedActivity[]>([]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('markedTips');
-    if (saved) {
-      setMarkedTips(JSON.parse(saved));
+    const savedTips = getStorageItem('markedTips', markedTipsSchema);
+    if (savedTips) {
+      setMarkedTips(savedTips as MarkedTip[]);
     }
     
     const tutorialDone = localStorage.getItem('tutorialCompleted');
@@ -50,9 +53,9 @@ const Today = () => {
     }
 
     // Load completed activities
-    const completed = localStorage.getItem('completedActivities');
+    const completed = getStorageItem('completedActivities', completedActivitiesSchema);
     if (completed) {
-      setCompletedActivities(JSON.parse(completed));
+      setCompletedActivities(completed as CompletedActivity[]);
     }
 
     // Check for daily reset at midnight
@@ -65,11 +68,11 @@ const Today = () => {
     
     if (lastReset !== today) {
       // It's a new day - move completed activities to recent
-      const completed = localStorage.getItem('completedActivities');
+      const completed = getStorageItem('completedActivities', completedActivitiesSchema);
       if (completed) {
-        const activities: CompletedActivity[] = JSON.parse(completed);
-        const recent = localStorage.getItem('recentActivities');
-        const existingRecent: CompletedActivity[] = recent ? JSON.parse(recent) : [];
+        const activities = completed as CompletedActivity[];
+        const recent = getStorageItem('recentActivities', completedActivitiesSchema);
+        const existingRecent: CompletedActivity[] = recent ? (recent as CompletedActivity[]) : [];
         
         // Combine and keep only last 30 days
         const allRecent = [...existingRecent, ...activities];
@@ -80,20 +83,20 @@ const Today = () => {
           new Date(activity.completedDate) > thirtyDaysAgo
         );
         
-        localStorage.setItem('recentActivities', JSON.stringify(filteredRecent));
+        setStorageItem('recentActivities', filteredRecent, completedActivitiesSchema);
         setRecentActivities(filteredRecent);
         
         // Clear today's completed activities
-        localStorage.setItem('completedActivities', JSON.stringify([]));
+        setStorageItem('completedActivities', [], completedActivitiesSchema);
         setCompletedActivities([]);
       }
       
       localStorage.setItem('lastResetDate', today);
     } else {
       // Load recent activities
-      const recent = localStorage.getItem('recentActivities');
+      const recent = getStorageItem('recentActivities', completedActivitiesSchema);
       if (recent) {
-        setRecentActivities(JSON.parse(recent));
+        setRecentActivities(recent as CompletedActivity[]);
       }
     }
   };
@@ -119,10 +122,11 @@ const Today = () => {
   );
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
+    <div className={`${pageContainer} ${pagePadding} space-y-8`}>
+      {/* CENTRALIZED HEADER */}
       <header>
         <div className="flex items-start justify-between mb-3">
-          <h1 className="text-4xl font-bold text-[#212658]">Idag</h1>
+          <h1 className={pageTitle}>Idag</h1>
           <Sheet>
             <SheetTrigger asChild>
               <Button 
@@ -131,12 +135,12 @@ const Today = () => {
                 className="h-10 w-10 rounded-full hover:bg-accent"
                 aria-label="Visa senaste aktiviteter"
               >
-                <History size={24} className="text-[#212658]" />
+                <History size={24} className="text-foreground" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:max-w-md bg-[#FCFAF7]">
+            <SheetContent side="right" className="w-full sm:max-w-md bg-background">
               <SheetHeader>
-                <SheetTitle className="text-2xl font-bold text-[#212658]">Senast</SheetTitle>
+                <SheetTitle className={`${sectionHeading}`}>Senast</SheetTitle>
               </SheetHeader>
               <div className="mt-6 space-y-4">
                 {allCompletedActivities.length > 0 ? (
@@ -145,14 +149,14 @@ const Today = () => {
                       key={`${activity.id}-${index}`}
                       className="p-4 bg-card border-2 border-border"
                     >
-                      <h4 className="font-semibold text-[#212658] mb-1">{activity.title}</h4>
-                      <p className="text-sm text-[#212658]/60">
+                      <h4 className="font-semibold text-foreground mb-1">{activity.title}</h4>
+                      <p className="text-sm text-muted-foreground">
                         {getRelativeTime(activity.completedDate)}
                       </p>
                     </Card>
                   ))
                 ) : (
-                  <p className="text-[#212658]/70 text-center py-8">
+                  <p className="text-muted-foreground text-center py-8">
                     Inga genomförda aktiviteter än
                   </p>
                 )}
@@ -160,13 +164,14 @@ const Today = () => {
             </SheetContent>
           </Sheet>
         </div>
-        <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">
+        <p className={pageSubtitle}>
           Uppdateras i din takt  
         </p>
       </header>
 
+      {/* STARTA HÄR SECTION - CENTRALIZED HEADING */}
       <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-[#212658]">Starta här</h3>
+        <h3 className={sectionHeading}>Starta här</h3>
         
         {/* Vertical Progress Stepper */}
         <div className="relative">
@@ -189,8 +194,8 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Så fungerar appen</h4>
-                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
+                  <h4 className={`${cardTitle} mb-2 text-lg`}>Så fungerar appen</h4>
+                  <div className="flex items-center gap-2 text-base text-muted-foreground font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -218,8 +223,8 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa tips efter mina mål</h4>
-                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
+                  <h4 className={`${cardTitle} mb-2 text-lg`}>Anpassa tips efter mina mål</h4>
+                  <div className="flex items-center gap-2 text-base text-muted-foreground font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -246,7 +251,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-[#212658] text-lg">Vikt och blodtryck</h4>
+                  <h4 className={`${cardTitle} text-lg`}>Vikt och blodtryck</h4>
                 </div>
               </div>
             </div>
@@ -254,8 +259,9 @@ const Today = () => {
         </div>
       </div>
 
+      {/* MINA TIPS SECTION - CENTRALIZED HEADING */}
       <div className="space-y-6 mt-10">
-        <h3 className="text-2xl font-bold text-[#212658]">Mina tips den här veckan</h3>
+        <h3 className={sectionHeading}>Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
@@ -275,7 +281,7 @@ const Today = () => {
             ))}
           </div>
         ) : (
-          <p className="text-[#212658]/70 text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
+          <p className={pageSubtitle}>Välj ett eller två tips för veckan under "Tips"</p>
         )}
       </div>
     </div>
