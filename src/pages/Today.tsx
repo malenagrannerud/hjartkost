@@ -157,7 +157,7 @@ const Today = () => {
                     </Card>
                   ))
                 ) : (
-                  <p className="text-muted-foreground text-center py-8">
+                  <p className="text-muted-foreground text-center py-2">
                     Inga genomförda aktiviteter än
                   </p>
                 )}
@@ -171,7 +171,7 @@ const Today = () => {
       </header>
 
       {/* STARTA HÄR SECTION - CENTRALIZED HEADING */}
-      <div className="space-y-6">
+      <div className="space-y-4">
         <h3 className={sectionHeading}>Starta här</h3>
         
         {/* Vertical Progress Stepper */}
@@ -218,7 +218,7 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className={`flex-1 ${interactiveCard} rounded-lg min-h-[80px]`}
+              className={`flex-1 ${standardCard} rounded-lg min-h-[80px]`}
               onClick={() => navigate('/app/health-priorities')}
               aria-label="Gå till mina hälsoprioriteringar"
             >
