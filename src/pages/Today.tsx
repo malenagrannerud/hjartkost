@@ -262,7 +262,7 @@ const Today = () => {
 
       {/* MINA TIPS SECTION - CENTRALIZED HEADING */}
       <div className="space-y-6">
-        <h3 className={sectionHeading}>Mina tips den här veckan</h3>
+        <h3 className={sectionSubheading}>Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
