@@ -16,7 +16,7 @@
 export const colors = {
   // Main background for all frames
   background: {
-    primary: '#FCFAF7',    // Beige - main background
+    primary: '#ffffffff',    // main background
     secondary: '#FFFFFF',  // White - for cards
     tertiary: '#D5EDF9',   // Light blue - special sections
   },
