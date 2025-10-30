@@ -313,7 +313,8 @@ const Progress = () => {
   };
 
   return (
-    <div className={`${pageContainer} ${pagePadding} space-y-8`}>
+    /* STANDARDIZATION: space-y-6 for consistent page section spacing */
+    <div className={`${pageContainer} ${pagePadding} space-y-6`}>
       <header className="flex items-start justify-between">
         <div>
           <h1 className={pageTitle}>Mina sidor</h1>

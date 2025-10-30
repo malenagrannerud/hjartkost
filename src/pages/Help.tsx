@@ -1,15 +1,19 @@
 import { Card } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { pageTitle, pageSubtitle, standardCard, pageContainer, pagePadding } from "@/lib/design-tokens";
 
 const Help = () => {
   return (
-    <div className="min-h-screen p-6 pb-16 space-y-8 bg-[#FCFAF7]">
+    /* STANDARDIZATION: Page uses pageContainer, pagePadding, space-y-6 for consistent layout */
+    <div className={`${pageContainer} ${pagePadding} space-y-6`}>
+      {/* STANDARDIZATION: Header uses pageTitle (text-4xl) and pageSubtitle (text-lg) */}
       <header>
-        <h1 className="text-4xl font-bold text-[#212658] mb-2">Hjälp</h1>
-        <p className="text-[#212658]/70 text-lg font-normal">Vanliga frågor och svar</p>
+        <h1 className={pageTitle}>Hjälp</h1>
+        <p className={pageSubtitle}>Vanliga frågor och svar</p>
       </header>
 
-      <Card className="p-8 border-2">
+      {/* STANDARDIZATION: Card uses p-5 padding and bg-blue-50 background */}
+      <Card className={standardCard}>
         <Accordion type="single" collapsible className="w-full space-y-3">
           <AccordionItem value="item-1" className="border-b-2">
             <AccordionTrigger className="text-foreground font-bold text-lg py-6 hover:no-underline">
@@ -63,7 +67,8 @@ const Help = () => {
         </Accordion>
       </Card>
 
-      <Card className="p-8 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20">
+      {/* STANDARDIZATION: Contact card uses standardCard for consistent styling */}
+      <Card className={`${standardCard} bg-gradient-to-br from-primary/10 to-primary/5`}>
         <h2 className="text-2xl font-bold mb-4 text-foreground">Kontakta oss</h2>
         <p className="text-foreground/80 mb-5 text-lg leading-relaxed">
           Har du frågor som inte besvaras här? Tveka inte att höra av dig!

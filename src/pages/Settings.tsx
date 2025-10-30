@@ -44,6 +44,7 @@ const Settings = () => {
   }, []);
 
   return (
+    /* STANDARDIZATION: Cards use interactiveCard (p-5, bg-blue-50, min-h-80px) */
     <div className={`${pageContainer} pb-16`}>
       {/* Header - CENTRALIZED */}
       <header className={headerContainer}>

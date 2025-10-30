@@ -106,7 +106,8 @@ const Today = () => {
   );
 
   return (
-    <div className={`${pageContainer} ${pagePadding}`}>
+    /* STANDARDIZATION: space-y-6 for page sections, space-y-4 for card lists */
+    <div className={`${pageContainer} ${pagePadding} space-y-6`}>
   {/* STANDARDIZED HEADER */}
   <header className="flex items-start justify-between mb-6">
     <div>

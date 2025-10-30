@@ -8,6 +8,36 @@
  * 
  * USAGE: Import and use these tokens in all components
  * Example: import { pageTitle, sectionHeading } from '@/lib/design-tokens'
+ * 
+ * ==========================================
+ * STANDARDIZATION RULES
+ * ==========================================
+ * 
+ * SPACING:
+ * - Main page content sections: space-y-6
+ * - Card lists (multiple cards): space-y-4
+ * - Content within sections: space-y-3
+ * - Form fields: space-y-3
+ * 
+ * CARDS:
+ * - All cards: p-5 padding, min-h-[80px]
+ * - Non-tip cards: bg-blue-50 (light grey-blue)
+ * - Tip cards: Keep original colors from tip.color
+ * - Interactive cards: Same base + hover:bg-blue-100
+ * 
+ * TYPOGRAPHY:
+ * - Page titles: text-4xl (pageTitle)
+ * - Page subtitles: text-lg (pageSubtitle)
+ * - Section headings: text-lg (sectionHeading)
+ * - Card titles: text-xl (cardTitle)
+ * - Card body text: text-base (cardText)
+ * - Small text: text-sm (cardTextSmall)
+ * 
+ * COLORS:
+ * - Headers: #212658 (dark blue)
+ * - Body text: #212658 with 70% opacity
+ * - Card backgrounds: bg-blue-50 (except tip cards)
+ * - Page background: #FFFFFF
  */
 
 // ==========================================
@@ -100,6 +130,24 @@ export const buttonText = "text-base font-semibold";
  * Used for form labels
  */
 export const labelText = "text-[#212658] font-semibold";
+
+// ==========================================
+// 📏 SPACING - STANDARDIZED SPACING
+// ==========================================
+
+/**
+ * SPACING STANDARDS
+ * - pageContent: Main page content sections (space-y-6)
+ * - cardList: Lists of cards (space-y-4)
+ * - sectionContent: Content within a section (space-y-3)
+ * - formFields: Form field spacing (space-y-3)
+ */
+export const standardSpacing = {
+  pageContent: "space-y-6",
+  cardList: "space-y-4",
+  sectionContent: "space-y-3",
+  formFields: "space-y-3",
+} as const;
 
 // ==========================================
 // 📦 CARD SIZES - STANDARDIZED DIMENSIONS
