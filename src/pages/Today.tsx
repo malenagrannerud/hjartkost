@@ -128,9 +128,6 @@ const Today = () => {
       <header>
         <div className="flex items-start justify-between mb-3">
           <h1 className={pageTitle}>Idag</h1>
-           <p className={pageSubtitle}>
-          Uppdateras i din takt  
-        </p>
           <Sheet>
             <SheetTrigger asChild>
               <Button 
@@ -168,7 +165,10 @@ const Today = () => {
             </SheetContent>
           </Sheet>
         </div>
-     </header>
+        <p className={pageSubtitle}>
+          Uppdateras i din takt  
+        </p>
+      </header>
 
       {/* STARTA HÄR SECTION - CENTRALIZED HEADING */}
       <div className="space-y-6">
