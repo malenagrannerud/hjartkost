@@ -52,15 +52,11 @@ export const colors = {
 // ==========================================
 
 /**
- * PAGE TITLES (Idag, Tips, Framsteg)
- * Used for main page headers
+ * PAGE TITLES- Used for main page headers
+ * PAGE SUBTITLES- Used under page titles
  */
 export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
 
-/**
- * PAGE SUBTITLES
- * Used under page titles
- */
 export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 
 /**
@@ -70,7 +66,7 @@ export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
  */
 export const sectionHeading = "text-lg font-bold text-[#212658]";
 
-export const sectionSubheading = "text-base font-semibold text-[#212658]";
+export const sectionSubheading = "text-base font-normal text-[#212658]/70";
 
 /**
  * CARD TITLES- Used for titles within cards
