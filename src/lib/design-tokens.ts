@@ -56,7 +56,6 @@ export const colors = {
  * PAGE SUBTITLES- Used under page titles
  */
 export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
-
 export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 
 /**
@@ -65,7 +64,6 @@ export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
  * subheading 16 px
  */
 export const sectionHeading = "text-lg font-bold text-[#212658]";
-
 export const sectionSubheading = "text-base font-normal text-[#212658]/70";
 
 /**
