@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { getStorageItem, setStorageItem } from "@/lib/storage";
-import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
 
 interface MarkedTip {
   id: number;
@@ -31,30 +29,30 @@ const Today = () => {
   const [recentActivities, setRecentActivities] = useState<CompletedActivity[]>([]);
 
   useEffect(() => {
-    const saved = getStorageItem('markedTips', markedTipsSchema);
+    const saved = localStorage.getItem('markedTips');
     if (saved) {
-      setMarkedTips(saved as MarkedTip[]);
+      setMarkedTips(JSON.parse(saved));
     }
     
-    const tutorialDone = getStorageItem('tutorialCompleted');
-    if (tutorialDone === 'true' || tutorialDone === true) {
+    const tutorialDone = localStorage.getItem('tutorialCompleted');
+    if (tutorialDone === 'true') {
       setTutorialCompleted(true);
     }
 
-    const healthPrioritiesDone = getStorageItem('healthPrioritiesCompleted');
-    if (healthPrioritiesDone === 'true' || healthPrioritiesDone === true) {
+    const healthPrioritiesDone = localStorage.getItem('healthPrioritiesCompleted');
+    if (healthPrioritiesDone === 'true') {
       setHealthPrioritiesCompleted(true);
     }
 
-    const healthMetricsDone = getStorageItem('healthMetricsCompleted');
-    if (healthMetricsDone === 'true' || healthMetricsDone === true) {
+    const healthMetricsDone = localStorage.getItem('healthMetricsCompleted');
+    if (healthMetricsDone === 'true') {
       setHealthMetricsCompleted(true);
     }
 
     // Load completed activities
-    const completed = getStorageItem('completedActivities', completedActivitiesSchema);
+    const completed = localStorage.getItem('completedActivities');
     if (completed) {
-      setCompletedActivities(completed as CompletedActivity[]);
+      setCompletedActivities(JSON.parse(completed));
     }
 
     // Check for daily reset at midnight
@@ -63,17 +61,18 @@ const Today = () => {
 
   const checkAndResetDaily = () => {
     const today = new Date().toDateString();
-    const lastReset = getStorageItem('lastResetDate') as string | null;
+    const lastReset = localStorage.getItem('lastResetDate');
     
     if (lastReset !== today) {
       // It's a new day - move completed activities to recent
-      const completed = getStorageItem('completedActivities', completedActivitiesSchema);
+      const completed = localStorage.getItem('completedActivities');
       if (completed) {
-        const recent = getStorageItem('recentActivities', completedActivitiesSchema);
-        const existingRecent: CompletedActivity[] = (recent as CompletedActivity[]) || [];
+        const activities: CompletedActivity[] = JSON.parse(completed);
+        const recent = localStorage.getItem('recentActivities');
+        const existingRecent: CompletedActivity[] = recent ? JSON.parse(recent) : [];
         
         // Combine and keep only last 30 days
-        const allRecent = [...existingRecent, ...(completed as CompletedActivity[])];
+        const allRecent = [...existingRecent, ...activities];
         const thirtyDaysAgo = new Date();
         thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
         
@@ -81,20 +80,20 @@ const Today = () => {
           new Date(activity.completedDate) > thirtyDaysAgo
         );
         
-        setStorageItem('recentActivities', filteredRecent);
+        localStorage.setItem('recentActivities', JSON.stringify(filteredRecent));
         setRecentActivities(filteredRecent);
         
         // Clear today's completed activities
-        setStorageItem('completedActivities', []);
+        localStorage.setItem('completedActivities', JSON.stringify([]));
         setCompletedActivities([]);
       }
       
-      setStorageItem('lastResetDate', today);
+      localStorage.setItem('lastResetDate', today);
     } else {
       // Load recent activities
-      const recent = getStorageItem('recentActivities', completedActivitiesSchema);
+      const recent = localStorage.getItem('recentActivities');
       if (recent) {
-        setRecentActivities(recent as CompletedActivity[]);
+        setRecentActivities(JSON.parse(recent));
       }
     }
   };
@@ -120,10 +119,10 @@ const Today = () => {
   );
 
   return (
-    <div className="min-h-screen p-6 pb-24 space-y-8 bg-background">
+    <div className="min-h-screen p-6 pb-24 space-y-8 bg-[#FCFAF7]">
       <header>
         <div className="flex items-start justify-between mb-3">
-          <h1 className="text-4xl font-bold text-foreground">Idag</h1>
+          <h1 className="text-4xl font-bold text-[#212658]">Idag</h1>
           <Sheet>
             <SheetTrigger asChild>
               <Button 
@@ -132,12 +131,12 @@ const Today = () => {
                 className="h-10 w-10 rounded-full hover:bg-accent"
                 aria-label="Visa senaste aktiviteter"
               >
-                <History size={24} className="text-foreground" />
+                <History size={24} className="text-[#212658]" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:max-w-md bg-background">
+            <SheetContent side="right" className="w-full sm:max-w-md bg-[#FCFAF7]">
               <SheetHeader>
-                <SheetTitle className="text-2xl font-bold text-foreground">Senast</SheetTitle>
+                <SheetTitle className="text-2xl font-bold text-[#212658]">Senast</SheetTitle>
               </SheetHeader>
               <div className="mt-6 space-y-4">
                 {allCompletedActivities.length > 0 ? (
@@ -146,14 +145,14 @@ const Today = () => {
                       key={`${activity.id}-${index}`}
                       className="p-4 bg-card border-2 border-border"
                     >
-                      <h4 className="font-semibold text-foreground mb-1">{activity.title}</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className="font-semibold text-[#212658] mb-1">{activity.title}</h4>
+                      <p className="text-sm text-[#212658]/60">
                         {getRelativeTime(activity.completedDate)}
                       </p>
                     </Card>
                   ))
                 ) : (
-                  <p className="text-muted-foreground text-center py-8">
+                  <p className="text-[#212658]/70 text-center py-8">
                     Inga genomförda aktiviteter än
                   </p>
                 )}
@@ -161,13 +160,13 @@ const Today = () => {
             </SheetContent>
           </Sheet>
         </div>
-        <p className="text-muted-foreground text-lg font-normal leading-relaxed">
+        <p className="text-[#212658]/70 text-lg font-normal leading-relaxed">
           Uppdateras i din takt  
         </p>
       </header>
 
       <div className="space-y-6">
-        <h3 className="text-2xl font-bold text-foreground">Starta här</h3>
+        <h3 className="text-2xl font-bold text-[#212658]">Starta här</h3>
         
         {/* Vertical Progress Stepper */}
         <div className="relative">
@@ -190,8 +189,8 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-foreground mb-2 text-lg">Så fungerar appen</h4>
-                  <div className="flex items-center gap-2 text-base text-muted-foreground font-semibold">
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Så fungerar appen</h4>
+                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -219,8 +218,8 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-foreground mb-2 text-lg">Anpassa tips efter mina mål</h4>
-                  <div className="flex items-center gap-2 text-base text-muted-foreground font-semibold">
+                  <h4 className="font-bold text-[#212658] mb-2 text-lg">Anpassa tips efter mina mål</h4>
+                  <div className="flex items-center gap-2 text-base text-[#212658]/70 font-semibold">
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -247,7 +246,7 @@ const Today = () => {
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className="font-bold text-foreground text-lg">Vikt och blodtryck</h4>
+                  <h4 className="font-bold text-[#212658] text-lg">Vikt och blodtryck</h4>
                 </div>
               </div>
             </div>
@@ -256,7 +255,7 @@ const Today = () => {
       </div>
 
       <div className="space-y-6 mt-10">
-        <h3 className="text-2xl font-bold text-foreground">Mina tips den här veckan</h3>
+        <h3 className="text-2xl font-bold text-[#212658]">Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
@@ -276,7 +275,7 @@ const Today = () => {
             ))}
           </div>
         ) : (
-          <p className="text-muted-foreground text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
+          <p className="text-[#212658]/70 text-lg leading-relaxed">Välj ett eller två tips för veckan under "Tips"</p>
         )}
       </div>
     </div>

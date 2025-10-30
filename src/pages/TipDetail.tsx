@@ -12,7 +12,7 @@ const TipDetail = () => {
   }
 
   return (
-    <div className="min-h-screen pb-16 bg-background">
+    <div className="min-h-screen pb-16 bg-[#FCFAF7]">
       {/* Color Header */}
       <div className={`w-full h-[200px] ${tip.color}`}></div>
 
@@ -23,24 +23,24 @@ const TipDetail = () => {
           onClick={() => navigate(-1)}
           className="flex items-center gap-3 p-3 hover:bg-accent rounded-lg transition-colors min-h-[48px]"
         >
-          <ArrowLeft size={28} className="text-foreground" />
-          <span className="text-lg font-semibold text-foreground">Tillbaka</span>
+          <ArrowLeft size={28} className="text-[#212658]" />
+          <span className="text-lg font-semibold text-[#212658]">Tillbaka</span>
         </button>
 
         {/* Title */}
-        <h1 className="text-4xl font-bold text-foreground leading-tight">{tip.title}</h1>
+        <h1 className="text-4xl font-bold text-[#212658] leading-tight">{tip.title}</h1>
 
         {/* Description */}
-        <p className="text-foreground leading-relaxed text-lg">{tip.detailedInfo}</p>
+        <p className="text-[#212658] leading-relaxed text-lg">{tip.detailedInfo}</p>
 
         {/* Steps */}
         <div className="space-y-4 pt-4">
           {tip.steps.map((step, index) => (
             <div key={index} className="space-y-2">
-              <h3 className="font-bold text-foreground text-xl">
+              <h3 className="font-bold text-[#212658] text-xl">
                 Steg {index + 1}
               </h3>
-              <p className="text-foreground text-base leading-relaxed">{step}</p>
+              <p className="text-[#212658] text-base leading-relaxed">{step}</p>
             </div>
           ))}
         </div>

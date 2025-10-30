@@ -13,8 +13,8 @@ export const tips: Tip[] = [
   {
     id: 1,
     title: "Fem nävar frukt och grönt",
-    color: "bg-tip-green",
-    textColor: "text-foreground",
+    color: "bg-green-100",
+    textColor: "text-blue-900",
     healthScore: 4,
     description: "Frukt",
     detailedInfo:
@@ -28,11 +28,11 @@ export const tips: Tip[] = [
   {
     id: 2,
     title: "Fyll på med fullkorn",
-    color: "bg-tip-amber",
-    textColor: "text-foreground",
+    color: "bg-amber-100",
+    textColor: "text-blue-900",
     healthScore: 3,
-    description: "Välj helst fullkornsbröd, fullkornspasta, råris och havregryn",
-    detailedInfo: "Fullkorn innehåller fibrer, vitaminer, mineraler och antioxidanter. Fullkornsprodukter minskar risken för hjärt-kärlsjukdom, typ 2-diabetes och vissa cancerformer. De håller dig mätt längre och hjälper till att stabilisera blodsockernivåerna.",
+    description: "..",
+    detailedInfo: "...",
     steps: [
       "Byt ut vitt bröd mot fullkornsbröd",
       "Välj havregryn eller fullkornsflingor till frukost",
@@ -42,8 +42,8 @@ export const tips: Tip[] = [
   {
     id: 3,
     title: "Fisk och skaldjur 3 gånger i veckan",
-    color: "bg-tip-cyan",
-    textColor: "text-foreground",
+    color: "bg-cyan-100",
+    textColor: "text-blue-900",
     healthScore: 3,
     description: "...",
     detailedInfo:
@@ -57,8 +57,8 @@ export const tips: Tip[] = [
   {
     id: 4,
     title: "Rätt fett",
-    color: "bg-tip-yellow",
-    textColor: "text-foreground",
+    color: "bg-yellow-100",
+    textColor: "text-blue-900",
     healthScore: 3,
     description:
       "Använd flytande margarin och oljor i matlagning. Begränsa smör, hårdmargarin och andra mättade fetter",
@@ -73,8 +73,8 @@ export const tips: Tip[] = [
   {
     id: 5,
     title: "Mera magra mejerier",
-    color: "bg-tip-blue",
-    textColor: "text-foreground",
+    color: "bg-blue-100",
+    textColor: "text-blue-900",
     healthScore: 3,
     description: "Mjölk, filmjölk och yoghurt med max 1,5% fett. Ost med max 17% fett",
     detailedInfo:
@@ -88,8 +88,8 @@ export const tips: Tip[] = [
   {
     id: 6,
     title: "Minska på rött och bearbetat kött",
-    color: "bg-tip-rose",
-    textColor: "text-foreground",
+    color: "bg-rose-100",
+    textColor: "text-blue-900",
     healthScore: 3,
     description: "Max 500 gram tillagat kött per vecka. Begränsa chark, korv och andra bearbetade köttprodukter",
     detailedInfo:
@@ -103,8 +103,8 @@ export const tips: Tip[] = [
   {
     id: 7,
     title: "Salt-halt",
-    color: "bg-tip-orange",
-    textColor: "text-foreground",
+    color: "bg-orange-100",
+    textColor: "text-blue-900",
     healthScore: 4,
     description: "Minska saltintaget till max 6 gram per dag. Använd joderat salt",
     detailedInfo:
@@ -118,8 +118,8 @@ export const tips: Tip[] = [
   {
     id: 8,
     title: "Ät lagom mycket",
-    color: "bg-tip-purple",
-    textColor: "text-foreground",
+    color: "bg-purple-100",
+    textColor: "text-blue-900",
     healthScore: 4,
     description: "Anpassa mängden mat efter ditt energibehov. Lyssna på din kropp och ät när du är hungrig",
     detailedInfo:
@@ -133,8 +133,8 @@ export const tips: Tip[] = [
   {
     id: 9,
     title: "Rör på dig minst 30 min om dagen",
-    color: "bg-tip-teal",
-    textColor: "text-foreground",
+    color: "bg-teal-100",
+    textColor: "text-blue-900",
     healthScore: 5,
     description: "Fysisk aktivitet är viktig för hälsan tillsammans med bra matvanor",
     detailedInfo:
@@ -148,8 +148,8 @@ export const tips: Tip[] = [
   {
     id: 10,
     title: "Ät mer baljväxter",
-    color: "bg-tip-green",
-    textColor: "text-foreground",
+    color: "bg-green-100",
+    textColor: "text-blue-900",
     healthScore: 3,
     description: "Bönor, linser och ärtor är bra proteinkällor och innehåller fibrer. Klimatsmart alternativ till kött",
     detailedInfo:
@@ -163,16 +163,12 @@ export const tips: Tip[] = [
   {
     id: 11,
     title: "Minska på sockret",
-    color: "bg-tip-green",
-    textColor: "text-foreground",
+    color: "bg-green-100",
+    textColor: "text-blue-900",
     healthScore: 3,
-    description: "Begränsa sötsaker, läsk och godis. Max 10% av ditt dagliga energiintag",
+    description: "...",
     detailedInfo:
-      "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis. WHO rekommenderar max 50 gram socker per dag.",
-    steps: [
-      "Byt läsk mot vatten eller sprudel", 
-      "Välj färska bär istället för sylt", 
-      "Läs innehållsförteckningen - socker har många namn (glukos, fruktossirap, sackaros)"
-    ],
+      "Högt sockerintag ökar risken för karies, övervikt och typ 2-diabetes. Begränsa sötsaker, läsk och godis.",
+    steps: ["Byt läsk mot vatten eller sprudel", "Välj färska bär istället för sylt", "Läs innehållsförtecknin"],
   },
 ];

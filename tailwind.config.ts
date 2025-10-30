@@ -18,7 +18,6 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        "background-elevated": "hsl(var(--background-elevated))",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
@@ -69,18 +68,6 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
-        },
-        // Tip card colors - semantic names
-        tip: {
-          green: '#DCFCE7',
-          amber: '#FEF3C7',
-          cyan: '#CFFAFE',
-          yellow: '#FEF9C3',
-          blue: '#DBEAFE',
-          rose: '#FFE4E6',
-          orange: '#FFEDD5',
-          purple: '#F3E8FF',
-          teal: '#CCFBF1',
         },
       },
       borderRadius: {
