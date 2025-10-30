@@ -125,48 +125,48 @@ const Today = () => {
 
   return (
     <div className={`${pageContainer} ${pagePadding}`}>
-      {/* CENTRALIZED HEADER */}
-      <header>
-        <div className="flex items-start justify-between mb-3">
-          <h1 className={pageTitle}>Idag</h1>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button 
-                variant="ghost" 
-                size="icon"
-                className="h-10 w-10 rounded-full hover:bg-accent"
-                aria-label="Visa senaste aktiviteter"
+  {/* STANDARDIZED HEADER */}
+  <header className="flex items-start justify-between mb-6">
+    <div>
+      <h1 className={pageTitle}>Idag</h1>
+    </div>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button 
+          variant="ghost" 
+          size="icon"
+          className={iconButton}
+          aria-label="Visa senaste aktiviteter"
+        >
+          <History size={24} className="text-foreground" />
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="right" className="w-full sm:max-w-md bg-background">
+        <SheetHeader>
+          <SheetTitle className={sectionHeading}>Senast</SheetTitle>
+        </SheetHeader>
+        <div className="mt-6 space-y-4">
+          {allCompletedActivities.length > 0 ? (
+            allCompletedActivities.map((activity, index) => (
+              <Card 
+                key={`${activity.id}-${index}`}
+                className={standardCard}
               >
-                <History size={24} className="text-foreground" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:max-w-md bg-background">
-              <SheetHeader>
-                <SheetTitle className={`${sectionHeading}`}>Senast</SheetTitle>
-              </SheetHeader>
-              <div className="mt-6 space-y-4">
-                {allCompletedActivities.length > 0 ? (
-                  allCompletedActivities.map((activity, index) => (
-                    <Card 
-                      key={`${activity.id}-${index}`}
-                      className={standardCard}
-                    >
-                      <h4 className={`${cardTitle} mb-1`}>{activity.title}</h4>
-                      <p className={cardTextSmall}>
-                        {getRelativeTime(activity.completedDate)}
-                      </p>
-                    </Card>
-                  ))
-                ) : (
-                  <p className="text-muted-foreground text-center py-2">
-                    Inga genomförda aktiviteter än
-                  </p>
-                )}
-              </div>
-            </SheetContent>
-          </Sheet>
-       </header>
-
+                <h4 className={`${cardTitle} mb-1`}>{activity.title}</h4>
+                <p className={cardTextSmall}>
+                  {getRelativeTime(activity.completedDate)}
+                </p>
+              </Card>
+            ))
+          ) : (
+            <p className="text-muted-foreground text-center py-8">
+              Inga genomförda aktiviteter än
+            </p>
+          )}
+        </div>
+      </SheetContent>
+    </Sheet>
+  </header>
       {/* STARTA HÄR SECTION - CENTRALIZED HEADING */}
       <div className="space-y-4">
         <h3 className={sectionHeading}>Starta här</h3>
