@@ -9,6 +9,7 @@ import { pageTitle, pageSubtitle, sectionHeading, cardTitle, cardText, cardTextS
 import { getStorageItem, setStorageItem } from "@/lib/storage";
 import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
 
+
 interface MarkedTip {
   id: number;
   markedDate: string;
