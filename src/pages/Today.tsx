@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { pageTitle, pageSubtitle, sectionHeading, cardTitle, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { pageTitle, pageSubtitle, sectionHeading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding } from "@/lib/design-tokens";
 import { getStorageItem, setStorageItem } from "@/lib/storage";
 import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
 
@@ -122,7 +122,7 @@ const Today = () => {
   );
 
   return (
-    <div className={`${pageContainer} ${pagePadding} space-y-8`}>
+    <div className={`${pageContainer} ${pagePadding}`}>
       {/* CENTRALIZED HEADER */}
       <header>
         <div className="flex items-start justify-between mb-3">
@@ -147,10 +147,10 @@ const Today = () => {
                   allCompletedActivities.map((activity, index) => (
                     <Card 
                       key={`${activity.id}-${index}`}
-                      className="p-4 bg-card border-2 border-border"
+                      className={standardCard}
                     >
-                      <h4 className="font-semibold text-foreground mb-1">{activity.title}</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className={`${cardTitle} mb-1`}>{activity.title}</h4>
+                      <p className={cardTextSmall}>
                         {getRelativeTime(activity.completedDate)}
                       </p>
                     </Card>
@@ -188,14 +188,14 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
+              className={`flex-1 ${interactiveCard} rounded-lg min-h-[80px]`}
               onClick={() => navigate('/app/tutorial')}
               aria-label="Gå till tutorial"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`${cardTitle} mb-2 text-lg`}>Så fungerar appen</h4>
-                  <div className="flex items-center gap-2 text-base text-muted-foreground font-semibold">
+                  <h4 className={`${cardTitle} mb-2`}>Så fungerar appen</h4>
+                  <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -217,14 +217,14 @@ const Today = () => {
               <div className="w-0.5 h-14 bg-primary/20 mt-1" />
             </div>
             <div 
-              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
+              className={`flex-1 ${interactiveCard} rounded-lg min-h-[80px]`}
               onClick={() => navigate('/app/health-priorities')}
               aria-label="Gå till mina hälsoprioriteringar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`${cardTitle} mb-2 text-lg`}>Anpassa tips efter mina mål</h4>
-                  <div className="flex items-center gap-2 text-base text-muted-foreground font-semibold">
+                  <h4 className={`${cardTitle} mb-2`}>Anpassa tips efter mina mål</h4>
+                  <div className={`flex items-center gap-2 ${cardText}`}>
                     <Clock size={20} strokeWidth={2.5} />
                     <span>5 min</span>
                   </div>
@@ -245,13 +245,13 @@ const Today = () => {
               </div>
             </div>
             <div 
-              className="flex-1 p-6 hover:bg-accent/50 rounded-lg transition-all cursor-pointer active:scale-[0.98] border-2 border-border bg-card min-h-[80px]"
+              className={`flex-1 ${interactiveCard} rounded-lg min-h-[80px]`}
               onClick={() => navigate('/app/health-metrics')}
               aria-label="Gå till hälsomätningar"
             >
               <div className="flex items-start justify-between">
                 <div>
-                  <h4 className={`${cardTitle} text-lg`}>Vikt och blodtryck</h4>
+                  <h4 className={cardTitle}>Vikt och blodtryck</h4>
                 </div>
               </div>
             </div>
@@ -260,7 +260,7 @@ const Today = () => {
       </div>
 
       {/* MINA TIPS SECTION - CENTRALIZED HEADING */}
-      <div className="space-y-6 mt-10">
+      <div className="space-y-6">
         <h3 className={sectionHeading}>Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
@@ -272,8 +272,8 @@ const Today = () => {
                 aria-label={`Visa detaljer om ${tip.title}`}
               >
                 <div>
-                  <h3 className={`font-bold text-lg ${tip.textColor} mb-2`}>{tip.title}</h3>
-                  <div className="text-blue-900 text-base font-bold">
+                  <h3 className={`${cardTitle} ${tip.textColor} mb-2`}>{tip.title}</h3>
+                  <div className={`${cardText} font-bold text-blue-900`}>
                     {tip.healthScore} poäng
                   </div>
                 </div>
