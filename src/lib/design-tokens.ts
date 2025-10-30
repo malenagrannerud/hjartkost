@@ -175,7 +175,7 @@ export const disabledButton = "bg-gray-300 text-gray-500 cursor-not-allowed";
  * PAGE CONTAINER
  * Main page container styling
  */
-export const pageContainer = "min-h-screen pb-24 space-y-6 bg-[#FCFAF7]";
+export const pageContainer = "min-h-screen pb-24 space-y-6 bg-white";
 
 /**
  * PAGE PADDING
