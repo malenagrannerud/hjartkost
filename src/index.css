@@ -8,17 +8,17 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* ========== USER REQUIREMENT: bg=#FCFAF7, header=#212658 ========== */
-    --background: 40 67% 98%;  /* #FCFAF7 - Beige main background */
+    /* ========== USER REQUIREMENT: #FFFFFF, header=#212658 ========== */
+    --background: 0 0% 100%;  /* #FFFFFF - Pure white */
     --foreground: 228 46% 26%;  /* #212658 - Dark blue for headers */
 
     --card: 0 0% 100%;
-    --card-foreground: 217 65% 19%;
+    --card-foreground: 228 46% 26%;  /* #212658 - Dark blue for headers */
 
     --popover: 0 0% 100%;
     --popover-foreground: 217 65% 19%;
 
-    --primary: 220 60% 25%;
+    --primary: 228 46% 26%;
     --primary-foreground: 0 0% 98%;
 
     --secondary: 340 82% 67%;
@@ -27,8 +27,8 @@ All colors MUST be HSL.
     --muted: 240 5% 96%;
     --muted-foreground: 240 4% 46%;
 
-    --accent: 340 82% 92%;
-    --accent-foreground: 340 82% 30%;
+    --accent: 228 46% 92%;        /* LIGHT BLUE - Hover backgrounds */
+    --accent-foreground: 228 46% 26%; /* DARK BLUE - Text on hover */
 
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
