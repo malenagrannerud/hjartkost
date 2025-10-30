@@ -3,7 +3,6 @@ import { Clock, Check, History } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import { tips } from "@/data/tips";
-import TipCard from "@/components/TipCard";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { pageTitle, pageSubtitle, sectionHeading, sectionSubheading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding } from "@/lib/design-tokens";
@@ -267,13 +266,19 @@ const Today = () => {
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
             {markedTipsList.map((tip) => (
-              <TipCard
-                key={tip.id}
-                tip={tip}
-                isMarked={true}
-                onToggleMark={(e) => e.stopPropagation()}
+              <Card 
+                key={tip.id} 
+                className={`p-6 hover:shadow-lg transition-all cursor-pointer active:scale-[0.98] ${tip.color} relative border-0 shadow-sm min-h-[80px]`}
                 onClick={() => navigate(`/app/tips/${tip.id}`)}
-              />
+                aria-label={`Visa detaljer om ${tip.title}`}
+              >
+                <div>
+                  <h3 className={`${cardTitle} ${tip.textColor} mb-2`}>{tip.title}</h3>
+                  <div className={`${cardText} font-bold text-blue-900`}>
+                    {tip.healthScore} poäng
+                  </div>
+                </div>
+              </Card>
             ))}
           </div>
         ) : (
