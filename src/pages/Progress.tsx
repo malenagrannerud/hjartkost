@@ -24,25 +24,14 @@ interface MarkedTip {
 interface DayLog {
   date: string;
   entries: {
-    type: 'weight' | 'bloodPressure' | 'tip';
-    value: number; // grams for tips, kg for weight, systolic for blood pressure
-    value2?: number; // diastolic for blood pressure
-    tipId?: number; // which tip category
-  }[];
+  type: 'weight' | 'bloodPressure' | 'tip';
+  value: number; // grams for tips, kg for weight, systolic for blood pressure
+  value2?: number; // diastolic for blood pressure
+  tipId?: number; // which tip category
+}[];
 }
 
-const tips = [
-  { id: 1, title: "Fem nävar frukt och grönt" },
-  { id: 2, title: "Välj fullkorn" },
-  { id: 3, title: "Ät fisk och skaldjur" },
-  { id: 4, title: "Välj nyttiga fetter" },
-  { id: 5, title: "Välj magra mejeriprodukter" },
-  { id: 6, title: "Minska på rött och bearbetat kött" },
-  { id: 7, title: "Begränsa socker och salt" },
-  { id: 8, title: "Ät lagom mycket" },
-  { id: 9, title: "Rör på dig" },
-  { id: 10, title: "Ät mer baljväxter" }
-];
+// DUPLICATE TIPS ARRAY REMOVED - Now importing from @/data/tips
 
 const Progress = () => {
   const navigate = useNavigate();
