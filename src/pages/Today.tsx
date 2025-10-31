@@ -176,7 +176,7 @@ const Today = () => {
           </div>
         </Card>
         
-        {/* Step 2 - STANDARDIZED: Uses interactiveCard for consistent styling */}
+        {/* Step 2 - Health prios */}
         <Card 
           className={interactiveCard}
           onClick={() => navigate('/app/health-priorities')}
@@ -184,10 +184,8 @@ const Today = () => {
         >
           <div className="flex items-start justify-between">
             <div>
-              {/* STANDARDIZED FONT: text-xl via cardTitle */}
               <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
-              {/* STANDARDIZED FONT: text-base via cardText */}
-              <div className={`flex items-center gap-2 ${cardText}`}>
+              <div className={cardTextSmall}>
                 <Clock size={20} strokeWidth={2.5} />
                 <span>5 min</span>
               </div>
@@ -195,7 +193,7 @@ const Today = () => {
           </div>
         </Card>
         
-        {/* Step 3 - STANDARDIZED: Uses interactiveCard for consistent styling */}
+        {/* Step 3 - Uses interactiveCard for consistent styling */}
         <Card 
           className={interactiveCard}
           onClick={() => navigate('/app/health-metrics')}
