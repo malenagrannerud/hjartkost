@@ -23,7 +23,7 @@ const Tutorial = () => {
           </button>
           {/* STANDARDIZATION: Title uses heading, subtitle uses pageSubeading(text-lg) */}
           <h1 className={sectionHeading}>Så fungerar appen</h1>
-          <p className={`${sectionSubheading} mt-3`}>En guide för dig</p>
+          <p className={sectionSubheading}>En guide för dig</p>
         </div>
       </div>
 
