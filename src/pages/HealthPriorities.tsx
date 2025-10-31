@@ -5,7 +5,11 @@ import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+<<<<<<< HEAD
+import { pageTitle, sectionHeading, cardTitle, cardText, standardCard, headerContainer, backButton, primaryButton, pageContainer, pagePadding, standardSpacing, bodyText, sectionSubheading } from "@/lib/design-tokens";
+=======
 import { heading, pageTitle, sectionHeading, cardTitle, cardText, standardCard, headerContainer, backButton, primaryButton, pageContainer, pagePadding, standardSpacing, bodyText } from "@/lib/design-tokens";
+>>>>>>> bc4f4ca54a132e6cce8b4bb778d754f9a7e00821
 import { getStorageItem, setStorageItem } from "@/lib/storage";
 import { healthPrioritiesSchema, completedActivitiesSchema } from "@/lib/schemas";
 
@@ -160,9 +164,9 @@ const HealthPriorities = () => {
           >
             <ArrowLeft size={28} className="text-foreground" />
           </Button>
-          <h1 className={heading}>Anpassa tips efter mina mål</h1>
+          <h1 className={sectionHeading}>Anpassa tips efter mina mål</h1>
         </div>
-        <p className={bodyText}>
+        <p className={sectionSubheading}>
           Bocka i dina mål och mediciner du tar. Då anpassas tips till dej. Du kan ändra detta när som helst under "Inställningar".
         </p>
       </header>
@@ -171,7 +175,7 @@ const HealthPriorities = () => {
       <div className={pagePadding}>
         <div className={standardSpacing.pageContent}>
           <section className={standardSpacing.sectionContent}>
-            <h2 className={sectionHeading}>Hjälp mej att:</h2>
+            <h2 className={heading}>Hjälp mej att:</h2>
             <div className={standardSpacing.cardList}>
               {healthPriorities.map((priority) => (
                 <Card key={priority.id} className={standardCard}>
