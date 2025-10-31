@@ -32,7 +32,7 @@ const Tutorial = () => {
       <div className={`${pagePadding} space-y-6`}>
         {/* Introduction */}
         <div className="space-y-6">
-          <p className={`bodyText`}>
+          <p className={bodyText}>
             Välkommen! Den här appen är skapad för att hjälpa dig ta hand om din hälsa på ett enkelt sätt. 
             Du bestämmer själv tempot - allt går att göra i din egen takt.
           </p>
@@ -53,13 +53,13 @@ const Tutorial = () => {
             <div className="space-y-4">
               {/* STANDARDIZATION: Text uses cardTitle (text-xl), cardText (text-base) */}
               <h2 className={heading}>Idag-sidan</h2>
-              <p className={`bodyText`}>
+              <p className={bodyText}>
                 När du öppnar appen hamnar du på "Idag". Här ser du dina valda hälsotips och kan 
                 följa stegen i din egen takt. Du behöver inte göra allt på en gång - ta det lugnt och 
                 börja med det som känns rätt för dig.
               </p>
               <div className="bg-[#FCFAF7] p-5 rounded-lg border-2 border-border">
-                <p className={`${cardText} font-medium`}>
+                <p className={bodyText}>
                   💡 Tips: Börja med att välja ett eller två tips att fokusera på denna vecka.
                 </p>
               </div>
@@ -75,12 +75,12 @@ const Tutorial = () => {
             </div>
             <div className="space-y-4">
               <h2 className={`${cardTitle} text-2xl`}>Tips-sidan</h2>
-              <p className={`${cardText} text-lg`}>
+              <p className={bodyText}>
                 Under "Tips" hittar du alla hälsoråd. Klicka på ett tips för att läsa mer. 
                 När du hittar något som passar dig, tryck på bocken så hamnar tipset under 
                 "Mina valda tips" på Idag-sidan.
               </p>
-              <p className={`${cardText} text-lg`}>
+              <p className={bodyText}>
                 Du kan välja så många eller så få tips du vill. Det viktiga är att du väljer 
                 sådant som känns hanterbart för just dig.
               </p>
@@ -96,7 +96,7 @@ const Tutorial = () => {
             </div>
             <div className="space-y-4">
               <h2 className={`${cardTitle} text-2xl`}>Framsteg-sidan</h2>
-              <p className={`${cardText} text-lg`}>
+              <p className={bodyText}>
                 Här kan du följa din utveckling över tid. Du ser en kalender där du kan 
                 klicka på ett datum för att registrera blodtryck och vikt. 
               </p>
@@ -105,7 +105,7 @@ const Tutorial = () => {
                 att du har registrerat blodtryck, och en vågsymbol ⚖ betyder att du har registrerat din vikt.
               </p>
               <div className="bg-[#FCFAF7] p-5 rounded-lg border-2 border-border">
-                <p className={`${cardText} font-medium`}>
+                <p className={bodyText}>
                   💡 Tips: Du behöver inte fylla i något varje dag. Gör det när det passar dig.
                 </p>
               </div>
@@ -121,7 +121,7 @@ const Tutorial = () => {
             </div>
             <div className="space-y-4">
               <h2 className={`${cardTitle} text-2xl`}>Hjälp-sidan</h2>
-              <p className={`${cardText} text-lg`}>
+              <p className={bodyText}>
                 Om du någonsin undrar över något, finns det en hjälp-sida längst ner i menyn. 
                 Där hittar du svar på vanliga frågor.
               </p>
