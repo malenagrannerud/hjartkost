@@ -2,8 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Home, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import fruitsImage from "@/assets/fruits-illustration.jpg";
-import { pageTitle, pageSubtitle, cardTitle, cardText, standardCard, backButton, primaryButton, pageContainer, pagePadding, sectionHeading, sectionSubheading } from "@/lib/design-tokens";
-import { bodyText } from "../lib/design-tokens";
+import { pageTitle, pageSubtitle, cardTitle, cardText, standardCard, backButton, primaryButton, pageContainer, pagePadding, sectionHeading, sectionSubheading, heading, bodyText} from "@/lib/design-tokens";
 
 const Tutorial = () => {
   const navigate = useNavigate();
@@ -53,7 +52,7 @@ const Tutorial = () => {
             </div>
             <div className="space-y-4">
               {/* STANDARDIZATION: Text uses cardTitle (text-xl), cardText (text-base) */}
-              <h2 className={``}>Idag-sidan</h2>
+              <h2 className={`heading`}>Idag-sidan</h2>
               <p className={`bodyText`}>
                 När du öppnar appen hamnar du på "Idag". Här ser du dina valda hälsotips och kan 
                 följa stegen i din egen takt. Du behöver inte göra allt på en gång - ta det lugnt och 

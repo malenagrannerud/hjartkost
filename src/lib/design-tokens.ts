@@ -95,8 +95,6 @@ export const pageSubtitle = "text-[#212658]/70 text-2xl font-normal";
 export const sectionHeading = "text-xl font-bold text-[#212658]";
 export const sectionSubheading = "text-lg font-normal text-[#212658]/70";
 
-
-
 /** 18 
  * Heading - Used inside card 18 px
  */
