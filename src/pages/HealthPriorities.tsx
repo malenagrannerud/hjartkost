@@ -163,7 +163,7 @@ const HealthPriorities = () => {
           <h1 className={pageTitle}>Anpassa tips efter mina mål</h1>
         </div>
         <p className={cardText}>
-          Bocka i dina mål och mediciner du tar. Då anpassas tips något till dej, även fast de är väligt lika. Du kan ändra detta när som helst under "Inställningar".
+          Bocka i dina mål och mediciner du tar. Då anpassas tips till dej. Du kan ändra detta när som helst under "Inställningar".
         </p>
       </header>
 
