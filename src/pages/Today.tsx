@@ -6,10 +6,9 @@ import { tips } from "@/data/tips";
 import TipCard from "@/components/TipCard";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { pageTitle, pageSubtitle, sectionHeading, sectionSubheading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding, iconButton, headerContainer } from "@/lib/design-tokens";
+import { pageTitle, pageSubtitle, sectionHeading, sectionSubheading, cardTitle, cardText, cardTextSmall, standardCard, interactiveCard, pageContainer, pagePadding, iconButton, headerContainer, standardSpacing } from "@/lib/design-tokens";
 import { getStorageItem, setStorageItem } from "@/lib/storage";
 import { markedTipsSchema, completedActivitiesSchema } from "@/lib/schemas";
-
 
 interface MarkedTip {
   id: number;
@@ -107,6 +106,7 @@ const Today = () => {
 
   return (
     <div className={pageContainer}>
+      {/* HEADER CONTAINER */}
       <header className={headerContainer}>
         <div className="flex items-start justify-between">
           <div>
@@ -127,7 +127,7 @@ const Today = () => {
               <SheetHeader>
                 <SheetTitle className={sectionHeading}>Senast</SheetTitle>
               </SheetHeader>
-              <div className="mt-6 space-y-4">
+              <div className={`mt-6 ${standardSpacing.cardList}`}>
                 {allCompletedActivities.length > 0 ? (
                   allCompletedActivities.map((activity, index) => (
                     <Card 
@@ -151,60 +151,68 @@ const Today = () => {
         </div>
       </header>
 
+      {/* FIRST PAGE PADDING: Starta här and down */}
       <div className={pagePadding}>
-        <div className="space-y-6">
-          <div className="space-y-4">
+        <div className={standardSpacing.pageContent}>
+          <div className={standardSpacing.sectionContent}>
             <h3 className={sectionHeading}>Starta här</h3>
             
-            <Card 
-              className={interactiveCard}
-              onClick={() => navigate('/app/tutorial')}
-              aria-label="Gå till tutorial"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h4 className={cardTitle}>Så fungerar appen</h4>
-                  <div className={`flex items-center gap-2 ${cardText}`}>
-                    <Clock size={20} strokeWidth={2.5} />
-                    <span>5 min</span>
+            <div className={standardSpacing.cardList}>
+              <Card 
+                className={interactiveCard}
+                onClick={() => navigate('/app/tutorial')}
+                aria-label="Gå till tutorial"
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h4 className={cardTitle}>Så fungerar appen</h4>
+                    <div className={`flex items-center gap-2 ${cardText}`}>
+                      <Clock size={20} strokeWidth={2.5} />
+                      <span>5 min</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
-            
-            <Card 
-              className={interactiveCard}
-              onClick={() => navigate('/app/health-priorities')}
-              aria-label="Gå till mina hälsoprioriteringar"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
-                  <div className={`flex items-center gap-2 ${cardText}`}>
-                    <Clock size={20} strokeWidth={2.5} />
-                    <span>5 min</span>
+              </Card>
+              
+              <Card 
+                className={interactiveCard}
+                onClick={() => navigate('/app/health-priorities')}
+                aria-label="Gå till mina hälsoprioriteringar"
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
+                    <div className={`flex items-center gap-2 ${cardText}`}>
+                      <Clock size={20} strokeWidth={2.5} />
+                      <span>5 min</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
-            
-            <Card 
-              className={interactiveCard}
-              onClick={() => navigate('/app/health-metrics')}
-              aria-label="Gå till hälsomätningar"
-            >
-              <div className="flex items-start justify-between">
-                <div>
-                  <h4 className={cardTitle}>Vikt och blodtryck</h4>
+              </Card>
+              
+              <Card 
+                className={interactiveCard}
+                onClick={() => navigate('/app/health-metrics')}
+                aria-label="Gå till hälsomätningar"
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h4 className={cardTitle}>Vikt och blodtryck</h4>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <div className="space-y-6">
+      {/* SECOND PAGE PADDING: Mina tips den här veckan and down */}
+      <div className={pagePadding}>
+        <div className={standardSpacing.pageContent}>
+          <div className={standardSpacing.sectionContent}>
             <h3 className={sectionHeading}>Mina tips den här veckan</h3>
             {markedTipsList.length > 0 ? (
-              <div className="space-y-4">
+              <div className={standardSpacing.cardList}>
                 {markedTipsList.map((tip) => (
                   <TipCard
                     key={tip.id}
