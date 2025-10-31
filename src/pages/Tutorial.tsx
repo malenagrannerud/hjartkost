@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Home, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import fruitsImage from "@/assets/fruits-illustration.jpg";
-import { pageTitle, pageSubtitle, cardTitle, cardText, standardCard, backButton, primaryButton, pageContainer, pagePadding, sectionHeading, sectionSubheading, heading, bodyText} from "@/lib/design-tokens";
+import { pageTitle, pageSubtitle, cardTitle, cardText, standardCard, backButton, primaryButton, pageContainer, pagePadding, sectionHeading, sectionSubheading, heading, bodyText, arrowBack} from "@/lib/design-tokens";
 
 const Tutorial = () => {
   const navigate = useNavigate();
@@ -15,12 +15,11 @@ const Tutorial = () => {
         <div className="p-6">
           {/* STANDARDIZATION: Back button uses backButton token */}
           <button
-            onClick={() => navigate('/app/today')}
-            className={`flex items-center gap-3 text-[#212658] mb-4 ${backButton}`}
+           onClick={() => navigate('/app/today')}
+            className={backButton}
             aria-label="Gå tillbaka"
-          >
-            <ArrowLeft size={28} />
-            <span className="text-lg font-semibold">Tillbaka</span>
+            >
+            ←
           </button>
           {/* STANDARDIZATION: Title uses pageTitle (text-4xl), subtitle uses pageSubtitle (text-lg) */}
           <h1 className={sectionHeading}>Så fungerar appen</h1>
