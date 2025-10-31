@@ -201,10 +201,10 @@ const Today = () => {
             </Card>
           </div>
 
-          <div className="space-y-6">
+        <div>
             <h3 className={sectionHeading}>Mina tips den här veckan</h3>
             {markedTipsList.length > 0 ? (
-              <div className="space-y-4">
+              <div>
                 {markedTipsList.map((tip) => (
                   <TipCard
                     key={tip.id}
