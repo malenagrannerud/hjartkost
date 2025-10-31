@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { tips } from "@/data/tips";
-import { pageTitle, sectionHeading, cardText, backButton, pageContainer, pagePadding, bodyText } from "@/lib/design-tokens";
+import { pageTitle, sectionHeading, cardText, backButton, pageContainer, pagePadding, bodyText, heading } from "@/lib/design-tokens";
 import { Button } from "@/components/ui/button";
 
 const TipDetail = () => {
@@ -40,7 +40,7 @@ const TipDetail = () => {
         <div className="space-y-4 pt-4">
           {tip.steps.map((step, index) => (
             <div key={index} className="space-y-2">
-              <h3 className={`${sectionHeading} text-xl`}>
+              <h3 className={heading}>
                 Steg {index + 1}
               </h3>
               <p className={bodyText}>{step}</p>
