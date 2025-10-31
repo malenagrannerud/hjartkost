@@ -12,17 +12,21 @@ const Tutorial = () => {
     <div className={pageContainer}>
       {/* STANDARDIZATION: Header uses headerContainer with white background */}
       <header className={headerContainer}>
-        {/* STANDARDIZATION: backButton for icon-only back arrow */}
-        <button
-          onClick={() => navigate('/app/today')}
-          className={arrowBack}
-          aria-label="Gå tillbaka"
-        >
-          ←
-        </button>
-        {/* STANDARDIZATION: Title uses sectionHeading, subtitle uses sectionSubheading */}
-        <h1 className={sectionHeading}>Så fungerar appen</h1>
-        <p className={sectionSubheading}>En guide för dig</p>
+        <div className="flex items-center gap-4">
+          {/* STANDARDIZATION: backButton for icon-only back arrow */}
+          <button
+            onClick={() => navigate('/app/today')}
+            className={backButton}
+            aria-label="Gå tillbaka"
+          >
+            ←
+          </button>
+          <div>
+            {/* STANDARDIZATION: Title uses sectionHeading, subtitle uses sectionSubheading */}
+            <h1 className={sectionHeading}>Så fungerar appen</h1>
+            <p className={sectionSubheading}>En guide för dig</p>
+          </div>
+        </div>
       </header>
 
       {/* STANDARDIZATION: Content uses pagePadding and standardSpacing */}
@@ -140,7 +144,7 @@ const Tutorial = () => {
             onClick={() => {
               localStorage.setItem('tutorialCompleted', 'true');
               
-              // Add to completed activities
+              // Add to completed activities - KEPT THIS CODE
               const completedActivities = JSON.parse(localStorage.getItem('completedActivities') || '[]');
               completedActivities.push({
                 id: 'tutorial',
