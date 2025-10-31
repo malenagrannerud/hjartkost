@@ -52,7 +52,7 @@ const Tutorial = () => {
             </div>
             <div className="space-y-4">
               {/* STANDARDIZATION: Text uses cardTitle (text-xl), cardText (text-base) */}
-              <h2 className={`heading`}>Idag-sidan</h2>
+              <h2 className={heading}>Idag-sidan</h2>
               <p className={`bodyText`}>
                 När du öppnar appen hamnar du på "Idag". Här ser du dina valda hälsotips och kan 
                 följa stegen i din egen takt. Du behöver inte göra allt på en gång - ta det lugnt och 
