@@ -13,10 +13,10 @@ const Tutorial = () => {
       {/* STANDARDIZATION: Header uses standard headerContainer styling */}
       <div className="bg-white border-b border-border sticky top-0 z-10">
         <div className="p-6">
-          {/* STANDARDIZATION: Back button uses backButton token */}
+          {/* STANDARDIZATION: arrowBack */}
           <button
            onClick={() => navigate('/app/today')}
-            className={backButton}
+            className={arrowBack}
             aria-label="Gå tillbaka"
             >
             ←
