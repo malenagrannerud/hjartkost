@@ -187,7 +187,9 @@ export const compactCard = "p-5 border-0 shadow-sm bg-blue-50 min-h-[80px]";
 export const interactiveCard = "p-5 border-0 shadow-sm bg-blue-50 min-h-[80px] cursor-pointer hover:bg-blue-100 transition-all active:scale-[0.98]";
 
 /**
- * TIP CARD-  Uses p-5 padding like other cards, keeps tip-specific colors, min height 80px
+ * TIP CARD
+ * Special styling for tip cards
+ * STANDARDIZATION: Uses p-5 padding like other cards, keeps tip-specific colors, min height 80px
  */
 export const tipCard = "p-5 hover:shadow-md transition-all cursor-pointer active:scale-[0.98] relative border-0 shadow-none min-h-[80px]";
 
@@ -237,7 +239,7 @@ export const disabledButton = "bg-gray-300 text-gray-500 cursor-not-allowed";
 export const pageContainer = "min-h-screen pb-24 space-y-6 bg-background";
 
 /**
- * PAGE PADDING - Put content in this
+ * PAGE PADDING - put content 
  */
 export const pagePadding = "p-6";
 
