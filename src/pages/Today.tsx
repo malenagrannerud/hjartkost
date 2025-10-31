@@ -106,9 +106,7 @@ const Today = () => {
   );
 
   return (
-    /* STANDARDIZATION: space-y-6 for page sections, space-y-4 for card lists */
     <div className={`${pageContainer} ${pagePadding} space-y-6`}>
-  {/* STANDARDIZED HEADER */}
   <header className="flex items-start justify-between mb-6">
     <div>
       <h1 className={pageTitle}>Idag</h1>
@@ -136,9 +134,7 @@ const Today = () => {
                 key={`${activity.id}-${index}`}
                 className={standardCard}
               >
-                {/* STANDARDIZED FONT: text-xl via cardTitle */}
                 <h4 className={`${cardTitle} mb-1`}>{activity.title}</h4>
-                {/* STANDARDIZED FONT: text-sm via cardTextSmall */}
                 <p className={cardTextSmall}>
                   {getRelativeTime(activity.completedDate)}
                 </p>
@@ -153,11 +149,9 @@ const Today = () => {
       </SheetContent>
     </Sheet>
   </header>
-      {/* STARTA HÄR SECTION */}
       <div className="space-y-4">
         <h3 className={sectionHeading}>Starta här</h3>
         
-        {/* Step 1 - STANDARDIZED: Uses interactiveCard for consistent styling */}
         <Card 
           className={interactiveCard}
           onClick={() => navigate('/app/tutorial')}
@@ -165,7 +159,6 @@ const Today = () => {
         >
           <div className="flex items-start justify-between">
             <div>
-              {/* STANDARDIZED FONT: text-xl via cardTitle */}
               <h4 className={cardTitle}>Så fungerar appen</h4>
               {/* STANDARDIZED FONT: text-base via cardText */}
               <div className={`flex items-center gap-2 ${cardText}`}>
@@ -176,7 +169,6 @@ const Today = () => {
           </div>
         </Card>
         
-        {/* Step 2 - STANDARDIZED: Uses interactiveCard for consistent styling */}
         <Card 
           className={interactiveCard}
           onClick={() => navigate('/app/health-priorities')}
@@ -184,9 +176,7 @@ const Today = () => {
         >
           <div className="flex items-start justify-between">
             <div>
-              {/* STANDARDIZED FONT: text-xl via cardTitle */}
               <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
-              {/* STANDARDIZED FONT: text-base via cardText */}
               <div className={`flex items-center gap-2 ${cardText}`}>
                 <Clock size={20} strokeWidth={2.5} />
                 <span>5 min</span>
@@ -195,7 +185,6 @@ const Today = () => {
           </div>
         </Card>
         
-        {/* Step 3 - STANDARDIZED: Uses interactiveCard for consistent styling */}
         <Card 
           className={interactiveCard}
           onClick={() => navigate('/app/health-metrics')}
@@ -203,20 +192,16 @@ const Today = () => {
         >
           <div className="flex items-start justify-between">
             <div>
-              {/* STANDARDIZED FONT: text-xl via cardTitle */}
               <h4 className={cardTitle}>Vikt och blodtryck</h4>
             </div>
           </div>
         </Card>
       </div>
 
-      {/* MINA TIPS SECTION - TipCards keep their specific colors (not light blue) */}
       <div className="space-y-6">
         <h3 className={sectionHeading}>Mina tips den här veckan</h3>
         {markedTipsList.length > 0 ? (
           <div className="space-y-4">
-            {/* STANDARDIZATION: TipCard uses same padding (p-5), fonts (text-xl/text-base), min-h-80px 
-                but keeps tip-specific colors (requirement: tip cards keep their colors) */}
             {markedTipsList.map((tip) => (
               <TipCard
                 key={tip.id}
