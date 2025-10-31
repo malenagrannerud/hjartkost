@@ -15,7 +15,7 @@ const Tutorial = () => {
         {/* STANDARDIZATION: backButton for icon-only back arrow */}
         <button
           onClick={() => navigate('/app/today')}
-          className={backButton}
+          className={arrowBack}
           aria-label="Gå tillbaka"
         >
           ←
