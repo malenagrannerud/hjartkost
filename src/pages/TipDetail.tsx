@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { tips } from "@/data/tips";
-import { pageTitle, sectionHeading, cardText, backButton, pageContainer, pagePadding } from "@/lib/design-tokens";
+import { pageTitle, sectionHeading, cardText, backButton, pageContainer, pagePadding, bodyText } from "@/lib/design-tokens";
 import { Button } from "@/components/ui/button";
 
 const TipDetail = () => {
@@ -31,7 +31,7 @@ const TipDetail = () => {
         </Button>
 
         {/* Title - CENTRALIZED */}
-        <h1 className={`${pageTitle} leading-tight`}>{tip.title}</h1>
+        <h1 className={sectionHeading}>{tip.title}</h1>
 
         {/* Description - CENTRALIZED */}
         <p className={`text-foreground leading-relaxed text-lg`}>{tip.detailedInfo}</p>
@@ -43,7 +43,7 @@ const TipDetail = () => {
               <h3 className={`${sectionHeading} text-xl`}>
                 Steg {index + 1}
               </h3>
-              <p className={`${cardText} text-base leading-relaxed`}>{step}</p>
+              <p className={bodyText}>{step}</p>
             </div>
           ))}
         </div>
