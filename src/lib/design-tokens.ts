@@ -81,12 +81,13 @@ export const colors = {
 // 📝 TYPOGRAPHY - CENTRALIZED TEXT STYLES
 // ==========================================
 
-/**
+/** 36 px, 18 px
  * PAGE TITLES- Used for main page headers
  * PAGE SUBTITLES- Used under page titles
  */
 export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
 export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
+
 
 /** 18 px 
  * SECTION HEADINGS (Starta här, Mina tips den här veckan, etc.)
@@ -97,15 +98,10 @@ export const sectionHeading = "text-lg font-bold text-[#212658]";
 export const sectionSubheading = "text-base font-normal text-[#212658]/70";
 
 
-
-
-
 /** 14 px
  * CARD TEXT- Used for body text within cards 16 px
  */
 export const cardText = "text-base text-[#212658]";
-
-
 
 
 /** 20 px
