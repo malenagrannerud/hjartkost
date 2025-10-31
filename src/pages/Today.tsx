@@ -166,9 +166,8 @@ const Today = () => {
                 <div className="flex items-start justify-between">
                   <div>
                     <h4 className={cardTitle}>Så fungerar appen</h4>
-                    <div className={`flex items-center gap-2 ${cardText}`}>
-                      <Clock size={20} strokeWidth={2.5} />
-                      <span>5 min</span>
+                    <div className={cardTextSmall}>
+                      ◷ 5 min
                     </div>
                   </div>
                 </div>
@@ -183,7 +182,7 @@ const Today = () => {
                   <div>
                     <h4 className={cardTitle}>Anpassa tips efter mina mål</h4>
                     <div className={cardTextSmall}>
-                      ⏱️ 5 min
+                      ◷ 5 min
                     </div>
                   </div>
                 </div>
