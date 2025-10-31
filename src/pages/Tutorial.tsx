@@ -11,22 +11,18 @@ const Tutorial = () => {
     /* STANDARDIZATION: Page uses pageContainer for consistent layout */
     <div className={pageContainer}>
       {/* STANDARDIZATION: Header uses headerContainer with white background */}
-      <header className={headerContainer}>
-        <div className="flex items-center gap-4">
-          {/* STANDARDIZATION: backButton for icon-only back arrow */}
-          <button
-            onClick={() => navigate('/app/today')}
-            className={arrowBack}
-            aria-label="Gå tillbaka"
-          >
-            ←
-          </button>
-          <div>
-            {/* STANDARDIZATION: Title uses sectionHeading, subtitle uses sectionSubheading */}
-            <h1 className={sectionHeading}>Så fungerar appen</h1>
-            <p className={sectionSubheading}>En guide för dig</p>
-          </div>
-        </div>
+     <header className={headerContainer}>
+    {/* STANDARDIZATION: backButton for icon-only back arrow */}
+      <button
+        onClick={() => navigate('/app/today')}
+        className={arrowBack}
+        aria-label="Gå tillbaka"
+      >
+      <ArrowLeft size={28} />
+      </button>
+      {/* STANDARDIZATION: Title uses sectionHeading, subtitle uses sectionSubheading */}
+      <h1 className={sectionHeading}>Så fungerar appen</h1>
+      <p className={sectionSubheading}>En guide för dig</p>
       </header>
 
       {/* STANDARDIZATION: Content uses pagePadding and standardSpacing */}
