@@ -103,6 +103,14 @@ export const sectionSubheading = "text-lg font-normal text-[#212658]/70";
 export const cardText = "text-base text-[#212658]";
 
 
+/** 16 px
+ * CARD TEXT- Used for body text
+ */
+export const bodyText = "text-base text-[#212658]";
+
+
+
+
 /**
  * LABEL TEXT
  * Used for form labels
