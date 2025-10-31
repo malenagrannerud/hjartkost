@@ -137,7 +137,7 @@ const Tutorial = () => {
             det viktiga är att du har börjat. Ta dig tid, var snäll mot dig själv, och gör 
             så gott du kan.
           </p>
-          <p className={`${cardText} text-lg`}>
+          <p className={bodyText}>
             Appen finns här när du behöver den, och allt du gör är i din egen takt.
           </p>
         </div>
