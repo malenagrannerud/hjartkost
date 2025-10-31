@@ -126,8 +126,8 @@ export const labelText = "text-[#212658] font-semibold";
  */
 export const cardTitle = "text-xl font-bold text-[#212658]";
 
-/** 
- * SMALL CARD TEXT -  ON cards 14 px
+/** 14 px
+ * SMALL CARD TEXT -  ON cards
  */
 export const cardTextSmall = "text-sm text-[#212658]";
 
@@ -167,7 +167,8 @@ export const standardSpacing = {
 // ==========================================
 
 /**
- * STANDARD CARD - Default card padding and styling
+ * STANDARD CARD
+ * Default card padding and styling
  * STANDARDIZATION: All non-tip cards use p-5 padding, light grey-blue background (bg-blue-50), min height 80px
  */
 export const standardCard = "p-5 border-0 shadow-sm bg-blue-50 min-h-[80px]";
@@ -220,12 +221,14 @@ export const iconButton = "p-3 hover:bg-accent rounded-lg transition-colors min-
 export const primaryButton = "w-full py-6 rounded-lg font-bold text-xl transition-all bg-[#212658] text-white hover:opacity-90 shadow-lg min-h-[64px]";
 
 /**
- * SECONDARY BUTTON - Secondary action button styling
+ * SECONDARY BUTTON
+ * Secondary action button styling
  */
 export const secondaryButton = "w-full py-4 rounded-lg font-semibold transition-opacity bg-[#212658] text-white hover:opacity-90";
 
 /**
- * DISABLED BUTTON - Disabled button styling
+ * DISABLED BUTTON
+ * Disabled button styling
  */
 export const disabledButton = "bg-gray-300 text-gray-500 cursor-not-allowed";
 
