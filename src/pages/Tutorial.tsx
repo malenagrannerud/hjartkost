@@ -11,7 +11,7 @@ const Tutorial = () => {
     /* STANDARDIZATION: Page uses pageContainer for consistent layout */
     <div className={pageContainer}>
       {/* STANDARDIZATION: Header uses headerContainer with white background */}
-     <header className={headerContainer}>
+     <header className={headerContainer} style={{backgroundColor: 'red'}}>
     {/* STANDARDIZATION: backButton for icon-only back arrow */}
       <button
         onClick={() => navigate('/app/today')}
@@ -22,7 +22,7 @@ const Tutorial = () => {
       </button>
       {/* STANDARDIZATION: Title uses sectionHeading, subtitle uses sectionSubheading */}
       <h1 className={sectionHeading}>Så fungerar appen</h1>
-      <p className={sectionSubheading}>En guide för dig</p>
+      <p className={sectionSubheading}>En guide</p>
       </header>
 
       {/* STANDARDIZATION: Content uses pagePadding and standardSpacing */}
