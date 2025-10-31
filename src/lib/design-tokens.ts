@@ -96,22 +96,25 @@ export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 export const sectionHeading = "text-lg font-bold text-[#212658]";
 export const sectionSubheading = "text-base font-normal text-[#212658]/70";
 
+
+
+
+
 /**
- * CARD TITLES- Used for titles within cards
+ * CARD TITLES- Used for titles ON cards
  */
 export const cardTitle = "text-xl font-bold text-[#212658]";
 
 /**
- * CARD TEXT
- * Used for body text within cards
+ * SMALL CARD TEXT - Used for secondary text ON cards
+ */
+export const cardTextSmall = "text-sm text-[#212658]";
+
+/**
+ * CARD TEXT- Used for body text within cards
  */
 export const cardText = "text-base text-[#212658]/70";
 
-/**
- * SMALL CARD TEXT
- * Used for secondary text in cards
- */
-export const cardTextSmall = "text-sm text-[#212658]/70";
 
 /**
  * BUTTON TEXT (large)
@@ -120,8 +123,7 @@ export const cardTextSmall = "text-sm text-[#212658]/70";
 export const buttonTextLarge = "text-xl font-bold";
 
 /**
- * BUTTON TEXT (regular)
- * Used for standard buttons
+ * BUTTON TEXT (regular) - Used for standard buttons
  */
 export const buttonText = "text-base font-semibold";
 
