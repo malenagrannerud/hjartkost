@@ -109,17 +109,10 @@ export const cardText = "text-base text-[#212658]";
  */
 export const cardTitle = "text-xl font-bold text-[#212658]";
 
-/** 16 px
+/** 14 px
  * SMALL CARD TEXT -  ON cards
  */
 export const cardTextSmall = "text-sm text-[#212658]";
-
-
-
-
-
-
-
 
 /**
  * BUTTON TEXT (large)
