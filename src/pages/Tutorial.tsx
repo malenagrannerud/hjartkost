@@ -74,7 +74,7 @@ const Tutorial = () => {
               <BookOpen className="w-8 h-8 text-blue-700" />
             </div>
             <div className="space-y-4">
-              <h2 className={`${cardTitle} text-2xl`}>Tips-sidan</h2>
+              <h2 className={heading}>Tips-sidan</h2>
               <p className={bodyText}>
                 Under "Tips" hittar du alla hälsoråd. Klicka på ett tips för att läsa mer. 
                 När du hittar något som passar dig, tryck på bocken så hamnar tipset under 
@@ -95,12 +95,12 @@ const Tutorial = () => {
               <TrendingUp className="w-8 h-8 text-purple-700" />
             </div>
             <div className="space-y-4">
-              <h2 className={`${cardTitle} text-2xl`}>Framsteg-sidan</h2>
+              <h2 className={heading}>Framsteg-sidan</h2>
               <p className={bodyText}>
                 Här kan du följa din utveckling över tid. Du ser en kalender där du kan 
                 klicka på ett datum för att registrera blodtryck och vikt. 
               </p>
-              <p className={`${cardText} text-lg`}>
+              <p className={bodyText}>
                 Små färgade rutor visar vilka tips du har följt. Ett litet hjärta ♥ betyder 
                 att du har registrerat blodtryck, och en vågsymbol ⚖ betyder att du har registrerat din vikt.
               </p>
@@ -120,7 +120,7 @@ const Tutorial = () => {
               <HelpCircle className="w-8 h-8 text-orange-700" />
             </div>
             <div className="space-y-4">
-              <h2 className={`${cardTitle} text-2xl`}>Hjälp-sidan</h2>
+              <h2 className={heading}>Hjälp-sidan</h2>
               <p className={bodyText}>
                 Om du någonsin undrar över något, finns det en hjälp-sida längst ner i menyn. 
                 Där hittar du svar på vanliga frågor.
@@ -131,8 +131,8 @@ const Tutorial = () => {
 
         {/* Encouragement */}
         <div className="bg-green-50 p-8 rounded-lg border-2 border-green-200">
-          <h3 className={`${cardTitle} text-2xl mb-4`}>Du klarar det här!</h3>
-          <p className={`${cardText} text-lg mb-4`}>
+          <h3 className={heading}>Du klarar det här!</h3>
+          <p className={bodyText}>
             Kom ihåg att varje litet steg räknas. Det spelar ingen roll hur långsamt du går, 
             det viktiga är att du har börjat. Ta dig tid, var snäll mot dig själv, och gör 
             så gott du kan.
