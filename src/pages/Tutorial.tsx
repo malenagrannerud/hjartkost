@@ -35,11 +35,6 @@ const Tutorial = () => {
             Välkommen! Den här appen är skapad för att hjälpa dig ta hand om din hälsa på ett enkelt sätt. 
             Du bestämmer själv tempot - allt går att göra i din egen takt.
           </p>
-          <img 
-            src={fruitsImage} 
-            alt="Färgglada frukter och grönsaker" 
-            className="w-full rounded-lg shadow-sm"
-          />
         </div>
 
         {/* STANDARDIZATION: Cards use p-5 padding, bg-blue-50, min-h-[80px] */}
