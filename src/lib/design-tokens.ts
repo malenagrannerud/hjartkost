@@ -89,24 +89,29 @@ export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
 export const pageSubtitle = "text-[#212658]/70 text-2xl font-normal";
 
 /** 20 px 
- * SECTION HEADINGS (Starta här, Mina tips den här veckan, etc.)
- * Used for section headers within pages
+ * SECTION HEADINGS Used for the header within pages
  * subheading 18 px
  */
 export const sectionHeading = "text-xl font-bold text-[#212658]";
 export const sectionSubheading = "text-lg font-normal text-[#212658]/70";
 
 
+
+/** 18 
+ * Heading - Used inside card 18 px
+ */
+export const heading = "text-lg font-bold text-[#212658]";
+
+/** 18 px 16 px
+ * CARD TEXT- Used for body text 16 px
+ */
+export const bodyText = "text-base text-[#212658]";
+
+
 /** 16 px
  * CARD TEXT- Used for body text
  */
 export const cardText = "text-base text-[#212658]";
-
-
-/** 16 px
- * CARD TEXT- Used for body text
- */
-export const bodyText = "text-base text-[#212658]";
 
 
 
