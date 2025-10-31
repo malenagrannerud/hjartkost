@@ -53,7 +53,7 @@ export const colors = {
   
   // Main header color
   header: {
-    main: '#212658',       // Dark blue - ALL main headers
+    main: '#ffffffff',       // Dark blue - ALL main headers
     secondary: '#212658',  // Same for consistency
   },
   
@@ -237,20 +237,17 @@ export const disabledButton = "bg-gray-300 text-gray-500 cursor-not-allowed";
 // ==========================================
 
 /**
- * PAGE CONTAINER
- * Main page container styling
+ * PAGE CONTAINER - Wraps everything
  */
 export const pageContainer = "min-h-screen pb-24 space-y-6 bg-background";
 
 /**
- * PAGE PADDING
- * Standard page padding
+ * PAGE PADDING - put content 
  */
 export const pagePadding = "p-6";
 
 /**
- * HEADER CONTAINER
- * Page header styling
+ * HEADER CONTAINER - Stays consisten while scrolling
  */
 export const headerContainer = "bg-white border-b border-border sticky top-0 z-10 p-6";
 

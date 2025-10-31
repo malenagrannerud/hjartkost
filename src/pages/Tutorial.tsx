@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Home, BookOpen, TrendingUp, HelpCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import fruitsImage from "@/assets/fruits-illustration.jpg";
-import { pageTitle, pageSubtitle, cardTitle, cardText, standardCard, backButton, primaryButton, pageContainer, pagePadding, sectionHeading, sectionSubheading, heading, bodyText, arrowBack} from "@/lib/design-tokens";
+import { pageTitle, pageSubtitle, cardTitle, cardText, standardCard, backButton, primaryButton, pageContainer, pagePadding, sectionHeading, sectionSubheading, heading, bodyText, arrowBack, headerContainer, standardSpacing } from "@/lib/design-tokens";
 
 const Tutorial = () => {
   const navigate = useNavigate();
@@ -10,42 +10,40 @@ const Tutorial = () => {
   return (
     /* STANDARDIZATION: Page uses pageContainer for consistent layout */
     <div className={pageContainer}>
-      {/* STANDARDIZATION: Header uses standard headerContainer styling */}
-      <div className="bg-white border-b border-border sticky top-0 z-10">
-        <div className="p-6">
-          {/* STANDARDIZATION: arrowBack */}
-          <button
-           onClick={() => navigate('/app/today')}
-            className={arrowBack}
-            aria-label="Gå tillbaka"
-            >
-            ←
-          </button>
-          {/* STANDARDIZATION: Title uses heading, subtitle uses pageSubeading(text-lg) */}
-          <h1 className={sectionHeading}>Så fungerar appen</h1>
-          <p className={sectionSubheading}>En guide för dig</p>
-        </div>
-      </div>
+      {/* STANDARDIZATION: Header uses headerContainer with white background */}
+      <header className={headerContainer}>
+        {/* STANDARDIZATION: backButton for icon-only back arrow */}
+        <button
+          onClick={() => navigate('/app/today')}
+          className={backButton}
+          aria-label="Gå tillbaka"
+        >
+          ←
+        </button>
+        {/* STANDARDIZATION: Title uses sectionHeading, subtitle uses sectionSubheading */}
+        <h1 className={sectionHeading}>Så fungerar appen</h1>
+        <p className={sectionSubheading}>En guide för dig</p>
+      </header>
 
-      {/* STANDARDIZATION: Content uses space-y-6 for section spacing */}
-      <div className={`${pagePadding} space-y-6`}>
+      {/* STANDARDIZATION: Content uses pagePadding and standardSpacing */}
+      <div className={`${pagePadding} ${standardSpacing.pageContent}`}>
         {/* Introduction */}
-        <div className="space-y-6">
+        <div className={standardSpacing.sectionContent}>
           <p className={bodyText}>
             Välkommen! Den här appen är skapad för att hjälpa dig ta hand om din hälsa på ett enkelt sätt. 
             Du bestämmer själv tempot - allt går att göra i din egen takt.
           </p>
         </div>
 
-        {/* STANDARDIZATION: Cards use p-5 padding, bg-blue-50, min-h-[80px] */}
+        {/* STANDARDIZATION: Cards use standardCard token */}
         {/* Section 1: Today */}
         <Card className={standardCard}>
           <div className="flex items-start gap-5">
             <div className="bg-green-100 p-4 rounded-full flex-shrink-0">
               <Home className="w-8 h-8 text-green-700" />
             </div>
-            <div className="space-y-4">
-              {/* STANDARDIZATION: Text uses cardTitle (text-xl), cardText (text-base) */}
+            <div className={standardSpacing.sectionContent}>
+              {/* STANDARDIZATION: Text uses heading and bodyText */}
               <h2 className={heading}>Idag-sidan</h2>
               <p className={bodyText}>
                 När du öppnar appen hamnar du på "Idag". Här ser du dina valda hälsotips och kan 
@@ -67,7 +65,7 @@ const Tutorial = () => {
             <div className="bg-blue-100 p-4 rounded-full flex-shrink-0">
               <BookOpen className="w-8 h-8 text-blue-700" />
             </div>
-            <div className="space-y-4">
+            <div className={standardSpacing.sectionContent}>
               <h2 className={heading}>Tips-sidan</h2>
               <p className={bodyText}>
                 Under "Tips" hittar du alla hälsoråd. Klicka på ett tips för att läsa mer. 
@@ -88,7 +86,7 @@ const Tutorial = () => {
             <div className="bg-purple-100 p-4 rounded-full flex-shrink-0">
               <TrendingUp className="w-8 h-8 text-purple-700" />
             </div>
-            <div className="space-y-4">
+            <div className={standardSpacing.sectionContent}>
               <h2 className={heading}>Framsteg-sidan</h2>
               <p className={bodyText}>
                 Här kan du följa din utveckling över tid. Du ser en kalender där du kan 
@@ -113,7 +111,7 @@ const Tutorial = () => {
             <div className="bg-orange-100 p-4 rounded-full flex-shrink-0">
               <HelpCircle className="w-8 h-8 text-orange-700" />
             </div>
-            <div className="space-y-4">
+            <div className={standardSpacing.sectionContent}>
               <h2 className={heading}>Hjälp-sidan</h2>
               <p className={bodyText}>
                 Om du någonsin undrar över något, finns det en hjälp-sida längst ner i menyn. 
