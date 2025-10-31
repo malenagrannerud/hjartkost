@@ -88,8 +88,8 @@ export const colors = {
 export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
 export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
 
-/**
- * SECTION HEADINGS 18 px (Starta här, Mina tips den här veckan, etc.)
+/** 18 px 
+ * SECTION HEADINGS (Starta här, Mina tips den här veckan, etc.)
  * Used for section headers within pages
  * subheading 16 px
  */
@@ -100,20 +100,29 @@ export const sectionSubheading = "text-base font-normal text-[#212658]/70";
 
 
 
-/**
+/** 14 px
+ * CARD TEXT- Used for body text within cards 16 px
+ */
+export const cardText = "text-base text-[#212658]";
+
+
+
+
+/** 20 px
  * CARD TITLES- Used for titles ON cards
  */
 export const cardTitle = "text-xl font-bold text-[#212658]";
 
-/**
- * SMALL CARD TEXT - Used for secondary text ON cards
+/** 16 px
+ * SMALL CARD TEXT -  ON cards
  */
 export const cardTextSmall = "text-sm text-[#212658]";
 
-/**
- * CARD TEXT- Used for body text within cards
- */
-export const cardText = "text-base text-[#212658]/70";
+
+
+
+
+
 
 
 /**
