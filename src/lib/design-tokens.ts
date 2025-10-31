@@ -81,27 +81,33 @@ export const colors = {
 // 📝 TYPOGRAPHY - CENTRALIZED TEXT STYLES
 // ==========================================
 
-/** 36 px, 18 px
+/** 36 px, 24 px
  * PAGE TITLES- Used for main page headers
  * PAGE SUBTITLES- Used under page titles
  */
 export const pageTitle = "text-4xl font-bold text-[#212658] mb-1";
-export const pageSubtitle = "text-[#212658]/70 text-lg font-normal";
+export const pageSubtitle = "text-[#212658]/70 text-2xl font-normal";
 
-
-/** 18 px 
+/** 20 px 
  * SECTION HEADINGS (Starta här, Mina tips den här veckan, etc.)
  * Used for section headers within pages
- * subheading 16 px
+ * subheading 18 px
  */
-export const sectionHeading = "text-lg font-bold text-[#212658]";
-export const sectionSubheading = "text-base font-normal text-[#212658]/70";
+export const sectionHeading = "text-xl font-bold text-[#212658]";
+export const sectionSubheading = "text-lg font-normal text-[#212658]/70";
 
 
-/** 14 px
- * CARD TEXT- Used for body text within cards 16 px
+/** 16 px
+ * CARD TEXT- Used for body text
  */
 export const cardText = "text-base text-[#212658]";
+
+
+/**
+ * LABEL TEXT
+ * Used for form labels
+ */
+export const labelText = "text-[#212658] font-semibold";
 
 
 /** 20 px
@@ -125,11 +131,7 @@ export const buttonTextLarge = "text-xl font-bold";
  */
 export const buttonText = "text-base font-semibold";
 
-/**
- * LABEL TEXT
- * Used for form labels
- */
-export const labelText = "text-[#212658] font-semibold";
+
 
 // ==========================================
 // 📏 SPACING - STANDARDIZED SPACING
